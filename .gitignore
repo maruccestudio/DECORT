@@ -1,0 +1,11 @@
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorar el Brandbook PDF (archivo muy grande ~109MB)
+Brandbook.pdf
+
+# Ignorar archivos temporales
+*.log
+*.tmp

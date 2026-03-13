@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARUCC DECORT — Cortinas a medida en Mallorca | Showroom Móvil</title>
+    <meta name="description" content="MARUCC DECORT ofrece cortinas a medida de alta calidad en Mallorca. Nuestro showroom móvil lleva las mejores telas y diseños directamente a tu hogar.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: {
+                            50:  '#fdf6f1',
+                            100: '#f9e8da',
+                            200: '#f2ccb0',
+                            300: '#e5a97d',
+                            400: '#d48a55',
+                            500: '#A0633B',
+                            600: '#8b5332',
+                            700: '#73422a',
+                            800: '#5e3624',
+                            900: '#4d2d1f',
+                        },
+                        arena: {
+                            50:  '#FEFCF9',
+                            100: '#FAF7F2',
+                            200: '#F5F0E8',
+                            300: '#EBE3D6',
+                            400: '#E0D5C0',
+                            500: '#D4C5A9',
+                            600: '#B8A88B',
+                            700: '#9A8B6E',
+                            800: '#7D7057',
+                            900: '#5F5541',
+                        },
+                        oliva: {
+                            50:  '#f7f7ef',
+                            100: '#eeeedd',
+                            200: '#ddddb8',
+                            300: '#c4c48a',
+                            400: '#a8a85e',
+                            500: '#8B8B3D',
+                            600: '#6f6f31',
+                            700: '#555528',
+                            800: '#454521',
+                            900: '#3a3a1d',
+                        },
+                    },
+                    fontFamily: {
+                        'display': ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        'body': ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Base Typography */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-display {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        /* Smooth Reveal Animation */
+        .reveal-text {
+            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* Minimal Scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Studio Card Shadow */
+        .studio-card {
+            box-shadow: 0 -50px 100px -20px rgba(0,0,0,0.3);
+        }
+
+        /* Lenis Recommended Styles */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+        /* Custom terracotta pulse */
+        @keyframes pulse-warm {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-warm {
+            animation: pulse-warm 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Elegant underline hover */
+        .hover-line {
+            position: relative;
+        }
+        .hover-line::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #A0633B;
+            transition: width 0.3s ease;
+        }
+        .hover-line:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-arena-100 text-neutral-800 selection:bg-terracotta-500 selection:text-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 mix-blend-difference text-arena-100">
+        <a href="#" onclick="lenis.scrollTo('#hero')" class="cursor-pointer hover:opacity-70 transition-opacity">
+            <img src="public/images/logo_light.png" alt="MARUCC DECORT" class="h-6 md:h-8 w-auto">
+        </a>
+        <div class="flex gap-8 text-[11px] font-medium tracking-widest uppercase font-body">
+            <button onclick="lenis.scrollTo('#colecciones')" class="hover:opacity-60 transition-opacity cursor-pointer">Colecciones</button>
+            <button onclick="lenis.scrollTo('#showroom')" class="hover:opacity-60 transition-opacity cursor-pointer hidden md:block">Showroom</button>
+            <button onclick="lenis.scrollTo('#nosotros')" class="hover:opacity-60 transition-opacity cursor-pointer">Nosotros</button>
+            <button onclick="lenis.scrollTo('#contacto')" class="hover:opacity-60 transition-opacity cursor-pointer">Contacto</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="h-screen flex flex-col w-full px-6 md:px-12 relative overflow-hidden">
+        
+        <!-- Background Elements -->
+        <canvas id="dots-canvas" class="absolute top-0 left-0 w-full h-full -z-10"></canvas>
+        <div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-terracotta-100 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 -z-20 opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-[30vw] h-[30vw] bg-arena-300 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 -z-20 opacity-40"></div>
+
+        <!-- Top Spacer -->
+        <div class="flex-grow"></div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col md:flex-row justify-between items-end w-full pb-12 md:pb-16 border-b border-arena-400/40">
+            <div class="reveal-text mb-8 md:mb-0 w-full md:w-auto">
+                <p class="text-xs md:text-sm font-normal leading-relaxed text-neutral-500 max-w-xs tracking-wide mb-8 font-body">
+                    Showroom móvil de cortinas a medida en Mallorca. Diseño, elegancia y funcionalidad para tu hogar.
+                </p>
+                <button onclick="lenis.scrollTo('#colecciones')" class="group inline-flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest border-b border-arena-400 pb-1 transition-colors hover:border-terracotta-500 hover:text-terracotta-600 cursor-pointer font-body">
+                    Ver Colecciones
+                    <iconify-icon icon="lucide:arrow-down" width="14" stroke-width="1.5" class="group-hover:translate-y-0.5 transition-transform"></iconify-icon>
+                </button>
+            </div>
+
+            <div class="text-left md:text-right reveal-text delay-100">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl leading-[0.85] font-light text-neutral-800 tracking-tight font-display">
+                    Vistiendo hogares<br>
+                    con elegancia<br>
+                    <span class="text-terracotta-500 font-normal italic">en Mallorca</span>
+                </h1>
+            </div>
+        </div>
+        
+        <!-- Bottom Status Bar -->
+        <div class="w-full py-6 flex justify-between items-center reveal-text delay-200">
+            <div class="flex gap-12">
+                 <div class="hidden md:block">
+                    <span class="text-xs font-medium flex items-center gap-2 font-body">
+                        <span class="w-2 h-2 bg-terracotta-500 rounded-full animate-pulse-warm"></span>
+                        Showroom Móvil disponible
+                    </span>
+                 </div>
+            </div>
+            <div class="text-[10px] text-neutral-400 uppercase tracking-widest animate-pulse font-body">
+                DESPLAZA PARA EXPLORAR
+            </div>
+        </div>
+    </header>
+
+    <!-- Colecciones Carousel Section -->
+    <section id="colecciones" class="relative h-[450vh] bg-arena-100 z-0">
+        <div class="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-arena-100">
+            
+            <div class="absolute top-0 left-0 w-full px-6 md:px-12 pt-16 md:pt-24 flex justify-between items-start z-10 pointer-events-none">
+                <span class="text-[10px] font-medium tracking-widest uppercase opacity-40 font-body">Nuestras Colecciones</span>
+                <span class="text-[10px] font-medium tracking-widest uppercase opacity-40 font-body">01 — 05</span>
+            </div>
+
+            <div id="carousel-track" class="flex items-center gap-6 md:gap-12 pl-6 md:pl-12 w-max will-change-transform">
+                
+                <!-- Card 01: Cortinas Enrollables -->
+                <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
+                        <img src="public/images/cortinas_enrollables.png" alt="Cortinas Enrollables" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-semibold tracking-tight font-display text-neutral-800">Cortinas Enrollables</h3>
+                            <p class="text-xs text-neutral-400 mt-1 font-body">screen / tejido técnico</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300 text-terracotta-500">
+                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5"></iconify-icon>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 02: Cortinas Verticales -->
+                <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
+                        <img src="public/images/cortinas_verticales.png" alt="Cortinas Verticales" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-semibold tracking-tight font-display text-neutral-800">Cortinas Verticales</h3>
+                            <p class="text-xs text-neutral-400 mt-1 font-body">lamas / tejido natural</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300 text-terracotta-500">
+                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5"></iconify-icon>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 03: Cortinas Blackout -->
+                <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
+                        <img src="public/images/cortinas_blackout.png" alt="Cortinas Blackout" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-semibold tracking-tight font-display text-neutral-800">Blackout</h3>
+                            <p class="text-xs text-neutral-400 mt-1 font-body">oscurecimiento total</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300 text-terracotta-500">
+                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5"></iconify-icon>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 04: Venecianas -->
+                <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
+                        <img src="public/images/cortinas_venecianas.png" alt="Cortinas Venecianas" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-semibold tracking-tight font-display text-neutral-800">Venecianas</h3>
+                            <p class="text-xs text-neutral-400 mt-1 font-body">madera / aluminio</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300 text-terracotta-500">
+                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5"></iconify-icon>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 05: Paneles Japoneses -->
+                <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer pr-12 md:pr-24">
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
+                        <img src="public/images/paneles_japoneses.png" alt="Paneles Japoneses" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-semibold tracking-tight font-display text-neutral-800">Paneles Japoneses</h3>
+                            <p class="text-xs text-neutral-400 mt-1 font-body">deslizantes / minimalistas</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300 text-terracotta-500">
+                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5"></iconify-icon>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="absolute bottom-8 left-6 md:left-12 w-32 h-0.5 bg-arena-300 overflow-hidden">
+                <div id="progress-bar" class="h-full bg-terracotta-500 w-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showroom Móvil Section -->
+    <section id="showroom" class="relative h-[200vh] z-10 bg-arena-100">
+        <div class="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full px-6 md:px-12 py-12 md:py-0">
+                
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+                    <h2 class="text-4xl md:text-6xl font-light tracking-tight font-display text-neutral-800">
+                        Showroom <span class="italic text-terracotta-500">Móvil</span>
+                    </h2>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[10px] font-medium tracking-widest uppercase text-neutral-500 font-body">Servicio Premium</span>
+                        <div class="w-16 h-px bg-terracotta-500/30"></div>
+                    </div>
+                </div>
+
+                <!-- Showroom Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+                    
+                    <!-- Feature 01 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
+                            <img src="public/images/showroom_movil.png" alt="Showroom Móvil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-6 right-6">
+                                <span class="bg-terracotta-500 text-white text-[10px] uppercase font-semibold tracking-widest px-3 py-1.5 rounded-full font-body">Exclusivo</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-baseline px-2">
+                            <h3 class="text-lg font-medium tracking-tight font-display">Visita a Domicilio</h3>
+                            <span class="text-sm font-normal text-terracotta-500 font-body">Gratis</span>
+                        </div>
+                        <p class="text-xs text-neutral-400 mt-1 px-2 font-body">llevamos las muestras a tu hogar</p>
+                    </div>
+
+                    <!-- Feature 02 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
+                            <img src="public/images/cortinas_enrollables.png" alt="Asesoramiento Personalizado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute top-6 right-6">
+                                <span class="bg-neutral-800 text-arena-100 text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full font-body">Premium</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-baseline px-2">
+                            <h3 class="text-lg font-medium tracking-tight font-display">Asesoramiento</h3>
+                            <span class="text-sm font-normal text-terracotta-500 font-body">Incluido</span>
+                        </div>
+                        <p class="text-xs text-neutral-400 mt-1 px-2 font-body">diseño personalizado para cada espacio</p>
+                    </div>
+
+                    <!-- Feature 03 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
+                            <img src="public/images/cortinas_blackout.png" alt="Instalación Profesional" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="flex justify-between items-baseline px-2">
+                            <h3 class="text-lg font-medium tracking-tight font-display">Instalación</h3>
+                            <span class="text-sm font-normal text-terracotta-500 font-body">Profesional</span>
+                        </div>
+                        <p class="text-xs text-neutral-400 mt-1 px-2 font-body">montaje impecable en toda Mallorca</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section (Dark Studio Card) -->
+    <section id="nosotros" class="relative z-20 pt-0 -mt-12 md:-mt-24">
+        <div class="studio-card rounded-t-3xl md:rounded-t-[3rem] bg-neutral-900 text-arena-100 overflow-hidden min-h-screen py-24 md:py-32 px-6 md:px-12">
+             <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32">
+                    <div>
+                        <h3 class="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-tight mb-8 font-display">
+                            El diseño es elegancia<br><span class="italic text-terracotta-400">hecha visible.</span>
+                        </h3>
+                        <div class="w-16 h-px mb-8 bg-terracotta-500/40"></div>
+                        <p class="text-neutral-500 text-sm tracking-wide uppercase font-body">Nuestra Filosofía</p>
+                    </div>
+                    <div class="flex flex-col justify-between h-full">
+                        <p class="text-base md:text-lg font-light leading-relaxed text-neutral-400 tracking-wide max-w-lg font-body">
+                            En MARUCC DECORT creemos que cada ventana merece un tratamiento único. Nuestro showroom móvil lleva la experiencia premium directamente a tu hogar en Mallorca, con las mejores telas y acabados del mercado.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-12 mt-20 border-t border-neutral-800 pt-12">
+                            <div>
+                                <span class="block text-[10px] font-semibold tracking-widest text-neutral-500 uppercase mb-6 font-body">Servicios</span>
+                                <ul class="space-y-3 text-sm font-normal text-neutral-300 font-body">
+                                    <li class="flex items-center gap-3 group">
+                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400"></iconify-icon> 
+                                        Cortinas a medida
+                                    </li>
+                                    <li class="flex items-center gap-3 group">
+                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400"></iconify-icon> 
+                                        Asesoramiento en diseño
+                                    </li>
+                                    <li class="flex items-center gap-3 group">
+                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400"></iconify-icon> 
+                                        Instalación profesional
+                                    </li>
+                                    <li class="flex items-center gap-3 group">
+                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400"></iconify-icon> 
+                                        Showroom móvil
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] font-semibold tracking-widest text-neutral-500 uppercase mb-6 font-body">Marcas</span>
+                                <ul class="space-y-3 text-sm font-normal text-neutral-300 font-body">
+                                    <li>Silent Gliss</li>
+                                    <li>Hunter Douglas</li>
+                                    <li>Bandalux</li>
+                                    <li>Saxun</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nested Footer -->
+            <footer id="contacto" class="mt-32 pt-24 border-t border-neutral-800">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-16">
+                        <div class="max-w-3xl">
+                            <h4 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8 text-arena-100 font-display">
+                                ¿Tienes un proyecto<br><span class="italic text-terracotta-400">en mente?</span>
+                            </h4>
+                            <a href="mailto:info@maruccdecort.com" class="inline-flex items-center gap-3 text-xl md:text-2xl font-medium transition-all border-b border-neutral-700 pb-1 text-neutral-400 hover:text-terracotta-400 hover:border-terracotta-400 hover:gap-4 group font-body">
+                                info@maruccdecort.com 
+                                <iconify-icon icon="lucide:arrow-up-right" width="20" stroke-width="1.5" class="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></iconify-icon>
+                            </a>
+                            <div class="mt-6 flex flex-col gap-2">
+                                <a href="tel:+34600000000" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
+                                    +34 600 000 000
+                                </a>
+                                <span class="text-sm text-neutral-600 font-body">
+                                    Mallorca, Islas Baleares
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col items-start md:items-end gap-8 w-full md:w-auto">
+                            <div class="flex gap-4">
+                                <a href="#" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                    <iconify-icon icon="lucide:instagram" width="18" stroke-width="1.5"></iconify-icon>
+                                </a>
+                                <a href="#" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                    <iconify-icon icon="lucide:facebook" width="18" stroke-width="1.5"></iconify-icon>
+                                </a>
+                                <a href="#" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                    <iconify-icon icon="lucide:phone" width="18" stroke-width="1.5"></iconify-icon>
+                                </a>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <img src="public/images/logo_light.png" alt="MARUCC" class="h-5 w-auto opacity-40">
+                                <span class="text-[10px] font-medium uppercase tracking-widest text-neutral-600 font-body">
+                                    © 2025 MARUCC DECORT
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        // --- Smooth Scroll Setup (Lenis) ---
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+
+        // --- Dots Animation Logic (Terracotta themed) ---
+        const canvas = document.getElementById('dots-canvas');
+        const ctx = canvas.getContext('2d');
+        let mouseX = -100;
+        let mouseY = -100;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function drawDots() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const space = 30;
+            const radius = 2;
+            const rows = Math.ceil(canvas.height / space);
+            const cols = Math.ceil(canvas.width / space);
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const x = c * space + space / 2;
+                    const y = r * space + space / 2;
+                    const dist = Math.sqrt((x - mouseX) ** 2 + (y - mouseY) ** 2);
+                    const maxDist = 300;
+                    
+                    let alpha = 0.12; 
+                    if (dist < maxDist) {
+                        alpha += (1 - dist / maxDist) * 0.5;
+                    }
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    // Terracotta-tinted dots
+                    ctx.fillStyle = `rgba(160, 99, 59, ${alpha})`;
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(drawDots);
+        }
+        drawDots();
+
+        // --- Work Scroll Logic ---
+        const workSection = document.querySelector('#colecciones');
+        const track = document.querySelector('#carousel-track');
+        const progressBar = document.querySelector('#progress-bar');
+        
+        let currentScroll = 0;
+        let targetScroll = 0;
+        let currentProgress = 0;
+        let targetProgress = 0;
+
+        const ease = 0.08; 
+
+        function animate() {
+            currentScroll += (targetScroll - currentScroll) * ease;
+            currentProgress += (targetProgress - currentProgress) * ease;
+            track.style.transform = `translateX(${currentScroll}px)`;
+            progressBar.style.width = `${currentProgress * 100}%`;
+            requestAnimationFrame(animate);
+        }
+
+        function handleScroll() {
+            const workRect = workSection.getBoundingClientRect();
+            const trackWidth = track.scrollWidth;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const scrollableHeight = workSection.offsetHeight - windowHeight;
+            const workScrolled = -workRect.top;
+            
+            if (workRect.top <= 0 && workRect.bottom >= 0) {
+                const percentage = Math.min(Math.max(workScrolled / scrollableHeight, 0), 1);
+                targetScroll = -(trackWidth - windowWidth) * percentage;
+                targetProgress = percentage;
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        
+        animate();
+    </script>
+
+</body>
+</html>
