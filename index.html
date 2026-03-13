@@ -534,30 +534,37 @@
             mouseY = e.clientY;
         });
 
-        function drawDots() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const space = 30;
-            const radius = 2;
-            const rows = Math.ceil(canvas.height / space);
-            const cols = Math.ceil(canvas.width / space);
+        let isHeroVisible = true;
+        const heroObserver = new IntersectionObserver((entries) => {
+            isHeroVisible = entries[0].isIntersecting;
+        });
+        heroObserver.observe(document.getElementById('hero'));
 
-            for (let r = 0; r < rows; r++) {
-                for (let c = 0; c < cols; c++) {
-                    const x = c * space + space / 2;
-                    const y = r * space + space / 2;
-                    const dist = Math.sqrt((x - mouseX) ** 2 + (y - mouseY) ** 2);
-                    const maxDist = 300;
-                    
-                    let alpha = 0.12; 
-                    if (dist < maxDist) {
-                        alpha += (1 - dist / maxDist) * 0.5;
+        function drawDots() {
+            if (isHeroVisible) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const space = 30;
+                const radius = 2;
+                const rows = Math.ceil(canvas.height / space);
+                const cols = Math.ceil(canvas.width / space);
+
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        const x = c * space + space / 2;
+                        const y = r * space + space / 2;
+                        const dist = Math.sqrt((x - mouseX) ** 2 + (y - mouseY) ** 2);
+                        const maxDist = 300;
+                        
+                        let alpha = 0.12; 
+                        if (dist < maxDist) {
+                            alpha += (1 - dist / maxDist) * 0.5;
+                        }
+                        
+                        ctx.beginPath();
+                        ctx.arc(x, y, radius, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(160, 99, 59, ${alpha})`;
+                        ctx.fill();
                     }
-                    
-                    ctx.beginPath();
-                    ctx.arc(x, y, radius, 0, Math.PI * 2);
-                    // Terracotta-tinted dots
-                    ctx.fillStyle = `rgba(160, 99, 59, ${alpha})`;
-                    ctx.fill();
                 }
             }
             requestAnimationFrame(drawDots);
@@ -576,11 +583,21 @@
 
         const ease = 0.08; 
 
+        let isWorkVisible = true;
+        const workObserver = new IntersectionObserver((entries) => {
+            isWorkVisible = entries[0].isIntersecting;
+        });
+        workObserver.observe(workSection);
+
         function animate() {
-            currentScroll += (targetScroll - currentScroll) * ease;
-            currentProgress += (targetProgress - currentProgress) * ease;
-            track.style.transform = `translateX(${currentScroll}px)`;
-            progressBar.style.width = `${currentProgress * 100}%`;
+            if (isWorkVisible) {
+                currentScroll += (targetScroll - currentScroll) * ease;
+                currentProgress += (targetProgress - currentProgress) * ease;
+                
+                // Hardware acceleration for smoother paints
+                track.style.transform = `translate3d(${currentScroll}px, 0, 0)`;
+                progressBar.style.width = `${currentProgress * 100}%`;
+            }
             requestAnimationFrame(animate);
         }
 
