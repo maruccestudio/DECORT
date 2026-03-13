@@ -499,7 +499,7 @@
     <script>
         // --- Smooth Scroll Setup (Lenis) ---
         const lenis = new Lenis({
-            duration: 1.5,
+            duration: 0.8, // Scroll más rápido y fluido (antes 1.5)
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
@@ -600,6 +600,11 @@
         }
         
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        
+        // ¡CRÍTICO! Iniciar el bucle de animación del carrusel
+        animate();
+
         // --- Cookie Banner Logic ---
         const cookieBanner = document.getElementById('cookie-banner');
         const acceptBtn = document.getElementById('accept-cookies');
