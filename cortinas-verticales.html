@@ -280,16 +280,20 @@
                 console.error("Error enviando datos al CRM:", error);
             }
 
-            // 2. Preparar el mensaje de WhatsApp y enviarlo
-            const waMessage = `¡Hola! Quiero solicitar una visita gratuita para ${producto}.\n\n*🏢 Datos Personales:*\n- *Nombre:* ${nombre}\n- *Teléfono:* ${telefono}\n- *Email:* ${email}\n\n*📍 Detalles de Obra:*\n- *Dirección Exacta:* ${direccion} (${isla})\n- *Nº de ventanas:* ${cantidad}\n\n*💬 Comentarios:*\n${mensaje}`;
+            // 2. Mostrar mensaje de éxito al usuario
+            submitBtn.innerHTML = '<iconify-icon icon="lucide:check-circle" width="16" stroke-width="2"></iconify-icon> ¡Solicitud Enviada con Éxito!';
+            submitBtn.classList.remove('bg-terracotta-500', 'hover:bg-terracotta-600', 'shadow-terracotta-500/30');
+            submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'shadow-green-600/30');
             
-            window.open(`https://wa.me/34641354788?text=${encodeURIComponent(waMessage)}`, '_blank');
-            
-            // 3. Restaurar y cerrar
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-            closeLeadModal();
-            leadForm.reset();
+            // 3. Restaurar y cerrar después de 2.5 segundos
+            setTimeout(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.classList.add('bg-terracotta-500', 'hover:bg-terracotta-600', 'shadow-terracotta-500/30');
+                submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'shadow-green-600/30');
+                submitBtn.disabled = false;
+                closeLeadModal();
+                leadForm.reset();
+            }, 2500);
         });
     </script>
 </body>
