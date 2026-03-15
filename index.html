@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARUCC DECORT — Cortinas a medida en Mallorca | Showroom Móvil</title>
-    <meta name="description" content="MARUCC DECORT ofrece cortinas a medida de alta calidad en Mallorca. Nuestro showroom móvil lleva las mejores telas y diseños directamente a tu hogar.">
+    <title>Cortinas a Medida en Mallorca | DECORT MARUCC</title>
+    <meta name="description" content="Showroom móvil de cortinas a medida en Mallorca. Visita gratuita a domicilio, asesoramiento y confección premium. Pide tu cita sin compromiso.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cortinas a Medida en Mallorca | DECORT MARUCC">
+    <meta property="og:description" content="Showroom móvil de cortinas premium en Mallorca. Llevamos las mejores telas a tu hogar. Visita y asesoramiento gratuitos.">
+    <meta property="og:image" content="https://www.decortmarucc.com/public/images/showroom_movil.png">
+    <meta property="og:url" content="https://www.decortmarucc.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="DECORT MARUCC">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cortinas a Medida en Mallorca | DECORT MARUCC">
+    <meta name="twitter:description" content="Showroom móvil de cortinas premium. Visita gratuita a domicilio en Mallorca.">
+    <meta name="twitter:image" content="https://www.decortmarucc.com/public/images/showroom_movil.png">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.decortmarucc.com/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -130,7 +145,126 @@
         .hover-line:hover::after {
             width: 100%;
         }
+        /* Scroll to top button */
+        #scroll-top-btn {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(10px);
+        }
+        #scroll-top-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            animation: whatsapp-pulse 2s ease-in-out infinite;
+        }
+        @keyframes whatsapp-pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.5); }
+        }
     </style>
+
+    <!-- Schema.org LocalBusiness JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "DECORT MARUCC — Showroom Móvil de Cortinas a Medida",
+        "description": "Showroom móvil de cortinas a medida en Mallorca. Confección premium, asesoramiento personalizado y servicio de instalación profesional en toda la isla.",
+        "url": "https://www.decortmarucc.com",
+        "telephone": "+34641354788",
+        "email": "info@maruccdecort.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Carrer Jaume Ferran 33, 2°B",
+            "addressLocality": "Palma de Mallorca",
+            "postalCode": "07004",
+            "addressRegion": "Islas Baleares",
+            "addressCountry": "ES"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 39.5696,
+            "longitude": 2.6502
+        },
+        "areaServed": [
+            { "@type": "Place", "name": "Mallorca" },
+            { "@type": "Place", "name": "Islas Baleares" }
+        ],
+        "image": "https://www.decortmarucc.com/public/images/showroom_movil.png",
+        "logo": "https://www.decortmarucc.com/public/images/logo_terracotta.png",
+        "priceRange": "€€€",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+        },
+        "sameAs": []
+    }
+    </script>
+
+    <!-- FAQPage Schema for Google Rich Results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cómo funciona el servicio de showroom móvil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nos desplazamos hasta tu domicilio en Mallorca con un muestrario completo de telas, tejidos y mecanismos. Durante la visita, un asesor especializado analiza tus espacios, toma medidas con láser de precisión y te ayuda a elegir la solución perfecta. La visita es gratuita y sin compromiso."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿En qué zonas de Mallorca trabajáis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cubrimos toda la isla de Mallorca y las Islas Baleares. Trabajamos en zonas como Palma, Santa Ponsa, Calvià, Son Vida, Andratx, Sóller y Porto Cristo, así como en proyectos hoteleros y comerciales."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto tarda la confección e instalación?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El plazo habitual desde la visita hasta la instalación es de 2 a 4 semanas, dependiendo del tipo de cortina y la disponibilidad de los materiales seleccionados."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué marcas de telas y mecanismos utilizáis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Trabajamos con fabricantes de primer nivel como Silent Gliss, Hunter Douglas, Bandalux y Saxun, incluyendo opciones motorizadas compatibles con sistemas domóticos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿El asesoramiento y la visita tienen algún coste?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, la visita de nuestro showroom móvil y el asesoramiento personalizado son completamente gratuitos y sin compromiso."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Trabajáis con proyectos de interiorismo y hoteles?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, colaboramos habitualmente con estudios de interiorismo, arquitectos y hoteles boutique en Mallorca. Ofrecemos condiciones especiales para proyectos profesionales."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="bg-arena-100 text-neutral-800 selection:bg-terracotta-500 selection:text-white overflow-x-hidden">
 
@@ -209,7 +343,7 @@
                 <!-- Card 01: Cortinas Enrollables -->
                 <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_enrollables.png" alt="Cortinas Enrollables" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <img src="public/images/cortinas_enrollables.png" alt="Cortina enrollable screen en tono beige instalada en salón mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -225,7 +359,7 @@
                 <!-- Card 02: Cortinas Verticales -->
                 <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_verticales.png" alt="Cortinas Verticales" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <img src="public/images/cortinas_verticales.png" alt="Cortina vertical de lamas en tejido natural para ventanal panorámico" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -241,7 +375,7 @@
                 <!-- Card 03: Cortinas Blackout -->
                 <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_blackout.png" alt="Cortinas Blackout" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <img src="public/images/cortinas_blackout.png" alt="Cortina blackout de oscurecimiento total en dormitorio elegante" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -257,7 +391,7 @@
                 <!-- Card 04: Venecianas -->
                 <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_venecianas.png" alt="Cortinas Venecianas" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <img src="public/images/cortinas_venecianas.png" alt="Persiana veneciana de madera en tonos cálidos para estudio de diseño" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -273,7 +407,7 @@
                 <!-- Card 05: Paneles Japoneses -->
                 <article class="group relative w-[80vw] md:w-[35vw] shrink-0 cursor-pointer pr-12 md:pr-24">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[200px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[200px] bg-arena-200 relative">
-                        <img src="public/images/paneles_japoneses.png" alt="Paneles Japoneses" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                        <img src="public/images/paneles_japoneses.png" alt="Panel japonés deslizante en tejido minimalista para separar ambientes" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -315,7 +449,7 @@
                     <!-- Feature 01 -->
                     <div class="group cursor-pointer">
                         <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
-                            <img src="public/images/showroom_movil.png" alt="Showroom Móvil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="public/images/showroom_movil.png" alt="Showroom móvil DECORT MARUCC con muestrario de telas en villa de Mallorca" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                             <div class="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute top-6 right-6">
                                 <span class="bg-terracotta-500 text-white text-[10px] uppercase font-semibold tracking-widest px-3 py-1.5 rounded-full font-body">Exclusivo</span>
@@ -331,7 +465,7 @@
                     <!-- Feature 02 -->
                     <div class="group cursor-pointer">
                         <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
-                            <img src="public/images/cortinas_enrollables.png" alt="Asesoramiento Personalizado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="public/images/cortinas_enrollables.png" alt="Asesoría personalizada de cortinas con muestras de tela a domicilio" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                             <div class="absolute top-6 right-6">
                                 <span class="bg-neutral-800 text-arena-100 text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full font-body">Premium</span>
                             </div>
@@ -346,7 +480,7 @@
                     <!-- Feature 03 -->
                     <div class="group cursor-pointer">
                         <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
-                            <img src="public/images/cortinas_blackout.png" alt="Instalación Profesional" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="public/images/cortinas_blackout.png" alt="Instalación profesional de cortinas a medida en vivienda de Mallorca" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         </div>
                         <div class="flex justify-between items-baseline px-2">
                             <h3 class="text-lg font-medium tracking-tight font-display">Instalación</h3>
@@ -357,6 +491,276 @@
 
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- CTA Band after Showroom -->
+    <section class="relative z-10 bg-arena-100 py-16 md:py-20">
+        <div class="max-w-4xl mx-auto text-center px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight font-display text-neutral-800 mb-6">
+                Tu hogar merece un <span class="italic text-terracotta-500">toque único</span>
+            </h2>
+            <p class="text-sm md:text-base text-neutral-500 max-w-xl mx-auto mb-10 font-body leading-relaxed">
+                Solicita una visita gratuita de nuestro showroom móvil. Llevamos las mejores telas y acabados directamente a tu domicilio en Mallorca, sin compromiso.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita%20del%20showroom%20m%C3%B3vil" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body">
+                    <iconify-icon icon="lucide:calendar" width="16" stroke-width="1.5"></iconify-icon>
+                    Solicitar Visita Gratuita
+                </a>
+                <a href="tel:+34641354788" class="inline-flex items-center gap-2 px-6 py-3 border border-arena-400 hover:border-terracotta-500 text-neutral-600 hover:text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">
+                    <iconify-icon icon="lucide:phone" width="14" stroke-width="1.5"></iconify-icon>
+                    Llamar ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Proceso Section -->
+    <section id="proceso" class="relative z-10 bg-arena-50 py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+                <h2 class="text-4xl md:text-5xl font-light tracking-tight font-display text-neutral-800">
+                    Cómo <span class="italic text-terracotta-500">trabajamos</span>
+                </h2>
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-medium tracking-widest uppercase text-neutral-500 font-body">4 pasos sencillos</span>
+                    <div class="w-16 h-px bg-terracotta-500/30"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+                <!-- Step 01 -->
+                <div class="group relative p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">01</span>
+                        <div class="flex-1 h-px bg-arena-300"></div>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-5 group-hover:bg-terracotta-100 transition-colors">
+                        <iconify-icon icon="lucide:message-square" width="22" stroke-width="1.5" class="text-terracotta-500"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold tracking-tight font-display mb-2 text-neutral-800">Contacto</h3>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-body">Escríbenos por WhatsApp o llámanos. Te haremos unas preguntas breves para preparar tu visita personalizada.</p>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="group relative p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">02</span>
+                        <div class="flex-1 h-px bg-arena-300"></div>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-5 group-hover:bg-terracotta-100 transition-colors">
+                        <iconify-icon icon="lucide:home" width="22" stroke-width="1.5" class="text-terracotta-500"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold tracking-tight font-display mb-2 text-neutral-800">Visita a domicilio</h3>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-body">Nuestro showroom móvil llega a tu hogar con muestras de telas, colores y acabados. Medimos con láser y asesoramos in situ.</p>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="group relative p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">03</span>
+                        <div class="flex-1 h-px bg-arena-300"></div>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-5 group-hover:bg-terracotta-100 transition-colors">
+                        <iconify-icon icon="lucide:scissors" width="22" stroke-width="1.5" class="text-terracotta-500"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold tracking-tight font-display mb-2 text-neutral-800">Confección</h3>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-body">Fabricamos tus cortinas a medida con materiales de primera calidad de marcas como Silent Gliss, Hunter Douglas y Bandalux.</p>
+                </div>
+
+                <!-- Step 04 -->
+                <div class="group relative p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">04</span>
+                        <div class="flex-1 h-px bg-arena-300"></div>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-5 group-hover:bg-terracotta-100 transition-colors">
+                        <iconify-icon icon="lucide:check-circle" width="22" stroke-width="1.5" class="text-terracotta-500"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold tracking-tight font-display mb-2 text-neutral-800">Instalación</h3>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-body">Montaje profesional y limpio en tu vivienda. Ajustamos cada detalle para un acabado perfecto que transforma tus espacios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios" class="relative z-10 bg-arena-100 py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+                <h2 class="text-4xl md:text-5xl font-light tracking-tight font-display text-neutral-800">
+                    Lo que dicen <span class="italic text-terracotta-500">nuestros clientes</span>
+                </h2>
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-medium tracking-widest uppercase text-neutral-500 font-body">Testimonios</span>
+                    <div class="w-16 h-px bg-terracotta-500/30"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonio 01 -->
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30">
+                    <div class="flex gap-1 mb-6">
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                    </div>
+                    <p class="text-sm text-neutral-600 leading-relaxed mb-6 font-body italic">
+                        "Increíble el servicio. Vinieron a casa con todas las muestras, nos asesoraron con mucha paciencia y el resultado final superó nuestras expectativas. Las cortinas enrollables quedaron perfectas en la terraza."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-terracotta-100 flex items-center justify-center">
+                            <span class="text-sm font-semibold text-terracotta-600 font-body">MR</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-neutral-800 font-body">María R.</p>
+                            <p class="text-xs text-neutral-400 font-body">Villa en Santa Ponsa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 02 -->
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30">
+                    <div class="flex gap-1 mb-6">
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                    </div>
+                    <p class="text-sm text-neutral-600 leading-relaxed mb-6 font-body italic">
+                        "Profesionalidad total desde el primer contacto. El concepto del showroom móvil es genial: poder ver y tocar los tejidos en tu propio salón te da una idea real de cómo van a quedar. Muy recomendable."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-terracotta-100 flex items-center justify-center">
+                            <span class="text-sm font-semibold text-terracotta-600 font-body">JL</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-neutral-800 font-body">Javier L.</p>
+                            <p class="text-xs text-neutral-400 font-body">Ático en Palma</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 03 -->
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30">
+                    <div class="flex gap-1 mb-6">
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                        <iconify-icon icon="lucide:star" width="16" class="text-terracotta-500" style="fill: currentColor;"></iconify-icon>
+                    </div>
+                    <p class="text-sm text-neutral-600 leading-relaxed mb-6 font-body italic">
+                        "Reformamos un hotel boutique en Calvià y DECORT MARUCC se encargó de todas las cortinas. Calidad impecable, plazos cumplidos y un trato exquisito. Repetiremos seguro para futuros proyectos."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-terracotta-100 flex items-center justify-center">
+                            <span class="text-sm font-semibold text-terracotta-600 font-body">AS</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-neutral-800 font-body">Andrea S.</p>
+                            <p class="text-xs text-neutral-400 font-body">Hotel boutique, Calvià</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="relative z-10 bg-arena-50 py-20 md:py-28">
+        <div class="max-w-4xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 md:mb-20">
+                <h2 class="text-4xl md:text-5xl font-light tracking-tight font-display text-neutral-800 mb-4">
+                    Preguntas <span class="italic text-terracotta-500">frecuentes</span>
+                </h2>
+                <p class="text-sm text-neutral-500 font-body">Todo lo que necesitas saber antes de dar el primer paso</p>
+            </div>
+
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ 01 -->
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                    <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
+                        <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cómo funciona el servicio de showroom móvil?</h3>
+                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-6">
+                        <p class="text-sm text-neutral-500 leading-relaxed font-body">Nos desplazamos hasta tu domicilio en Mallorca con un muestrario completo de telas, tejidos y mecanismos. Durante la visita, un asesor especializado analiza tus espacios, toma medidas con láser de precisión y te ayuda a elegir la solución perfecta. La visita es gratuita y sin compromiso.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 02 -->
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                    <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
+                        <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿En qué zonas de Mallorca trabajáis?</h3>
+                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-6">
+                        <p class="text-sm text-neutral-500 leading-relaxed font-body">Cubrimos toda la isla de Mallorca y las Islas Baleares. Trabajamos tanto en zonas residenciales como Palma, Santa Ponsa, Calvià, Son Vida, Andratx, Sóller y Porto Cristo, como en proyectos hoteleros y comerciales en cualquier punto de la isla.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 03 -->
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                    <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
+                        <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cuánto tarda la confección e instalación?</h3>
+                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-6">
+                        <p class="text-sm text-neutral-500 leading-relaxed font-body">El plazo habitual desde la visita hasta la instalación es de 2 a 4 semanas, dependiendo del tipo de cortina y la disponibilidad de los materiales seleccionados. Para proyectos urgentes o con plazos especiales, consúltanos y haremos lo posible por adaptarnos.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 04 -->
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                    <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
+                        <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Qué marcas de telas y mecanismos utilizáis?</h3>
+                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-6">
+                        <p class="text-sm text-neutral-500 leading-relaxed font-body">Trabajamos con fabricantes de primer nivel como Silent Gliss, Hunter Douglas, Bandalux y Saxun. Seleccionamos los mejores tejidos del mercado para garantizar durabilidad, estética y funcionalidad, incluyendo opciones motorizadas compatibles con sistemas domóticos.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 05 -->
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                    <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
+                        <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿El asesoramiento y la visita tienen algún coste?</h3>
+                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-6">
+                        <p class="text-sm text-neutral-500 leading-relaxed font-body">No, la visita de nuestro showroom móvil y el asesoramiento personalizado son completamente gratuitos y sin compromiso. Creemos que ver y tocar los materiales en tu propio espacio es la mejor forma de tomar la decisión correcta.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ 06 -->
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                    <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
+                        <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Trabajáis con proyectos de interiorismo y hoteles?</h3>
+                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-6">
+                        <p class="text-sm text-neutral-500 leading-relaxed font-body">Sí, colaboramos habitualmente con estudios de interiorismo, arquitectos y hoteles boutique en Mallorca. Ofrecemos condiciones especiales para proyectos profesionales, con plazos adaptados y seguimiento personalizado de cada obra.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section before Nosotros -->
+    <section class="relative z-10 bg-arena-100 py-16">
+        <div class="max-w-3xl mx-auto text-center px-6 md:px-12">
+            <p class="text-sm md:text-base text-neutral-500 max-w-lg mx-auto mb-8 font-body leading-relaxed">
+                ¿Listo para transformar tus espacios? Reserva una cita y descubre cómo unas cortinas a medida pueden marcar la diferencia.
+            </p>
+            <a href="https://wa.me/34641354788?text=Hola%2C%20quiero%20reservar%20una%20visita%20del%20showroom%20m%C3%B3vil" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-3.5 bg-neutral-900 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 font-body">
+                <iconify-icon icon="lucide:arrow-right" width="16" stroke-width="1.5"></iconify-icon>
+                Reservar cita ahora
+            </a>
         </div>
     </section>
 
@@ -426,8 +830,11 @@
                                 <iconify-icon icon="lucide:arrow-up-right" width="20" stroke-width="1.5" class="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></iconify-icon>
                             </a>
                             <div class="mt-6 flex flex-col gap-2">
-                                <a href="tel:+34600000000" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
-                                    +34 600 000 000
+                                <a href="tel:+34641354788" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
+                                    +34 641 35 47 88
+                                </a>
+                                <a href="tel:+34613525701" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
+                                    +34 613 525 701
                                 </a>
                                 <span class="text-sm text-neutral-600 font-body">
                                     Mallorca, Islas Baleares
@@ -458,9 +865,9 @@
                                 </div>
                                 
                                 <div class="flex items-center gap-4 mt-2">
-                                    <img src="public/images/logo_light.png" alt="MARUCC" class="h-5 w-auto opacity-40">
+                                    <img src="public/images/logo_light.png" alt="DECORT MARUCC logotipo" class="h-5 w-auto opacity-40">
                                     <span class="text-[10px] font-medium uppercase tracking-widest text-neutral-600 font-body">
-                                        © 2025 MARUCC DECORT
+                                        © 2026 DECORT MARUCC
                                     </span>
                                 </div>
                             </div>
@@ -470,6 +877,16 @@
             </footer>
         </div>
     </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-[90] w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+        <iconify-icon icon="lucide:message-circle" width="26" stroke-width="1.5" class="text-white"></iconify-icon>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top-btn" onclick="lenis.scrollTo('#hero')" aria-label="Volver arriba" class="fixed bottom-6 right-24 z-[90] w-11 h-11 bg-neutral-900/80 hover:bg-terracotta-500 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer border border-neutral-700/50">
+        <iconify-icon icon="lucide:arrow-up" width="18" stroke-width="1.5" class="text-arena-100"></iconify-icon>
+    </button>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[100] transform translate-y-full opacity-0 transition-all duration-500 ease-in-out font-body p-4 md:p-6">
@@ -653,6 +1070,16 @@
                 cookieBanner.style.display = 'none';
             }, 500);
         }
+
+        // --- Scroll to Top Button Logic ---
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
     </script>
 
 </body>
