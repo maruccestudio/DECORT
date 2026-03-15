@@ -238,8 +238,15 @@
         btnCloseLead.addEventListener('click', closeLeadModal);
         leadOverlay.addEventListener('click', closeLeadModal);
 
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // Mostrar estado de carga en el botón
+            const submitBtn = leadForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<iconify-icon icon="lucide:loader-2" class="animate-spin"></iconify-icon> Procesando...';
+            submitBtn.disabled = true;
+
             const nombre = document.getElementById('lead-nombre').value.trim();
             const telefono = document.getElementById('lead-telefono').value.trim();
             const email = document.getElementById('lead-email').value.trim() || 'No especificado';
@@ -249,9 +256,38 @@
             const cantidad = document.getElementById('lead-cantidad').value.trim() || 'No especificada';
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
+            // 1. Enviar datos a Make.com silenciosamente
+            try {
+                const makeWebhookUrl = 'https://hook.eu1.make.com/lvugka46o3im9e80vyl45p4rell3sw34';
+                await fetch(makeWebhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fecha: new Date().toISOString(),
+                        nombre: nombre,
+                        telefono: telefono,
+                        email: email,
+                        isla: isla,
+                        direccion: direccion,
+                        producto: producto,
+                        ventanas: cantidad,
+                        mensaje: mensaje
+                    })
+                });
+            } catch (error) {
+                console.error("Error enviando datos al CRM:", error);
+            }
+
+            // 2. Preparar el mensaje de WhatsApp y enviarlo
             const waMessage = `¡Hola! Quiero solicitar una visita gratuita para ${producto}.\n\n*🏢 Datos Personales:*\n- *Nombre:* ${nombre}\n- *Teléfono:* ${telefono}\n- *Email:* ${email}\n\n*📍 Detalles de Obra:*\n- *Dirección Exacta:* ${direccion} (${isla})\n- *Nº de ventanas:* ${cantidad}\n\n*💬 Comentarios:*\n${mensaje}`;
             
             window.open(`https://wa.me/34641354788?text=${encodeURIComponent(waMessage)}`, '_blank');
+            
+            // 3. Restaurar y cerrar
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
             closeLeadModal();
             leadForm.reset();
         });
