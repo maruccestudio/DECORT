@@ -256,8 +256,15 @@
             const cantidad = document.getElementById('lead-cantidad').value.trim() || 'No especificada';
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
-            // Generar ID único corto para el CRM (Ej: DEC-847291)
-            const leadId = 'DEC-' + Math.floor(100000 + Math.random() * 900000);
+            // Generar ID lógico por isla y fecha (Ej: MA-0316-1045)
+            const prefijos = { 'Mallorca': 'MA', 'Menorca': 'ME', 'Ibiza': 'IB', 'Formentera': 'FO' };
+            const prefijo = prefijos[isla] || 'XX';
+            const ahora = new Date();
+            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+            const dia = String(ahora.getDate()).padStart(2, '0');
+            const hora = String(ahora.getHours()).padStart(2, '0');
+            const min = String(ahora.getMinutes()).padStart(2, '0');
+            const leadId = `${prefijo}-${mes}${dia}-${hora}${min}`;
 
             // 1. Enviar datos a Make.com silenciosamente
             try {
