@@ -1181,14 +1181,15 @@
             const cantidad = document.getElementById('lead-cantidad').value.trim() || 'No especificada';
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
-            // Generar ID lógico por isla y fecha (Ej: MA-16-03-2026)
+            // Generar ID lógico para orden numérico (Ej: MA-26031614) -> AñoMesDíaHora
             const prefijos = { 'Mallorca': 'MA', 'Menorca': 'ME', 'Ibiza': 'IB', 'Formentera': 'FO' };
             const prefijo = prefijos[isla] || 'XX';
             const ahora = new Date();
-            const dia = String(ahora.getDate()).padStart(2, '0');
+            const ano = String(ahora.getFullYear()).slice(-2); // "26" en vez de "2026"
             const mes = String(ahora.getMonth() + 1).padStart(2, '0');
-            const ano = ahora.getFullYear();
-            const leadId = `${prefijo}-${dia}-${mes}-${ano}`;
+            const dia = String(ahora.getDate()).padStart(2, '0');
+            const hora = String(ahora.getHours()).padStart(2, '0');
+            const leadId = `${prefijo}-${ano}${mes}${dia}${hora}`;
 
             // 1. Enviar datos a Make.com silenciosamente
             try {
