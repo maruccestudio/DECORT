@@ -256,7 +256,7 @@
             const cantidad = document.getElementById('lead-cantidad').value.trim() || 'No especificada';
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
-            // Generar ID lógico para orden numérico (Ej: MA-26031614) -> AñoMesDíaHora
+            // Generar ID lógico y único para orden numérico (Ej: MA-260316140530) -> AñoMesDíaHoraMinutoSegundo
             const prefijos = { 'Mallorca': 'MA', 'Menorca': 'ME', 'Ibiza': 'IB', 'Formentera': 'FO' };
             const prefijo = prefijos[isla] || 'XX';
             const ahora = new Date();
@@ -264,7 +264,9 @@
             const mes = String(ahora.getMonth() + 1).padStart(2, '0');
             const dia = String(ahora.getDate()).padStart(2, '0');
             const hora = String(ahora.getHours()).padStart(2, '0');
-            const leadId = `${prefijo}-${ano}${mes}${dia}${hora}`;
+            const min = String(ahora.getMinutes()).padStart(2, '0');
+            const sec = String(ahora.getSeconds()).padStart(2, '0');
+            const leadId = `${prefijo}-${ano}${mes}${dia}${hora}${min}${sec}`;
 
             // 1. Enviar datos a Make.com silenciosamente
             try {
