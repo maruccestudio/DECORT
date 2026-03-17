@@ -292,7 +292,7 @@
 <body class="bg-arena-100 text-neutral-800 selection:bg-terracotta-500 selection:text-white overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 md:px-12 md:py-6 transition-all duration-500 ease-out text-arena-100">
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 mix-blend-difference text-arena-100">
         <a href="#" onclick="lenis.scrollTo('#hero')" class="flex flex-col items-center cursor-pointer hover:opacity-70 transition-opacity w-32 md:w-40">
             <img src="public/images/logo_light.png" alt="MARUCC" class="w-full h-auto mb-1.5 px-[2%]">
             <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-arena-100/90 whitespace-nowrap leading-none">Showroom móvil de cortinas</span>
@@ -473,8 +473,8 @@
     </section>
 
     <!-- Showroom Móvil Section -->
-    <section id="showroom" class="relative h-[250vh] z-10 bg-arena-100">
-        <div class="sticky top-[80px] md:top-[100px] h-[calc(100vh-80px)] md:h-[calc(100vh-100px)] w-full flex flex-col justify-center overflow-hidden">
+    <section id="showroom" class="relative h-[200vh] z-10 bg-arena-100">
+        <div class="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
             <div class="max-w-7xl mx-auto w-full px-6 md:px-12 py-12 md:py-0">
                 
                 <!-- Header -->
@@ -540,7 +540,7 @@
     </section>
 
     <!-- CTA Band after Showroom -->
-    <section class="relative z-10 bg-arena-100 py-20 md:py-32 border-t border-arena-200/50">
+    <section class="relative z-10 bg-arena-100 py-16 md:py-20">
         <div class="max-w-4xl mx-auto text-center px-6 md:px-12">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight font-display text-neutral-800 mb-6">
                 Tu hogar merece un <span class="italic text-terracotta-500">toque único</span>
@@ -1053,18 +1053,6 @@
 
     <!-- Scripts -->
     <script>
-        // Navbar scroll effect
-        const mainNav = document.getElementById('main-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                mainNav.classList.add('bg-neutral-900/90', 'backdrop-blur-md', 'py-3', 'md:py-4', 'border-b', 'border-white/10');
-                mainNav.classList.remove('py-4', 'md:py-6');
-            } else {
-                mainNav.classList.remove('bg-neutral-900/90', 'backdrop-blur-md', 'py-3', 'md:py-4', 'border-b', 'border-white/10');
-                mainNav.classList.add('py-4', 'md:py-6');
-            }
-        });
-
         // --- Smooth Scroll Setup (Lenis) ---
         const lenis = new Lenis({
             duration: 0.8, // Scroll más rápido y fluido (antes 1.5)
