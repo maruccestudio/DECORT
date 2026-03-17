@@ -41,7 +41,9 @@
 <body class="bg-arena-100 text-neutral-800 font-body antialiased">
     <nav class="w-full px-6 py-6 md:px-12 md:py-8 border-b border-arena-400/30 flex justify-between items-center">
         <a href="index.html" class="hover:opacity-70 transition-opacity"><img src="public/images/logo_terracotta.png" alt="DECORT MARUCC" class="h-8 md:h-10 w-auto object-contain"></a>
-        <a href="index.html" class="text-xs font-medium uppercase tracking-widest text-neutral-500 hover:text-terracotta-500 transition-colors flex items-center gap-2"><iconify-icon icon="lucide:arrow-left" width="16"></iconify-icon> Volver al inicio</a>
+        <a href="index.html" class="text-xs font-medium uppercase tracking-widest text-neutral-500 hover:text-terracotta-500 transition-colors flex items-center gap-2">
+            <iconify-icon icon="lucide:arrow-left" width="16"></iconify-icon> <span class="hidden sm:inline">Volver al </span>inicio
+        </a>
     </nav>
 
     <section class="relative py-20 md:py-32 px-6 md:px-12">
@@ -143,13 +145,13 @@
             <button id="close-lead-modal" class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-neutral-500 hover:text-terracotta-500 hover:bg-white transition-all duration-300 shadow-sm border border-arena-300/50">
                 <iconify-icon icon="lucide:x" width="20" stroke-width="2"></iconify-icon>
             </button>
-            <div class="px-8 pt-10 pb-6 bg-terracotta-500 text-white relative overflow-hidden shrink-0">
+            <div class="px-8 pt-14 md:pt-10 pb-6 bg-terracotta-500 text-white relative overflow-hidden shrink-0">
                 <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-terracotta-400 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none"></div>
                 <h3 class="text-3xl font-light font-display tracking-tight mb-2 relative z-10">Solicita tu visita</h3>
                 <p class="text-sm text-terracotta-50 relative z-10 font-body font-light">Completa tus datos para agilizar nuestro servicio a tu hogar.</p>
             </div>
-            <div class="p-8 overflow-y-auto no-scrollbar">
-                <form id="lead-form" class="space-y-6">
+            <div class="px-6 py-6 md:p-8 overflow-y-auto no-scrollbar">
+                <form id="lead-form" class="space-y-4 md:space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="lead-nombre" class="block text-[11px] uppercase tracking-widest font-semibold text-neutral-500 mb-2">Nombre y Apellidos *</label>
@@ -210,6 +212,7 @@
             </div>
         </div>
     </div>
+
     <!-- Scripts -->
     <script>
         const leadModal = document.getElementById('lead-modal');
