@@ -511,68 +511,74 @@
     </section>
 
     <!-- Showroom Móvil Section -->
-    <section id="showroom" class="relative h-[200vh] z-10 bg-arena-100">
-        <div class="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
-            <div class="max-w-7xl mx-auto w-full px-6 md:px-12 py-12 md:py-0">
+    <section id="showroom" class="relative z-10 bg-arena-100 py-20 md:py-32">
+        <div class="max-w-7xl mx-auto w-full px-6 md:px-12">
+            
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+                <h2 class="text-4xl md:text-6xl font-light tracking-tight font-display text-neutral-800">
+                    Showroom <span class="italic text-terracotta-500">Móvil</span>
+                </h2>
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-medium tracking-widest uppercase text-neutral-500 font-body">El Proceso</span>
+                    <div class="w-16 h-px bg-terracotta-500/30"></div>
+                </div>
+            </div>
+
+            <!-- Showroom Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 
-                <!-- Header -->
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
-                    <h2 class="text-4xl md:text-6xl font-light tracking-tight font-display text-neutral-800">
-                        Showroom <span class="italic text-terracotta-500">Móvil</span>
-                    </h2>
-                    <div class="flex items-center gap-4">
-                        <span class="text-[10px] font-medium tracking-widest uppercase text-neutral-500 font-body">Servicio Premium</span>
-                        <div class="w-16 h-px bg-terracotta-500/30"></div>
+                <!-- Feature 01 -->
+                <div class="group">
+                    <div class="relative w-full aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
+                        <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
+                            <iconify-icon icon="lucide:truck" width="40" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h4 class="text-xl md:text-2xl font-light tracking-tight font-display text-neutral-800 mb-4">La tienda <br><span class="italic text-terracotta-500">en tu puerta</span></h4>
+                        <p class="text-sm text-neutral-500 font-body leading-relaxed max-w-[200px]">
+                            Ahorra tiempo y desplazamientos. Llegamos con nuestro muestrario completo de tejidos.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-baseline px-4">
+                        <h3 class="text-lg font-medium tracking-tight font-display">Visita a Domicilio</h3>
+                        <span class="text-sm font-normal text-terracotta-500 font-body">Gratis</span>
                     </div>
                 </div>
 
-                <!-- Showroom Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
-                    
-                    <!-- Feature 01 -->
-                    <div class="group cursor-pointer">
-                        <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
-                            <img src="public/images/showroom_movil.jpg" alt="Showroom móvil DECORT MARUCC con muestrario de telas en villa de Baleares" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div class="absolute top-6 right-6">
-                                <span class="bg-terracotta-500 text-white text-[10px] uppercase font-semibold tracking-widest px-3 py-1.5 rounded-full font-body">Exclusivo</span>
-                            </div>
+                <!-- Feature 02 -->
+                <div class="group">
+                    <div class="relative w-full aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
+                        <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
+                            <iconify-icon icon="lucide:palette" width="40" stroke-width="1.5"></iconify-icon>
                         </div>
-                        <div class="flex justify-between items-baseline px-2">
-                            <h3 class="text-lg font-medium tracking-tight font-display">Visita a Domicilio</h3>
-                            <span class="text-sm font-normal text-terracotta-500 font-body">Gratis</span>
-                        </div>
-                        <p class="text-xs text-neutral-400 mt-1 px-2 font-body">llevamos las muestras a tu hogar</p>
+                        <h4 class="text-xl md:text-2xl font-light tracking-tight font-display text-neutral-800 mb-4">Diseño <br><span class="italic text-terracotta-500">en contexto</span></h4>
+                        <p class="text-sm text-neutral-500 font-body leading-relaxed max-w-[200px]">
+                            Decide viendo las telas directamente con tu luz natural y tus muebles.
+                        </p>
                     </div>
-
-                    <!-- Feature 02 -->
-                    <div class="group cursor-pointer">
-                        <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
-                            <img src="public/images/cortinas_enrollables.jpg" alt="Asesoría personalizada de cortinas con muestras de tela a domicilio" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute top-6 right-6">
-                                <span class="bg-neutral-800 text-arena-100 text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full font-body">Premium</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-baseline px-2">
-                            <h3 class="text-lg font-medium tracking-tight font-display">Asesoramiento</h3>
-                            <span class="text-sm font-normal text-terracotta-500 font-body">Incluido</span>
-                        </div>
-                        <p class="text-xs text-neutral-400 mt-1 px-2 font-body">diseño personalizado para cada espacio</p>
+                    <div class="flex justify-between items-baseline px-4">
+                        <h3 class="text-lg font-medium tracking-tight font-display">Asesoramiento</h3>
+                        <span class="text-sm font-normal text-terracotta-500 font-body">Incluido</span>
                     </div>
-
-                    <!-- Feature 03 -->
-                    <div class="group cursor-pointer">
-                        <div class="relative w-full aspect-square bg-arena-200 rounded-[100px] overflow-hidden mb-6">
-                            <img src="public/images/cortinas_blackout.jpg" alt="Instalación profesional de cortinas a medida en las Islas Baleares" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="flex justify-between items-baseline px-2">
-                            <h3 class="text-lg font-medium tracking-tight font-display">Instalación</h3>
-                            <span class="text-sm font-normal text-terracotta-500 font-body">Profesional</span>
-                        </div>
-                        <p class="text-xs text-neutral-400 mt-1 px-2 font-body">montaje impecable en todas las Islas Baleares</p>
-                    </div>
-
                 </div>
+
+                <!-- Feature 03 -->
+                <div class="group">
+                    <div class="relative w-full aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
+                        <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
+                            <iconify-icon icon="lucide:ruler" width="40" stroke-width="1.5"></iconify-icon>
+                        </div>
+                        <h4 class="text-xl md:text-2xl font-light tracking-tight font-display text-neutral-800 mb-4">Medición <br><span class="italic text-terracotta-500">exacta</span></h4>
+                        <p class="text-sm text-neutral-500 font-body leading-relaxed max-w-[200px]">
+                            Tomamos medidas con tecnología láser para asegurar un encaje milimétrico y perfecto.
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-baseline px-4">
+                        <h3 class="text-lg font-medium tracking-tight font-display">Instalación</h3>
+                        <span class="text-sm font-normal text-terracotta-500 font-body">Profesional</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -907,7 +913,7 @@
                     </div>
                     <div class="flex flex-col justify-between h-full">
                         <p class="text-base md:text-lg font-light leading-relaxed text-neutral-400 tracking-wide max-w-lg font-body">
-                            DECORT MARUCC nace de <em>marucc</em>, estudio de arquitectura fundado por Leandro Orellano. Sabemos leer un plano, entender las intenciones de diseño y hablar el idioma de los materiales. Cada ventana merece una decisión consciente: la luz que entra, la textura que ves al despertar, el tejido que el tiempo mejora. Llevamos el showroom a tu espacio para que la elección se tome allí donde las cortinas van a vivir.
+                            DECORT MARUCC nace de <em>marucc</em>, estudio de arquitectura. Sabemos leer un plano, entender las intenciones de diseño y hablar el idioma de los materiales. Cada ventana merece una decisión consciente: la luz que entra, la textura que ves al despertar, el tejido que el tiempo mejora. Llevamos el showroom a tu espacio para que la elección se tome allí donde las cortinas van a vivir.
                         </p>
                         
                         <div class="grid grid-cols-2 gap-12 mt-20 border-t border-neutral-800 pt-12">
