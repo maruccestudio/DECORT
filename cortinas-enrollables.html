@@ -50,6 +50,44 @@
         }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.decortmarucc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Cortinas Enrollables", "item": "https://www.decortmarucc.com/cortinas-enrollables.html" }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Qué diferencia hay entre screen 3%, 5% y 10%?",
+                "acceptedAnswer": { "@type": "Answer", "text": "El porcentaje indica la apertura del tejido. Un screen 3% filtra más luz y da más privacidad, ideal para ver la pantalla del ordenador sin reflejos. Un 10% deja pasar más luz y mantiene mejor la vista exterior. Para el sol balear, el 3% y 5% son los más habituales." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Se pueden motorizar los enrollables?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con motores Silent Gliss y Hunter Douglas compatibles con domótica (Alexa, Google Home, Apple HomeKit). La motorización se puede integrar desde el diseño inicial o añadirse posteriormente si el mecanismo lo permite." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto tarda la instalación de cortinas enrollables?",
+                "acceptedAnswer": { "@type": "Answer", "text": "La instalación de enrollables es rápida: una ventana estándar se instala en 15-20 minutos. Un piso completo de 6-8 ventanas se resuelve en una mañana, sin obra ni polvo." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Son adecuados los enrollables para exteriores?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Hay modelos específicos para exterior con tejidos técnicos resistentes a UV y agua. Los enrollables de interior no están diseñados para exteriores. Consulta nuestras opciones de exterior en la visita a domicilio." }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="bg-arena-100 text-neutral-800 font-body antialiased">
 
@@ -64,6 +102,15 @@
         </a>
     </nav>
 
+    <!-- Breadcrumb -->
+    <nav aria-label="Ruta de navegación" class="px-6 md:px-12 py-3 border-b border-arena-400/20 bg-arena-50">
+        <ol class="flex items-center gap-2 text-[11px] font-body text-neutral-400 max-w-7xl mx-auto">
+            <li><a href="index.html" class="hover:text-terracotta-500 transition-colors">Inicio</a></li>
+            <li><iconify-icon icon="lucide:chevron-right" width="12"></iconify-icon></li>
+            <li class="text-neutral-600 font-medium">Cortinas Enrollables</li>
+        </ol>
+    </nav>
+
     <!-- Hero -->
     <section class="relative py-20 md:py-32 px-6 md:px-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -76,9 +123,10 @@
             <!-- Content -->
             <div>
                 <span class="text-[10px] font-medium tracking-widest uppercase text-terracotta-500 mb-4 block font-body">Colección Enrollables</span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight font-display text-neutral-800 mb-6 leading-tight">
-                    Cortinas Enrollables <span class="italic text-terracotta-500">a Medida en Mallorca</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight font-display text-neutral-800 mb-3 leading-tight">
+                    Cortinas Enrollables — <span class="italic text-terracotta-500">Screen Solar y Tejido Técnico</span>
                 </h1>
+                <p class="text-[11px] font-medium tracking-widest text-neutral-400 font-body mb-6 uppercase">A medida en Mallorca · Islas Baleares</p>
                 <p class="text-sm md:text-base text-neutral-500 leading-relaxed mb-8 font-body max-w-lg">
                     Tejidos screen que filtran el sol balear sin bloquear la vista al mediterráneo. Un lino enrollable bien elegido cambia la luz de un salón entero — y con ella, el carácter del espacio. Fabricadas exactamente para tus ventanas, con materiales que el tiempo no deteriora.
                 </p>
@@ -137,6 +185,73 @@
                 <span class="hover:text-neutral-600 transition-colors">Hunter Douglas</span>
                 <span class="hover:text-neutral-600 transition-colors">Bandalux</span>
                 <span class="hover:text-neutral-600 transition-colors">Saxun</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-arena-100 border-t border-arena-300/40">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800 mb-12">
+                Preguntas <span class="italic text-terracotta-500">frecuentes</span>
+            </h2>
+            <div class="space-y-0">
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Qué diferencia hay entre screen 3%, 5% y 10%?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">El porcentaje indica la apertura del tejido. Un screen 3% filtra más luz y da más privacidad, ideal para ver la pantalla del ordenador sin reflejos. Un 10% deja pasar más luz y mantiene mejor la vista exterior. Para el sol balear, el 3% y 5% son los más habituales.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Se pueden motorizar los enrollables?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Sí. Trabajamos con motores Silent Gliss y Hunter Douglas compatibles con domótica (Alexa, Google Home, Apple HomeKit). La motorización se puede integrar desde el diseño inicial o añadirse posteriormente si el mecanismo lo permite.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Cuánto tarda la instalación de cortinas enrollables?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">La instalación de enrollables es rápida: una ventana estándar se instala en 15-20 minutos. Un piso completo de 6-8 ventanas se resuelve en una mañana, sin obra ni polvo.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Son adecuados los enrollables para exteriores?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Hay modelos específicos para exterior con tejidos técnicos resistentes a UV y agua. Los enrollables de interior no están diseñados para exteriores. Consulta nuestras opciones de exterior en la visita a domicilio.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- También te puede interesar -->
+    <section class="py-16 px-6 md:px-12 bg-white border-t border-arena-300/40">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-[10px] font-medium tracking-widest uppercase text-neutral-400 mb-8 font-body">También te puede interesar</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="cortinas-confeccionadas.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Confeccionadas</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Confeccionadas</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Onda perfecta y lino premium a medida.</p>
+                </a>
+                <a href="cortinas-blackout.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Blackout</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Blackout</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Oscurecimiento total para dormir mejor.</p>
+                </a>
+                <a href="venecianas.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Venecianas</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Persianas Venecianas</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Madera y aluminio premium a medida.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -223,6 +338,7 @@
                             <label for="lead-producto" class="block text-[11px] uppercase tracking-widest font-semibold text-neutral-500 mb-2">Producto de interés *</label>
                             <select id="lead-producto" required class="w-full bg-white border border-arena-300 rounded-xl px-4 py-3 text-sm text-neutral-800 focus:outline-none focus:border-terracotta-400 focus:ring-2 focus:ring-terracotta-500/20 transition-all appearance-none cursor-pointer">
                                 <option value="Enrollables" selected>Cortinas Enrollables</option>
+                                <option value="Confeccionadas">Cortinas Confeccionadas</option>
                                 <option value="Verticales">Cortinas Verticales</option>
                                 <option value="Blackout">Cortinas Blackout</option>
                                 <option value="Venecianas">Venecianas</option>

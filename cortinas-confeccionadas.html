@@ -50,6 +50,44 @@
         }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.decortmarucc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Cortinas Confeccionadas", "item": "https://www.decortmarucc.com/cortinas-confeccionadas.html" }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cuánto tarda en confeccionarse una cortina de onda perfecta a medida?",
+                "acceptedAnswer": { "@type": "Answer", "text": "El plazo habitual es de 3 a 4 semanas desde la aprobación del pedido. Incluye el corte, el patronaje individual y los acabados artesanales. Para proyectos urgentes, consulta disponibilidad en la visita." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué diferencia hay entre onda perfecta, tablas y frunce?",
+                "acceptedAnswer": { "@type": "Answer", "text": "La onda perfecta (sistema Wave) da pliegues uniformes con un carril especial — es el acabado más minimalista y contemporáneo. Las tablas son pliegues planos y geométricos. El frunce es el clásico con ondas suaves y naturales. La elección depende del estilo del espacio." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿El lino de 400 hilos necesita mantenimiento especial?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. El lino premium se limpia con aspiración suave o un paño ligeramente húmedo. Con el tiempo mejora: se asienta, pierde el almidón inicial y gana una caída más natural. No se recomienda lavado en lavadora para piezas grandes confeccionadas a medida." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Puedo combinar la cortina confeccionada con un visillo?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Sí, es la combinación más habitual. Se instala un doble riel: el interior para el visillo de lino traslúcido y el exterior para la cortina principal. Así consigues privacidad con luz durante el día y oscuridad por la noche." }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="bg-arena-100 text-neutral-800 font-body antialiased">
 
@@ -64,6 +102,15 @@
         </a>
     </nav>
 
+    <!-- Breadcrumb -->
+    <nav aria-label="Ruta de navegación" class="px-6 md:px-12 py-3 border-b border-arena-400/20 bg-arena-50">
+        <ol class="flex items-center gap-2 text-[11px] font-body text-neutral-400 max-w-7xl mx-auto">
+            <li><a href="index.html" class="hover:text-terracotta-500 transition-colors">Inicio</a></li>
+            <li><iconify-icon icon="lucide:chevron-right" width="12"></iconify-icon></li>
+            <li class="text-neutral-600 font-medium">Cortinas Confeccionadas</li>
+        </ol>
+    </nav>
+
     <!-- Hero -->
     <section class="relative py-20 md:py-32 px-6 md:px-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -76,9 +123,10 @@
             <!-- Content -->
             <div>
                 <span class="text-[10px] font-medium tracking-widest uppercase text-terracotta-500 mb-4 block font-body">Colección Confeccionadas</span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight font-display text-neutral-800 mb-6 leading-tight">
-                    Cortinas Confeccionadas <span class="italic text-terracotta-500">a Medida en Mallorca</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight font-display text-neutral-800 mb-3 leading-tight">
+                    Cortinas Confeccionadas — <span class="italic text-terracotta-500">Onda Perfecta y Lino Premium</span>
                 </h1>
+                <p class="text-[11px] font-medium tracking-widest text-neutral-400 font-body mb-6 uppercase">Confeccionadas a medida en Mallorca · Islas Baleares</p>
                 <p class="text-sm md:text-base text-neutral-500 leading-relaxed mb-8 font-body max-w-lg">
                     Lino de 400 hilos en onda perfecta, con visillos que filtran la luz sin renunciar a la calidez mediterránea. Cada cortina confeccionada es una pieza única: tejida, cortada y cosida para tus ventanas exactas. La diferencia entre colgar una tela y vestir un hogar.
                 </p>
@@ -183,6 +231,73 @@
                 <span class="hover:text-neutral-600 transition-colors">Hunter Douglas</span>
                 <span class="hover:text-neutral-600 transition-colors">Bandalux</span>
                 <span class="hover:text-neutral-600 transition-colors">Saxun</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-arena-100 border-t border-arena-300/40">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800 mb-12">
+                Preguntas <span class="italic text-terracotta-500">frecuentes</span>
+            </h2>
+            <div class="space-y-0">
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Cuánto tarda en confeccionarse una cortina de onda perfecta a medida?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">El plazo habitual es de 3 a 4 semanas desde la aprobación del pedido. Incluye el corte, el patronaje individual y los acabados artesanales. Para proyectos urgentes, consulta disponibilidad en la visita.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Qué diferencia hay entre onda perfecta, tablas y frunce?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">La onda perfecta (sistema Wave) da pliegues uniformes con un carril especial — es el acabado más minimalista y contemporáneo. Las tablas son pliegues planos y geométricos. El frunce es el clásico con ondas suaves y naturales. La elección depende del estilo del espacio.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿El lino de 400 hilos necesita mantenimiento especial?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">No. El lino premium se limpia con aspiración suave o un paño ligeramente húmedo. Con el tiempo mejora: se asienta, pierde el almidón inicial y gana una caída más natural. No se recomienda lavado en lavadora para piezas grandes confeccionadas a medida.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Puedo combinar la cortina confeccionada con un visillo?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Sí, es la combinación más habitual. Se instala un doble riel: el interior para el visillo de lino traslúcido y el exterior para la cortina principal. Así consigues privacidad con luz durante el día y oscuridad por la noche.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- También te puede interesar -->
+    <section class="py-16 px-6 md:px-12 bg-white border-t border-arena-300/40">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-[10px] font-medium tracking-widest uppercase text-neutral-400 mb-8 font-body">También te puede interesar</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="cortinas-enrollables.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Enrollables</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Enrollables</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Screen solar y tejido técnico a medida.</p>
+                </a>
+                <a href="cortinas-blackout.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Blackout</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Blackout</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Oscurecimiento total para dormir mejor.</p>
+                </a>
+                <a href="cortinas-verticales.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Verticales</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Verticales</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Lamas para grandes ventanales y puertas.</p>
+                </a>
             </div>
         </div>
     </section>

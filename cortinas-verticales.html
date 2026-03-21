@@ -37,6 +37,44 @@
         "offers": { "@type": "Offer", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "areaServed": { "@type": "Place", "name": "Islas Baleares" } }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.decortmarucc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Cortinas Verticales", "item": "https://www.decortmarucc.com/cortinas-verticales.html" }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Para qué tipo de ventanas son ideales las cortinas verticales?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Son la solución perfecta para grandes ventanales, puertas correderas y espacios diáfanos. Las lamas se recogen lateralmente, dejando el acceso completamente libre. Son también la elección habitual para oficinas y espacios comerciales en Baleares." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto ancho puede cubrir un sistema de cortinas verticales?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Un solo riel puede cubrir hasta 6 metros de ancho sin interrupciones. Para medidas mayores se instalan dos sistemas contiguos. Medimos y confeccionamos a la medida exacta de tu ventanal." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Se pueden motorizar las cortinas verticales?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Sí. Disponemos de motores que permiten abrir, cerrar y girar las lamas con mando a distancia o integración con sistemas domóticos. Es especialmente práctico en ventanales de difícil acceso manual." }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Se pueden lavar las lamas en casa?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Las lamas se desmontan individualmente de forma sencilla. Las de tejido técnico o screen se limpian con un paño húmedo. Las de lino o algodón admiten lavado a mano en frío. No recomendamos lavadora para mantener la forma." }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="bg-arena-100 text-neutral-800 font-body antialiased">
     <nav class="w-full px-6 py-6 md:px-12 md:py-8 border-b border-arena-400/30 flex justify-between items-center">
@@ -49,6 +87,15 @@
         </a>
     </nav>
 
+    <!-- Breadcrumb -->
+    <nav aria-label="Ruta de navegación" class="px-6 md:px-12 py-3 border-b border-arena-400/20 bg-arena-50">
+        <ol class="flex items-center gap-2 text-[11px] font-body text-neutral-400 max-w-7xl mx-auto">
+            <li><a href="index.html" class="hover:text-terracotta-500 transition-colors">Inicio</a></li>
+            <li><iconify-icon icon="lucide:chevron-right" width="12"></iconify-icon></li>
+            <li class="text-neutral-600 font-medium">Cortinas Verticales</li>
+        </ol>
+    </nav>
+
     <section class="relative py-20 md:py-32 px-6 md:px-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
             <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200">
@@ -56,9 +103,10 @@
             </div>
             <div>
                 <span class="text-[10px] font-medium tracking-widest uppercase text-terracotta-500 mb-4 block font-body">Colección Verticales</span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight font-display text-neutral-800 mb-6 leading-tight">
-                    Cortinas Verticales <span class="italic text-terracotta-500">a Medida en Mallorca</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight font-display text-neutral-800 mb-3 leading-tight">
+                    Cortinas Verticales — <span class="italic text-terracotta-500">Lamas para Grandes Ventanales</span>
                 </h1>
+                <p class="text-[11px] font-medium tracking-widest text-neutral-400 font-body mb-6 uppercase">A medida en Mallorca · Islas Baleares</p>
                 <p class="text-sm md:text-base text-neutral-500 leading-relaxed mb-8 font-body max-w-lg">
                     Para los ventanales que definen un espacio. Las lamas en lino natural o screen técnico se deslizan con suavidad y gradúan la luz del mediterráneo sin perder la relación con el exterior. La solución que eligen arquitectos e interioristas para las puertas correderas y los grandes paños de cristal en Baleares.
                 </p>
@@ -112,6 +160,73 @@
                 <span class="hover:text-neutral-600 transition-colors">Hunter Douglas</span>
                 <span class="hover:text-neutral-600 transition-colors">Bandalux</span>
                 <span class="hover:text-neutral-600 transition-colors">Saxun</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-arena-100 border-t border-arena-300/40">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800 mb-12">
+                Preguntas <span class="italic text-terracotta-500">frecuentes</span>
+            </h2>
+            <div class="space-y-0">
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Para qué tipo de ventanas son ideales las cortinas verticales?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Son la solución perfecta para grandes ventanales, puertas correderas y espacios diáfanos. Las lamas se recogen lateralmente, dejando el acceso completamente libre. Son también la elección habitual para oficinas y espacios comerciales en Baleares.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Cuánto ancho puede cubrir un sistema de cortinas verticales?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Un solo riel puede cubrir hasta 6 metros de ancho sin interrupciones. Para medidas mayores se instalan dos sistemas contiguos. Medimos y confeccionamos a la medida exacta de tu ventanal.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Se pueden motorizar las cortinas verticales?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Sí. Disponemos de motores que permiten abrir, cerrar y girar las lamas con mando a distancia o integración con sistemas domóticos. Es especialmente práctico en ventanales de difícil acceso manual.</p>
+                </details>
+                <details class="group border-b border-arena-300/60">
+                    <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold font-body text-neutral-700 py-5 list-none select-none">
+                        <span>¿Se pueden lavar las lamas en casa?</span>
+                        <iconify-icon icon="lucide:plus" width="18" class="text-terracotta-400 group-open:hidden shrink-0 ml-4"></iconify-icon>
+                        <iconify-icon icon="lucide:minus" width="18" class="text-terracotta-400 hidden group-open:block shrink-0 ml-4"></iconify-icon>
+                    </summary>
+                    <p class="text-sm text-neutral-500 pb-5 leading-relaxed font-body">Las lamas se desmontan individualmente de forma sencilla. Las de tejido técnico o screen se limpian con un paño húmedo. Las de lino o algodón admiten lavado a mano en frío. No recomendamos lavadora para mantener la forma.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- También te puede interesar -->
+    <section class="py-16 px-6 md:px-12 bg-white border-t border-arena-300/40">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-[10px] font-medium tracking-widest uppercase text-neutral-400 mb-8 font-body">También te puede interesar</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="cortinas-confeccionadas.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Confeccionadas</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Confeccionadas</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Onda perfecta y lino premium a medida.</p>
+                </a>
+                <a href="cortinas-enrollables.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Enrollables</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Cortinas Enrollables</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Screen solar y tejido técnico a medida.</p>
+                </a>
+                <a href="paneles-japoneses.html" class="group p-6 bg-arena-100 rounded-2xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-terracotta-500 font-body block mb-2">Colección Paneles</span>
+                    <h3 class="text-base font-semibold font-display text-neutral-800 group-hover:text-terracotta-600 transition-colors">Paneles Japoneses</h3>
+                    <p class="text-xs text-neutral-400 font-body mt-1">Separadores minimalistas para espacios abiertos.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -188,8 +303,9 @@
                         <div>
                             <label for="lead-producto" class="block text-[11px] uppercase tracking-widest font-semibold text-neutral-500 mb-2">Producto de interés *</label>
                             <select id="lead-producto" required class="w-full bg-white border border-arena-300 rounded-xl px-4 py-3 text-sm text-neutral-800 focus:outline-none focus:border-terracotta-400 focus:ring-2 focus:ring-terracotta-500/20 transition-all appearance-none cursor-pointer">
-                                <option value="Enrollables" selected>Cortinas Enrollables</option>
-                                <option value="Verticales">Cortinas Verticales</option>
+                                <option value="Verticales" selected>Cortinas Verticales</option>
+                                <option value="Confeccionadas">Cortinas Confeccionadas</option>
+                                <option value="Enrollables">Cortinas Enrollables</option>
                                 <option value="Blackout">Cortinas Blackout</option>
                                 <option value="Venecianas">Venecianas</option>
                                 <option value="Paneles Japoneses">Paneles Japoneses</option>
