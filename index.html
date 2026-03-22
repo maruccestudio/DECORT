@@ -1151,13 +1151,13 @@
                 </div>
 
                 <!-- STEP 2: Cal.com Calendar -->
-                <div id="modal-step-2" class="hidden opacity-0 transition-opacity duration-300 flex flex-col items-center">
+                <div id="modal-step-2" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center">
                     <p class="text-xs text-neutral-500 font-medium mb-4 text-center">Elige el día y la franja horaria que mejor te venga. Recibirás confirmación por email en 24–48 horas.</p>
                     <div id="cal-embed-container" style="width:100%; height: 600px; display: flex; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(224, 213, 192, 0.4);"></div>
                 </div>
 
                 <!-- STEP 3: Confirmación Final -->
-                <div id="modal-step-3" class="hidden opacity-0 transition-opacity duration-300 flex flex-col items-center justify-center py-12 text-center">
+                <div id="modal-step-3" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center justify-center py-12 text-center">
                     <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
                         <iconify-icon icon="lucide:check" width="32" class="text-green-600"></iconify-icon>
                     </div>
@@ -1360,9 +1360,9 @@
                 const step3 = document.getElementById('modal-step-3');
                 const calContainer = document.getElementById('cal-embed-container');
                 
-                if (step1) step1.classList.remove('hidden', 'opacity-0');
-                if (step2) step2.classList.add('hidden', 'opacity-0');
-                if (step3) step3.classList.add('hidden', 'opacity-0');
+                if (step1) { step1.style.display = ''; step1.style.opacity = ''; }
+                if (step2) { step2.style.display = 'none'; step2.style.opacity = '0'; }
+                if (step3) { step3.style.display = 'none'; step3.style.opacity = '0'; }
                 if (calContainer) calContainer.innerHTML = '';
                 if (leadForm) {
                     leadForm.reset();
@@ -1442,51 +1442,45 @@
             const step1 = document.getElementById('modal-step-1');
             const step2 = document.getElementById('modal-step-2');
             
-            step1.classList.add('opacity-0');
+            step1.style.opacity = '0';
             setTimeout(() => {
-                step1.classList.add('hidden');
-                step2.classList.remove('hidden');
-                
-                // Iniciar Cal.com con los datos pre-rellenados
-                if(window.CalApi) {
-                    window.CalApi("ui", {
-                        "styles":{"branding":{"brandColor":"#A0633B"}},
-                        "hideEventTypeDetails":true,
-                        "layout":"month_view"
-                    });
-                    
-                    window.CalApi("inline", {
-                        elementOrSelector: "#cal-embed-container",
-                        calLink: "decortmarucc/visita-showroom-movil",
-                        layout: "month_view",
-                        config: {
-                            name: nombre,
-                            email: email,
-                            notes: `Isla: ${isla}\nDirección: ${direccion}\nProducto: ${producto}\nVentanas: ${cantidad}\nMensaje: ${mensaje}`
-                        }
-                    });
+                step1.style.display = 'none';
+                step2.style.display = 'flex';
 
-                    // Añadir Listener para cuando se complete la reserva
-                    window.CalApi("on", {
-                        action: "bookingSuccessful",
-                        callback: (e) => {
-                            // Pasar al Paso 3 (Confirmación)
-                            const step3 = document.getElementById('modal-step-3');
-                            step2.classList.add('opacity-0');
-                            setTimeout(() => {
-                                step2.classList.add('hidden');
-                                step3.classList.remove('hidden');
+                // Iniciar Cal.com — con retry por si la API aún no cargó
+                function initCalendar() {
+                    if (window.CalApi) {
+                        window.CalApi("inline", {
+                            elementOrSelector: "#cal-embed-container",
+                            calLink: "decortmarucc/visita-showroom-movil",
+                            layout: "month_view",
+                            config: {
+                                name: nombre,
+                                email: email,
+                                notes: `Isla: ${isla}\nDirección: ${direccion}\nProducto: ${producto}\nVentanas: ${cantidad}\nMensaje: ${mensaje}`
+                            }
+                        });
+
+                        window.CalApi("on", {
+                            action: "bookingSuccessful",
+                            callback: () => {
+                                const step3 = document.getElementById('modal-step-3');
+                                step2.style.opacity = '0';
                                 setTimeout(() => {
-                                    step3.classList.remove('opacity-0');
-                                }, 50);
-                            }, 300);
-                        }
-                    });
+                                    step2.style.display = 'none';
+                                    step3.style.display = 'flex';
+                                    setTimeout(() => { step3.style.opacity = '1'; }, 50);
+                                }, 300);
+                            }
+                        });
+                    } else {
+                        // Cal.com aún no cargó, reintentar en 300ms
+                        setTimeout(initCalendar, 300);
+                    }
                 }
-                
-                setTimeout(() => {
-                    step2.classList.remove('opacity-0');
-                }, 50);
+                initCalendar();
+
+                setTimeout(() => { step2.style.opacity = '1'; }, 50);
             }, 300);
         });
     </script>
@@ -1496,7 +1490,7 @@
         import { getCalApi } from "https://cal.com/embed.js";
         getCalApi({ namespace: "visita" }).then((api) => {
             window.CalApi = api;
-            api("init", { origin: "https://cal.eu" });
+            api("init", { origin: "https://cal.com" });
             api("ui", {"styles":{"branding":{"brandColor":"#A0633B"}},"hideEventTypeDetails":true,"layout":"month_view"});
         }).catch((err) => console.error("Cal.com load error:", err));
     </script>
