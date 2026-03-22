@@ -1150,27 +1150,23 @@
                     </form>
                 </div>
 
-                <!-- STEP 2: Cal.com Calendar -->
-                <div id="modal-step-2" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center">
-                    <p class="text-xs text-neutral-500 font-medium mb-4 text-center">Elige el día y la franja horaria que mejor te venga. Recibirás confirmación por email en 24–48 horas.</p>
-                    <div id="cal-embed-container" style="width:100%; min-height: 550px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 12px; overflow: auto; border: 1px solid rgba(224, 213, 192, 0.4); position: relative; background: #fff;">
-                        <div id="cal-loading" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:#A0633B;">
-                            <iconify-icon icon="lucide:loader-2" width="32" class="animate-spin"></iconify-icon>
-                            <p style="font-size:13px;">Cargando calendario...</p>
-                            <a href="https://cal.eu/decortmarucc/visita-showroom-movil" target="_blank" style="font-size:11px; color:#A0633B; text-decoration:underline; margin-top:8px;">Si no carga, reserva aquí directamente</a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- STEP 3: Confirmación Final -->
-                <div id="modal-step-3" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center justify-center py-12 text-center">
-                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
-                        <iconify-icon icon="lucide:check" width="32" class="text-green-600"></iconify-icon>
+                <div id="modal-step-3" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center justify-center py-10 text-center">
+                    <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-5">
+                        <iconify-icon icon="lucide:check" width="28" class="text-green-600"></iconify-icon>
                     </div>
-                    <h4 class="text-2xl font-display font-medium text-neutral-800 mb-3">¡Solicitud Recibida!</h4>
-                    <p class="text-sm text-neutral-500 font-body max-w-sm mb-8 leading-relaxed">Nuestro equipo revisará tu solicitud y te confirmará la visita por email en un plazo de 24–48 horas.</p>
-                    <p class="text-[11px] text-neutral-400 font-body mb-8">Si tienes cualquier duda puedes escribirnos a <a href="mailto:decort@marucc.com" class="text-terracotta-500 hover:underline">decort@marucc.com</a></p>
-                    <button type="button" onclick="closeLeadModal()" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-arena-200 hover:bg-arena-300 text-neutral-700 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">Cerrar</button>
+                    <h4 class="text-xl font-display font-medium text-neutral-800 mb-3">¡Solicitud Recibida!</h4>
+                    <p class="text-sm text-neutral-500 font-body max-w-sm mb-4 leading-relaxed">Tus datos se han guardado correctamente.</p>
+                    <div class="bg-terracotta-50 border border-terracotta-200 rounded-xl px-5 py-4 mb-5 max-w-sm">
+                        <p class="text-sm text-terracotta-700 font-body font-medium mb-2">Reserva tu visita en la pestaña que se ha abierto</p>
+                        <p class="text-xs text-terracotta-600 font-body">Elige el día y la hora que prefieras. Tus datos ya están pre-rellenados.</p>
+                        <a href="https://cal.eu/decortmarucc/visita-showroom-movil" target="_blank" class="inline-flex items-center gap-1 mt-3 text-xs text-terracotta-500 font-semibold hover:underline">
+                            <iconify-icon icon="lucide:external-link" width="12"></iconify-icon>
+                            Abrir calendario de nuevo
+                        </a>
+                    </div>
+                    <p class="text-[11px] text-neutral-400 font-body mb-5">¿Dudas? Escríbenos a <a href="mailto:decort@marucc.com" class="text-terracotta-500 hover:underline">decort@marucc.com</a></p>
+                    <button type="button" onclick="closeLeadModal()" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-arena-200 hover:bg-arena-300 text-neutral-700 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">Cerrar</button>
                 </div>
 
                 <div class="sticky bottom-0 h-8 bg-gradient-to-t from-arena-50 to-transparent pointer-events-none -mx-6 md:-mx-8 mt-2"></div>
@@ -1443,51 +1439,25 @@
                 console.error("Error enviando datos al CRM:", error);
             }
 
-            // 2. Hide Step 1 and Show Step 2 (Calendar)
+            // 2. Abrir Cal.com en pestaña nueva con datos pre-rellenados
+            const notesText = `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`;
+            const calUrl = new URL('https://cal.eu/decortmarucc/visita-showroom-movil');
+            calUrl.searchParams.set('name', nombre);
+            if (email !== 'No especificado') calUrl.searchParams.set('email', email);
+            calUrl.searchParams.set('notes', notesText);
+            calUrl.searchParams.set('layout', 'month_view');
+            calUrl.searchParams.set('theme', 'light');
+            window.open(calUrl.toString(), '_blank');
+
+            // 3. Mostrar confirmación en el modal
             const step1 = document.getElementById('modal-step-1');
-            const step2 = document.getElementById('modal-step-2');
+            const step3 = document.getElementById('modal-step-3');
 
             step1.style.opacity = '0';
             setTimeout(() => {
                 step1.style.display = 'none';
-                step2.style.display = 'flex';
-
-                // Inyectar iframe de Cal.com con formato embed oficial
-                const calContainer = document.getElementById('cal-embed-container');
-                const notesText = `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`;
-                const calUrl = new URL('https://cal.eu/decortmarucc/visita-showroom-movil/embed');
-                calUrl.searchParams.set('name', nombre);
-                if (email !== 'No especificado') calUrl.searchParams.set('email', email);
-                calUrl.searchParams.set('notes', notesText);
-                calUrl.searchParams.set('layout', 'month_view');
-                calUrl.searchParams.set('theme', 'light');
-                const loadingEl = document.getElementById('cal-loading');
-                const iframe = document.createElement('iframe');
-                iframe.src = calUrl.toString();
-                iframe.width = '100%';
-                iframe.height = '100%';
-                iframe.frameBorder = '0';
-                iframe.style.cssText = 'border:none; border-radius:12px; min-height:550px; position:relative; z-index:2;';
-                iframe.allow = 'payment';
-                iframe.onload = () => { if (loadingEl) loadingEl.style.display = 'none'; };
-                calContainer.appendChild(iframe);
-
-                // Escuchar el evento de reserva completada desde el iframe
-                window.addEventListener('message', function onCalBooking(e) {
-                    if (e.data && e.data.type === 'bookingSuccessful') {
-                        window.removeEventListener('message', onCalBooking);
-                        const step3 = document.getElementById('modal-step-3');
-                        step2.style.opacity = '0';
-                        setTimeout(() => {
-                            step2.style.display = 'none';
-                            calContainer.innerHTML = '';
-                            step3.style.display = 'flex';
-                            setTimeout(() => { step3.style.opacity = '1'; }, 50);
-                        }, 300);
-                    }
-                });
-
-                setTimeout(() => { step2.style.opacity = '1'; }, 50);
+                step3.style.display = 'flex';
+                setTimeout(() => { step3.style.opacity = '1'; }, 50);
             }, 300);
         });
     </script>
