@@ -1057,7 +1057,7 @@
     <!-- Captation Modal -->
     <div id="lead-modal" class="fixed inset-0 z-[110] flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-500 font-body">
         <div id="lead-modal-overlay" class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm cursor-pointer transition-opacity duration-300"></div>
-        <div id="lead-modal-content" class="relative bg-arena-50 w-full max-w-2xl mx-4 rounded-[32px] overflow-hidden shadow-2xl shadow-terracotta-900/20 transform scale-95 opacity-0 transition-all duration-500 flex flex-col max-h-[90vh]">
+        <div id="lead-modal-content" class="relative bg-arena-50 w-full max-w-2xl mx-4 rounded-[32px] overflow-y-auto shadow-2xl shadow-terracotta-900/20 transform scale-95 opacity-0 transition-all duration-500 flex flex-col max-h-[90vh]">
             
             <!-- Close Button -->
             <button id="close-lead-modal" class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-neutral-500 hover:text-terracotta-500 hover:bg-white transition-all duration-300 shadow-sm border border-arena-300/50">
@@ -1072,7 +1072,7 @@
             </div>
             
             <!-- Form Body - Scrollable -->
-            <div class="px-6 py-6 md:p-8 overflow-y-auto scrollbar-thin relative flex-1 min-h-0">
+            <div class="px-6 py-6 md:p-8 relative">
                 
                 <!-- STEP 1: Formulario -->
                 <div id="modal-step-1" class="transition-opacity duration-300">
