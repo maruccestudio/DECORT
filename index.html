@@ -1150,21 +1150,19 @@
                     </form>
                 </div>
 
+                <!-- STEP 2: Calendario Cal.com inline -->
+                <div id="modal-step-2" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col">
+                    <p class="text-xs text-neutral-500 font-medium mb-3 text-center">Elige el día y la franja horaria. Recibirás confirmación por email en 24–48 horas.</p>
+                    <div id="cal-inline" style="width:100%; min-height:400px;"></div>
+                </div>
+
                 <!-- STEP 3: Confirmación Final -->
                 <div id="modal-step-3" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center justify-center py-10 text-center">
                     <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-5">
                         <iconify-icon icon="lucide:check" width="28" class="text-green-600"></iconify-icon>
                     </div>
-                    <h4 class="text-xl font-display font-medium text-neutral-800 mb-3">¡Solicitud Recibida!</h4>
-                    <p class="text-sm text-neutral-500 font-body max-w-sm mb-4 leading-relaxed">Tus datos se han guardado correctamente.</p>
-                    <div class="bg-terracotta-50 border border-terracotta-200 rounded-xl px-5 py-4 mb-5 max-w-sm">
-                        <p class="text-sm text-terracotta-700 font-body font-medium mb-2">Reserva tu visita en la pestaña que se ha abierto</p>
-                        <p class="text-xs text-terracotta-600 font-body">Elige el día y la hora que prefieras. Tus datos ya están pre-rellenados.</p>
-                        <a href="https://cal.eu/decortmarucc/visita-showroom-movil" target="_blank" class="inline-flex items-center gap-1 mt-3 text-xs text-terracotta-500 font-semibold hover:underline">
-                            <iconify-icon icon="lucide:external-link" width="12"></iconify-icon>
-                            Abrir calendario de nuevo
-                        </a>
-                    </div>
+                    <h4 class="text-xl font-display font-medium text-neutral-800 mb-3">¡Visita Reservada!</h4>
+                    <p class="text-sm text-neutral-500 font-body max-w-sm mb-4 leading-relaxed">Tu visita ha quedado registrada. Recibirás confirmación por email en 24–48 horas.</p>
                     <p class="text-[11px] text-neutral-400 font-body mb-5">¿Dudas? Escríbenos a <a href="mailto:decort@marucc.com" class="text-terracotta-500 hover:underline">decort@marucc.com</a></p>
                     <button type="button" onclick="closeLeadModal()" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-arena-200 hover:bg-arena-300 text-neutral-700 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">Cerrar</button>
                 </div>
@@ -1360,12 +1358,15 @@
                 const step1 = document.getElementById('modal-step-1');
                 const step2 = document.getElementById('modal-step-2');
                 const step3 = document.getElementById('modal-step-3');
-                const calContainer = document.getElementById('cal-embed-container');
-                
+                const calInline = document.getElementById('cal-inline');
+                const modalContent = document.getElementById('lead-modal-content');
+
                 if (step1) { step1.style.display = ''; step1.style.opacity = ''; }
                 if (step2) { step2.style.display = 'none'; step2.style.opacity = '0'; }
                 if (step3) { step3.style.display = 'none'; step3.style.opacity = '0'; }
-                if (calContainer) calContainer.innerHTML = '';
+                if (calInline) calInline.innerHTML = '';
+                modalContent.classList.remove('max-w-4xl');
+                modalContent.classList.add('max-w-2xl');
                 if (leadForm) {
                     leadForm.reset();
                     const submitBtn = leadForm.querySelector('button[type="submit"]');
@@ -1439,29 +1440,60 @@
                 console.error("Error enviando datos al CRM:", error);
             }
 
-            // 2. Abrir Cal.com en pestaña nueva con datos pre-rellenados
-            const notesText = `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`;
-            const calUrl = new URL('https://cal.eu/decortmarucc/visita-showroom-movil');
-            calUrl.searchParams.set('name', nombre);
-            if (email !== 'No especificado') calUrl.searchParams.set('email', email);
-            calUrl.searchParams.set('notes', notesText);
-            calUrl.searchParams.set('layout', 'month_view');
-            calUrl.searchParams.set('theme', 'light');
-            window.open(calUrl.toString(), '_blank');
-
-            // 3. Mostrar confirmación en el modal
+            // 2. Mostrar Step 2 con calendario Cal.com inline
             const step1 = document.getElementById('modal-step-1');
-            const step3 = document.getElementById('modal-step-3');
+            const step2 = document.getElementById('modal-step-2');
+            const modalContent = document.getElementById('lead-modal-content');
 
             step1.style.opacity = '0';
             setTimeout(() => {
                 step1.style.display = 'none';
-                step3.style.display = 'flex';
-                setTimeout(() => { step3.style.opacity = '1'; }, 50);
+                step2.style.display = 'flex';
+
+                // Expandir modal para el calendario
+                modalContent.classList.remove('max-w-2xl');
+                modalContent.classList.add('max-w-4xl');
+
+                // Inyectar Cal.com con su SDK inline
+                const calContainer = document.getElementById('cal-inline');
+                const notesText = `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`;
+
+                Cal("inline", {
+                    elementOrSelector: "#cal-inline",
+                    calLink: "decortmarucc/visita-showroom-movil",
+                    calOrigin: "https://cal.eu",
+                    config: {
+                        name: nombre,
+                        email: email !== 'No especificado' ? email : undefined,
+                        notes: notesText,
+                        layout: "month_view",
+                        theme: "light"
+                    }
+                });
+
+                // Escuchar reserva completada
+                Cal("on", {
+                    action: "bookingSuccessful",
+                    callback: () => {
+                        const step3 = document.getElementById('modal-step-3');
+                        step2.style.opacity = '0';
+                        setTimeout(() => {
+                            step2.style.display = 'none';
+                            step3.style.display = 'flex';
+                            setTimeout(() => { step3.style.opacity = '1'; }, 50);
+                        }, 300);
+                    }
+                });
+
+                setTimeout(() => { step2.style.opacity = '1'; }, 50);
             }, 300);
         });
     </script>
 
-    <!-- Cal.com Script (opcional — el calendario usa iframe directo) -->
+    <!-- Cal.com Embed SDK -->
+    <script>
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", {origin:"https://cal.eu"});
+    </script>
 </body>
 </html>
