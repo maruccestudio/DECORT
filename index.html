@@ -1496,6 +1496,7 @@
         import { getCalApi } from "https://cal.com/embed.js";
         getCalApi({ namespace: "visita" }).then((api) => {
             window.CalApi = api;
+            api("init", { origin: "https://cal.eu" });
             api("ui", {"styles":{"branding":{"brandColor":"#A0633B"}},"hideEventTypeDetails":true,"layout":"month_view"});
         }).catch((err) => console.error("Cal.com load error:", err));
     </script>
