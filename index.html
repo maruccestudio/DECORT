@@ -1057,7 +1057,7 @@
     <!-- Captation Modal -->
     <div id="lead-modal" class="fixed inset-0 z-[110] flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-500 font-body">
         <div id="lead-modal-overlay" class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm cursor-pointer transition-opacity duration-300"></div>
-        <div id="lead-modal-content" class="relative bg-arena-50 w-full max-w-2xl mx-4 rounded-[32px] overflow-hidden shadow-2xl shadow-terracotta-900/20 transform scale-95 opacity-0 transition-all duration-500 flex flex-col max-h-[90vh]">
+        <div id="lead-modal-content" class="relative bg-arena-50 w-full max-w-2xl mx-4 rounded-[32px] overflow-y-auto shadow-2xl shadow-terracotta-900/20 transform scale-95 opacity-0 transition-all duration-500 flex flex-col max-h-[90vh]">
             
             <!-- Close Button -->
             <button id="close-lead-modal" class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-neutral-500 hover:text-terracotta-500 hover:bg-white transition-all duration-300 shadow-sm border border-arena-300/50">
@@ -1153,7 +1153,13 @@
                 <!-- STEP 2: Cal.com Calendar -->
                 <div id="modal-step-2" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center">
                     <p class="text-xs text-neutral-500 font-medium mb-4 text-center">Elige el día y la franja horaria que mejor te venga. Recibirás confirmación por email en 24–48 horas.</p>
-                    <div id="cal-embed-container" style="width:100%; height: 600px; display: flex; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(224, 213, 192, 0.4);"></div>
+                    <div id="cal-embed-container" style="width:100%; min-height: 550px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 12px; overflow: auto; border: 1px solid rgba(224, 213, 192, 0.4); position: relative; background: #fff;">
+                        <div id="cal-loading" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:#A0633B;">
+                            <iconify-icon icon="lucide:loader-2" width="32" class="animate-spin"></iconify-icon>
+                            <p style="font-size:13px;">Cargando calendario...</p>
+                            <a href="https://cal.eu/decortmarucc/visita-showroom-movil" target="_blank" style="font-size:11px; color:#A0633B; text-decoration:underline; margin-top:8px;">Si no carga, reserva aquí directamente</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- STEP 3: Confirmación Final -->
@@ -1455,7 +1461,16 @@
                 calUrl.searchParams.set('notes', notesText);
                 calUrl.searchParams.set('layout', 'month_view');
                 calUrl.searchParams.set('theme', 'light');
-                calContainer.innerHTML = `<iframe src="${calUrl.toString()}" width="100%" height="100%" frameborder="0" style="border:none; border-radius:12px; min-height:500px;" allow="payment" loading="lazy"></iframe>`;
+                const loadingEl = document.getElementById('cal-loading');
+                const iframe = document.createElement('iframe');
+                iframe.src = calUrl.toString();
+                iframe.width = '100%';
+                iframe.height = '100%';
+                iframe.frameBorder = '0';
+                iframe.style.cssText = 'border:none; border-radius:12px; min-height:550px; position:relative; z-index:2;';
+                iframe.allow = 'payment';
+                iframe.onload = () => { if (loadingEl) loadingEl.style.display = 'none'; };
+                calContainer.appendChild(iframe);
 
                 // Escuchar el evento de reserva completada desde el iframe
                 window.addEventListener('message', function onCalBooking(e) {
