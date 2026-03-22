@@ -1441,58 +1441,41 @@
             // 2. Hide Step 1 and Show Step 2 (Calendar)
             const step1 = document.getElementById('modal-step-1');
             const step2 = document.getElementById('modal-step-2');
-            
+
             step1.style.opacity = '0';
             setTimeout(() => {
                 step1.style.display = 'none';
                 step2.style.display = 'flex';
 
-                // Iniciar Cal.com — con retry por si la API aún no cargó
-                function initCalendar() {
-                    if (window.CalApi) {
-                        window.CalApi("inline", {
-                            elementOrSelector: "#cal-embed-container",
-                            calLink: "decortmarucc/visita-showroom-movil",
-                            layout: "month_view",
-                            config: {
-                                name: nombre,
-                                email: email,
-                                notes: `Isla: ${isla}\nDirección: ${direccion}\nProducto: ${producto}\nVentanas: ${cantidad}\nMensaje: ${mensaje}`
-                            }
-                        });
+                // Inyectar iframe directo — sin dependencia del SDK de Cal.com
+                const calContainer = document.getElementById('cal-embed-container');
+                const calUrl = new URL('https://cal.eu/decortmarucc/visita-showroom-movil');
+                calUrl.searchParams.set('name', nombre);
+                calUrl.searchParams.set('email', email !== 'No especificado' ? email : '');
+                calUrl.searchParams.set('notes', `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`);
+                calUrl.searchParams.set('embed', 'true');
+                calContainer.innerHTML = `<iframe src="${calUrl.toString()}" width="100%" height="100%" frameborder="0" style="border:none; border-radius:12px;" allow="payment" loading="lazy"></iframe>`;
 
-                        window.CalApi("on", {
-                            action: "bookingSuccessful",
-                            callback: () => {
-                                const step3 = document.getElementById('modal-step-3');
-                                step2.style.opacity = '0';
-                                setTimeout(() => {
-                                    step2.style.display = 'none';
-                                    step3.style.display = 'flex';
-                                    setTimeout(() => { step3.style.opacity = '1'; }, 50);
-                                }, 300);
-                            }
-                        });
-                    } else {
-                        // Cal.com aún no cargó, reintentar en 300ms
-                        setTimeout(initCalendar, 300);
+                // Escuchar el evento de reserva completada desde el iframe
+                window.addEventListener('message', function onCalBooking(e) {
+                    if (e.data && e.data.type === 'bookingSuccessful') {
+                        window.removeEventListener('message', onCalBooking);
+                        const step3 = document.getElementById('modal-step-3');
+                        step2.style.opacity = '0';
+                        setTimeout(() => {
+                            step2.style.display = 'none';
+                            calContainer.innerHTML = '';
+                            step3.style.display = 'flex';
+                            setTimeout(() => { step3.style.opacity = '1'; }, 50);
+                        }, 300);
                     }
-                }
-                initCalendar();
+                });
 
                 setTimeout(() => { step2.style.opacity = '1'; }, 50);
             }, 300);
         });
     </script>
 
-    <!-- Cal.com Script -->
-    <script type="module">
-        import { getCalApi } from "https://cal.com/embed.js";
-        getCalApi({ namespace: "visita" }).then((api) => {
-            window.CalApi = api;
-            api("init", { origin: "https://cal.com" });
-            api("ui", {"styles":{"branding":{"brandColor":"#A0633B"}},"hideEventTypeDetails":true,"layout":"month_view"});
-        }).catch((err) => console.error("Cal.com load error:", err));
-    </script>
+    <!-- Cal.com Script (opcional — el calendario usa iframe directo) -->
 </body>
 </html>
