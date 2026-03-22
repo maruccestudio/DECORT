@@ -460,16 +460,12 @@
             const cantidad = document.getElementById('lead-cantidad').value.trim() || 'No especificada';
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
+            // Generar piezas del ID — Make.com asigna número secuencial → ID final: IB26-005-K9P
             const prefijos = { 'Mallorca': 'MA', 'Menorca': 'ME', 'Ibiza': 'IB', 'Formentera': 'FO' };
             const prefijo = prefijos[isla] || 'XX';
-            const ahora = new Date();
-            const ano = String(ahora.getFullYear()).slice(-2);
-            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
-            const dia = String(ahora.getDate()).padStart(2, '0');
-            const hora = String(ahora.getHours()).padStart(2, '0');
-            const min = String(ahora.getMinutes()).padStart(2, '0');
-            const sec = String(ahora.getSeconds()).padStart(2, '0');
-            const leadId = `${prefijo}-${ano}${mes}${dia}${hora}${min}${sec}`;
+            const ano = String(new Date().getFullYear()).slice(-2);
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            const uid = Array.from({length: 3}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 
             try {
                 const makeWebhookUrl = 'https://hook.eu1.make.com/lvugka46o3im9e80vyl45p4rell3sw34';
@@ -479,7 +475,9 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        id_lead: leadId,
+                        prefijo_isla: prefijo,
+                        ano: ano,
+                        uid: uid,
                         fecha: new Date().toISOString(),
                         nombre: nombre,
                         telefono: telefono,
@@ -488,7 +486,8 @@
                         direccion: direccion,
                         producto: producto,
                         ventanas: cantidad,
-                        mensaje: mensaje
+                        mensaje: mensaje,
+                        fuente: 'Confeccionadas'
                     })
                 });
             } catch (error) {

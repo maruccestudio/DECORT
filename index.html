@@ -1401,17 +1401,13 @@
             const cantidad = document.getElementById('lead-cantidad').value.trim() || 'No especificada';
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
-            // Generar ID lógico y único para orden numérico (Ej: MA-260316140530) -> AñoMesDíaHoraMinutoSegundo
+            // Generar piezas del ID: prefijo isla + año + 3 alfanuméricos aleatorios
+            // Make.com asignará el número secuencial → ID final: IB26-005-K9P
             const prefijos = { 'Mallorca': 'MA', 'Menorca': 'ME', 'Ibiza': 'IB', 'Formentera': 'FO' };
             const prefijo = prefijos[isla] || 'XX';
-            const ahora = new Date();
-            const ano = String(ahora.getFullYear()).slice(-2); // "26" en vez de "2026"
-            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
-            const dia = String(ahora.getDate()).padStart(2, '0');
-            const hora = String(ahora.getHours()).padStart(2, '0');
-            const min = String(ahora.getMinutes()).padStart(2, '0');
-            const sec = String(ahora.getSeconds()).padStart(2, '0');
-            const leadId = `${prefijo}-${ano}${mes}${dia}${hora}${min}${sec}`;
+            const ano = String(new Date().getFullYear()).slice(-2);
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            const uid = Array.from({length: 3}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 
             // 1. Enviar datos a Make.com silenciosamente
             try {
@@ -1422,7 +1418,9 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        id_lead: leadId,
+                        prefijo_isla: prefijo,
+                        ano: ano,
+                        uid: uid,
                         fecha: new Date().toISOString(),
                         nombre: nombre,
                         telefono: telefono,
@@ -1431,7 +1429,8 @@
                         direccion: direccion,
                         producto: producto,
                         ventanas: cantidad,
-                        mensaje: mensaje
+                        mensaje: mensaje,
+                        fuente: 'Home'
                     })
                 });
             } catch (error) {
@@ -1447,14 +1446,16 @@
                 step1.style.display = 'none';
                 step2.style.display = 'flex';
 
-                // Inyectar iframe directo — sin dependencia del SDK de Cal.com
+                // Inyectar iframe de Cal.com con formato embed oficial
                 const calContainer = document.getElementById('cal-embed-container');
-                const calUrl = new URL('https://cal.eu/decortmarucc/visita-showroom-movil');
+                const notesText = `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`;
+                const calUrl = new URL('https://cal.eu/decortmarucc/visita-showroom-movil/embed');
                 calUrl.searchParams.set('name', nombre);
-                calUrl.searchParams.set('email', email !== 'No especificado' ? email : '');
-                calUrl.searchParams.set('notes', `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`);
-                calUrl.searchParams.set('embed', 'true');
-                calContainer.innerHTML = `<iframe src="${calUrl.toString()}" width="100%" height="100%" frameborder="0" style="border:none; border-radius:12px;" allow="payment" loading="lazy"></iframe>`;
+                if (email !== 'No especificado') calUrl.searchParams.set('email', email);
+                calUrl.searchParams.set('notes', notesText);
+                calUrl.searchParams.set('layout', 'month_view');
+                calUrl.searchParams.set('theme', 'light');
+                calContainer.innerHTML = `<iframe src="${calUrl.toString()}" width="100%" height="100%" frameborder="0" style="border:none; border-radius:12px; min-height:500px;" allow="payment" loading="lazy"></iframe>`;
 
                 // Escuchar el evento de reserva completada desde el iframe
                 window.addEventListener('message', function onCalBooking(e) {
