@@ -1072,8 +1072,11 @@
             </div>
             
             <!-- Form Body - Scrollable -->
-            <div class="px-6 py-6 md:p-8 overflow-y-auto scrollbar-thin">
-                <form id="lead-form" class="space-y-4 md:space-y-6">
+            <div class="px-6 py-6 md:p-8 overflow-y-auto scrollbar-thin relative">
+                
+                <!-- STEP 1: Formulario -->
+                <div id="modal-step-1" class="transition-opacity duration-300">
+                    <form id="lead-form" class="space-y-4 md:space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Nombre -->
                         <div>
@@ -1144,7 +1147,26 @@
                             Solicitar Visita
                         </button>
                     </div>
-                </form>
+                    </form>
+                </div>
+
+                <!-- STEP 2: Cal.com Calendar -->
+                <div id="modal-step-2" class="hidden opacity-0 transition-opacity duration-300 flex flex-col items-center">
+                    <p class="text-xs text-neutral-500 font-medium mb-4 text-center">Elige el día y la franja horaria que mejor te venga. Recibirás confirmación por email en 24–48 horas.</p>
+                    <div id="cal-embed-container" style="width:100%; height: 600px; display: flex; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(224, 213, 192, 0.4);"></div>
+                </div>
+
+                <!-- STEP 3: Confirmación Final -->
+                <div id="modal-step-3" class="hidden opacity-0 transition-opacity duration-300 flex flex-col items-center justify-center py-12 text-center">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                        <iconify-icon icon="lucide:check" width="32" class="text-green-600"></iconify-icon>
+                    </div>
+                    <h4 class="text-2xl font-display font-medium text-neutral-800 mb-3">¡Solicitud Recibida!</h4>
+                    <p class="text-sm text-neutral-500 font-body max-w-sm mb-8 leading-relaxed">Nuestro equipo revisará tu solicitud y te confirmará la visita por email en un plazo de 24–48 horas.</p>
+                    <p class="text-[11px] text-neutral-400 font-body mb-8">Si tienes cualquier duda puedes escribirnos a <a href="mailto:decort@marucc.com" class="text-terracotta-500 hover:underline">decort@marucc.com</a></p>
+                    <button type="button" onclick="closeLeadModal()" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-arena-200 hover:bg-arena-300 text-neutral-700 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">Cerrar</button>
+                </div>
+
                 <div class="sticky bottom-0 h-8 bg-gradient-to-t from-arena-50 to-transparent pointer-events-none -mx-6 md:-mx-8 mt-2"></div>
             </div>
         </div>
@@ -1331,6 +1353,26 @@
             leadContent.classList.add('scale-95', 'opacity-0');
             setTimeout(() => {
                 leadModal.classList.add('opacity-0');
+                
+                // Reset to Step 1
+                const step1 = document.getElementById('modal-step-1');
+                const step2 = document.getElementById('modal-step-2');
+                const step3 = document.getElementById('modal-step-3');
+                const calContainer = document.getElementById('cal-embed-container');
+                
+                if (step1) step1.classList.remove('hidden', 'opacity-0');
+                if (step2) step2.classList.add('hidden', 'opacity-0');
+                if (step3) step3.classList.add('hidden', 'opacity-0');
+                if (calContainer) calContainer.innerHTML = '';
+                if (leadForm) {
+                    leadForm.reset();
+                    const submitBtn = leadForm.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<iconify-icon icon="lucide:send" width="16" stroke-width="2"></iconify-icon> Solicitar Visita';
+                        submitBtn.disabled = false;
+                    }
+                }
+
                 setTimeout(() => {
                     leadModal.classList.add('pointer-events-none');
                 }, 300);
@@ -1396,22 +1438,66 @@
                 console.error("Error enviando datos al CRM:", error);
             }
 
-            // 2. Mostrar mensaje de éxito al usuario
-            submitBtn.innerHTML = '<iconify-icon icon="lucide:check-circle" width="16" stroke-width="2"></iconify-icon> ¡Solicitud Enviada con Éxito!';
-            submitBtn.classList.remove('bg-terracotta-500', 'hover:bg-terracotta-600', 'shadow-terracotta-500/30');
-            submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'shadow-green-600/30');
+            // 2. Hide Step 1 and Show Step 2 (Calendar)
+            const step1 = document.getElementById('modal-step-1');
+            const step2 = document.getElementById('modal-step-2');
             
-            // 3. Restaurar y cerrar después de 2.5 segundos
+            step1.classList.add('opacity-0');
             setTimeout(() => {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.classList.add('bg-terracotta-500', 'hover:bg-terracotta-600', 'shadow-terracotta-500/30');
-                submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'shadow-green-600/30');
-                submitBtn.disabled = false;
-                closeLeadModal();
-                leadForm.reset();
-            }, 2500);
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                
+                // Iniciar Cal.com con los datos pre-rellenados
+                if(window.CalApi) {
+                    window.CalApi("ui", {
+                        "styles":{"branding":{"brandColor":"#A0633B"}},
+                        "hideEventTypeDetails":true,
+                        "layout":"month_view"
+                    });
+                    
+                    window.CalApi("inline", {
+                        elementOrSelector: "#cal-embed-container",
+                        calLink: "decortmarucc/visita-showroom-movil",
+                        layout: "month_view",
+                        config: {
+                            name: nombre,
+                            email: email,
+                            notes: `Isla: ${isla}\nDirección: ${direccion}\nProducto: ${producto}\nVentanas: ${cantidad}\nMensaje: ${mensaje}`
+                        }
+                    });
+
+                    // Añadir Listener para cuando se complete la reserva
+                    window.CalApi("on", {
+                        action: "bookingSuccessful",
+                        callback: (e) => {
+                            // Pasar al Paso 3 (Confirmación)
+                            const step3 = document.getElementById('modal-step-3');
+                            step2.classList.add('opacity-0');
+                            setTimeout(() => {
+                                step2.classList.add('hidden');
+                                step3.classList.remove('hidden');
+                                setTimeout(() => {
+                                    step3.classList.remove('opacity-0');
+                                }, 50);
+                            }, 300);
+                        }
+                    });
+                }
+                
+                setTimeout(() => {
+                    step2.classList.remove('opacity-0');
+                }, 50);
+            }, 300);
         });
     </script>
 
+    <!-- Cal.com Script -->
+    <script type="module">
+        import { getCalApi } from "https://cal.com/embed.js";
+        getCalApi({ namespace: "visita" }).then((api) => {
+            window.CalApi = api;
+            api("ui", {"styles":{"branding":{"brandColor":"#A0633B"}},"hideEventTypeDetails":true,"layout":"month_view"});
+        }).catch((err) => console.error("Cal.com load error:", err));
+    </script>
 </body>
 </html>
