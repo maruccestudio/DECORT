@@ -1456,7 +1456,7 @@
 
                 // Inyectar Cal.com con su SDK inline
                 const calContainer = document.getElementById('cal-inline');
-                const notesText = `Isla: ${isla} | Dirección: ${direccion} | Producto: ${producto} | Ventanas: ${cantidad} | Mensaje: ${mensaje}`;
+                const notesText = mensaje !== 'Ninguno' ? mensaje : '';
 
                 Cal("inline", {
                     elementOrSelector: "#cal-inline",
@@ -1467,8 +1467,18 @@
                         email: email !== 'No especificado' ? email : undefined,
                         notes: notesText,
                         layout: "month_view",
-                        theme: "light"
+                        theme: "light",
+                        "metadata[isla]": isla,
+                        "metadata[direccion]": direccion,
+                        "metadata[producto]": producto,
+                        "metadata[ventanas]": cantidad
                     }
+                });
+
+                // Ocultar campo de notas para que el cliente no lo vea
+                Cal("ui", {
+                    styles: { branding: { brandColor: "#A0633B" } },
+                    hideEventTypeDetails: false
                 });
 
                 // Escuchar reserva completada
