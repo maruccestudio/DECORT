@@ -259,6 +259,23 @@
         ]
     }
     </script>
+    <!-- Meta Pixel Code -->
+    <!-- ⚠️ REEMPLAZA 'PIXEL_ID_AQUI' con tu ID real de Meta Business Manager -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body class="bg-arena-100 text-neutral-800 selection:bg-terracotta-500 selection:text-white overflow-x-hidden">
 
@@ -553,7 +570,7 @@
                     <iconify-icon icon="lucide:calendar" width="16" stroke-width="1.5"></iconify-icon>
                     Solicitar Visita Gratuita
                 </a>
-                <a href="tel:+34641354788" class="inline-flex items-center gap-2 px-6 py-3 border border-arena-400 hover:border-terracotta-500 text-neutral-600 hover:text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">
+                <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" class="inline-flex items-center gap-2 px-6 py-3 border border-arena-400 hover:border-terracotta-500 text-neutral-600 hover:text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">
                     <iconify-icon icon="lucide:phone" width="14" stroke-width="1.5"></iconify-icon>
                     Llamar ahora
                 </a>
@@ -921,10 +938,10 @@
                                 <iconify-icon icon="lucide:arrow-up-right" width="20" stroke-width="1.5" class="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></iconify-icon>
                             </a>
                             <div class="mt-6 flex flex-col gap-2">
-                                <a href="tel:+34641354788" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
+                                <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
                                     +34 641 35 47 88
                                 </a>
-                                <a href="tel:+34613525701" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
+                                <a href="tel:+34613525701" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" class="text-sm text-neutral-500 hover:text-terracotta-400 transition-colors font-body">
                                     +34 613 525 701
                                 </a>
                                 <span class="text-sm text-neutral-600 font-body">
@@ -941,7 +958,7 @@
                                 <a href="#" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
                                     <iconify-icon icon="lucide:facebook" width="18" stroke-width="1.5"></iconify-icon>
                                 </a>
-                                <a href="tel:+34641354788" aria-label="Llamar a DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                <a href="tel:+34641354788" aria-label="Llamar a DECORT MARUCC" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
                                     <iconify-icon icon="lucide:phone" width="18" stroke-width="1.5"></iconify-icon>
                                 </a>
                             </div>
@@ -970,7 +987,7 @@
     </section>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="whatsapp-float fixed bottom-6 right-6 z-[90] w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+    <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" class="whatsapp-float fixed bottom-6 right-6 z-[90] w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
         <iconify-icon icon="lucide:message-circle" width="26" stroke-width="1.5" class="text-white"></iconify-icon>
     </a>
 
@@ -1385,6 +1402,13 @@
                         fuente: 'Home'
                     })
                 });
+                // Meta Pixel: Lead generado
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: 'Solicitud Visita Showroom Móvil',
+                        content_category: 'Cortinas'
+                    });
+                }
             } catch (error) {
                 console.error("Error enviando datos al CRM:", error);
             }
