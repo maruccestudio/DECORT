@@ -74,7 +74,7 @@
     }
     </script>
     <!-- Meta Pixel Code -->
-    <!-- ⚠️ REEMPLAZA '1393091699169061' con tu ID real de Meta Business Manager -->
+    <!-- Meta Pixel - DECORT MARUCC -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -380,6 +380,9 @@
             leadModal.classList.remove('pointer-events-none');
             leadModal.classList.remove('opacity-0');
             setTimeout(() => { leadContent.classList.remove('scale-95', 'opacity-0'); }, 50);
+            if (typeof fbq !== 'undefined') {
+                fbq('trackCustom', 'OpenForm', { content_name: 'Solicitud Visita' });
+            }
         }
 
         function closeLeadModal() {
@@ -445,6 +448,14 @@
                 });
             } catch (error) {
                 console.error("Error enviando datos al CRM:", error);
+            }
+
+            // Meta Pixel: Lead generado
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Solicitud Visita – Cortinas Verticales',
+                    content_category: 'Cortinas'
+                });
             }
 
             // 2. Mostrar mensaje de éxito al usuario
