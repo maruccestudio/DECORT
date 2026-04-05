@@ -334,17 +334,17 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 text-neutral-800" id="main-nav" style="transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;">
-        <a href="#" onclick="scrollTo('#hero')" class="flex flex-col items-center cursor-pointer hover:opacity-70 transition-opacity w-32 md:w-40">
+        <a href="#" onclick="scrollToSection('#hero')" class="flex flex-col items-center cursor-pointer hover:opacity-70 transition-opacity w-32 md:w-40">
             <img src="public/images/logo_terracotta.png" alt="MARUCC" id="nav-logo" class="w-full h-auto mb-1.5 px-[2%]">
             <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-terracotta-500 whitespace-nowrap leading-none" id="nav-tagline">Showroom móvil de cortinas</span>
         </a>
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-[11px] font-medium tracking-widest uppercase font-body">
-            <button onclick="scrollTo('#colecciones')" class="hover:opacity-60 transition-opacity cursor-pointer">Colecciones</button>
-            <button onclick="scrollTo('#showroom')" class="hover:opacity-60 transition-opacity cursor-pointer">Showroom</button>
-            <button onclick="scrollTo('#nosotros')" class="hover:opacity-60 transition-opacity cursor-pointer">Nosotros</button>
-            <button onclick="scrollTo('#contacto')" class="hover:opacity-60 transition-opacity cursor-pointer">Contacto</button>
+            <button onclick="scrollToSection('#colecciones')" class="hover:opacity-60 transition-opacity cursor-pointer">Colecciones</button>
+            <button onclick="scrollToSection('#showroom')" class="hover:opacity-60 transition-opacity cursor-pointer">Showroom</button>
+            <button onclick="scrollToSection('#nosotros')" class="hover:opacity-60 transition-opacity cursor-pointer">Nosotros</button>
+            <button onclick="scrollToSection('#contacto')" class="hover:opacity-60 transition-opacity cursor-pointer">Contacto</button>
         </div>
 
         <!-- Mobile Menu Trigger -->
@@ -357,10 +357,10 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-neutral-900 text-arena-100 flex flex-col justify-center items-center gap-8 -translate-y-full transition-transform duration-500 ease-in-out font-display">
-        <button onclick="closeMobileMenu(); scrollTo('#colecciones')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Colecciones</button>
-        <button onclick="closeMobileMenu(); scrollTo('#showroom')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Showroom</button>
-        <button onclick="closeMobileMenu(); scrollTo('#nosotros')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Nosotros</button>
-        <button onclick="closeMobileMenu(); scrollTo('#contacto')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Contacto</button>
+        <button onclick="closeMobileMenu(); scrollToSection('#colecciones')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Colecciones</button>
+        <button onclick="closeMobileMenu(); scrollToSection('#showroom')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Showroom</button>
+        <button onclick="closeMobileMenu(); scrollToSection('#nosotros')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Nosotros</button>
+        <button onclick="closeMobileMenu(); scrollToSection('#contacto')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Contacto</button>
         
         <button id="close-mobile-menu" class="absolute top-6 right-6 p-4 text-arena-100/50 hover:text-arena-100 transition-colors">
             <iconify-icon icon="lucide:x" width="32"></iconify-icon>
@@ -384,7 +384,7 @@
                 <p class="text-xs md:text-sm font-normal leading-relaxed text-neutral-500 max-w-xs tracking-wide mb-8 font-body">
                     Llevamos el showroom a tu villa. 45 minutos, tejidos reales, tu luz — no una tienda bajo fluorescentes.
                 </p>
-                <button onclick="scrollTo('#colecciones')" class="group inline-flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest border-b border-arena-400 pb-1 transition-colors hover:border-terracotta-500 hover:text-terracotta-600 cursor-pointer font-body">
+                <button onclick="scrollToSection('#colecciones')" class="group inline-flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest border-b border-arena-400 pb-1 transition-colors hover:border-terracotta-500 hover:text-terracotta-600 cursor-pointer font-body">
                     Ver Colecciones
                     <iconify-icon icon="lucide:arrow-down" width="14" stroke-width="1.5" class="group-hover:translate-y-0.5 transition-transform"></iconify-icon>
                 </button>
@@ -1077,7 +1077,7 @@
     </a>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top-btn" onclick="scrollTo('#hero')" aria-label="Volver arriba" class="fixed bottom-6 right-24 z-[90] w-11 h-11 bg-neutral-900/80 hover:bg-terracotta-500 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer border border-neutral-700/50">
+    <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="fixed bottom-6 right-24 z-[90] w-11 h-11 bg-neutral-900/80 hover:bg-terracotta-500 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer border border-neutral-700/50">
         <iconify-icon icon="lucide:arrow-up" width="18" stroke-width="1.5" class="text-arena-100"></iconify-icon>
     </button>
 
@@ -1226,7 +1226,7 @@
     <!-- Scripts -->
     <script>
         // --- Smooth Scroll nativo ---
-        function scrollTo(selector) {
+        function scrollToSection(selector) {
             const el = document.querySelector(selector);
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
