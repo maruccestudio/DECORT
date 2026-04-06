@@ -1512,42 +1512,14 @@
             const mensaje = document.getElementById('lead-mensaje').value.trim() || 'Ninguno';
 
             // Generar piezas del ID: prefijo isla + año + 3 alfanuméricos aleatorios
-            // Make.com asignará el número secuencial → ID final: IB26-005-K9P
             const prefijos = { 'Mallorca': 'MA', 'Menorca': 'ME', 'Ibiza': 'IB', 'Formentera': 'FO' };
             const prefijo = prefijos[isla] || 'XX';
             const ano = String(new Date().getFullYear()).slice(-2);
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             const uid = Array.from({length: 3}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 
-            // 1. Enviar datos a Make.com silenciosamente
-            try {
-                const makeWebhookUrl = 'https://hook.eu1.make.com/lvugka46o3im9e80vyl45p4rell3sw34';
-                await fetch(makeWebhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        prefijo_isla: prefijo,
-                        ano: ano,
-                        uid: uid,
-                        fecha: new Date().toISOString(),
-                        nombre: nombre,
-                        telefono: telefono,
-                        email: email,
-                        isla: isla,
-                        direccion: direccion,
-                        producto: producto,
-                        ventanas: cantidad,
-                        mensaje: mensaje,
-                        fuente: 'Home'
-                    })
-                });
-            } catch (error) {
-                console.error("Error enviando datos al CRM:", error);
-            }
-
-            // 2. Mostrar Step 2 con calendario Cal.com inline
+            // 1. Mostrar Step 2 con calendario Cal.com inline
+            // (el lead se crea en Make.com SOLO cuando Cal.com confirme la cita)
             const step1 = document.getElementById('modal-step-1');
             const step2 = document.getElementById('modal-step-2');
             const modalContent = document.getElementById('lead-modal-content');
@@ -1562,7 +1534,6 @@
                 modalContent.classList.add('max-w-4xl');
 
                 // Inyectar Cal.com con su SDK inline
-                const calContainer = document.getElementById('cal-inline');
                 const notesText = mensaje !== 'Ninguno' ? mensaje : '';
 
                 Cal("inline", {
@@ -1585,16 +1556,39 @@
                     }
                 });
 
-                // Ocultar campo de notas para que el cliente no lo vea
                 Cal("ui", {
                     styles: { branding: { brandColor: "#A0633B" } },
                     hideEventTypeDetails: false
                 });
 
-                // Escuchar reserva completada
+                // 2. Enviar a Make.com SOLO cuando Cal.com confirma la cita
                 Cal("on", {
                     action: "bookingSuccessful",
-                    callback: () => {
+                    callback: async () => {
+                        try {
+                            await fetch('https://hook.eu1.make.com/lvugka46o3im9e80vyl45p4rell3sw34', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    prefijo_isla: prefijo,
+                                    ano: ano,
+                                    uid: uid,
+                                    fecha: new Date().toISOString(),
+                                    nombre: nombre,
+                                    telefono: telefono,
+                                    email: email,
+                                    isla: isla,
+                                    direccion: direccion,
+                                    producto: producto,
+                                    ventanas: cantidad,
+                                    mensaje: mensaje,
+                                    fuente: 'Home'
+                                })
+                            });
+                        } catch (error) {
+                            console.error("Error enviando datos al CRM:", error);
+                        }
+
                         const step3 = document.getElementById('modal-step-3');
                         step2.style.opacity = '0';
                         setTimeout(() => {
