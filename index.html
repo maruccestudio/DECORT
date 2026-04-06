@@ -1430,9 +1430,6 @@
             setTimeout(() => {
                 leadContent.classList.remove('scale-95', 'opacity-0');
             }, 50);
-            if (typeof fbq !== 'undefined') {
-                fbq('trackCustom', 'OpenForm', { content_name: 'Solicitud Visita' });
-            }
         }
 
         function closeLeadModal() {
@@ -1522,13 +1519,6 @@
                         fuente: 'Home'
                     })
                 });
-                // Meta Pixel: Lead generado
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead', {
-                        content_name: 'Solicitud Visita Showroom Móvil',
-                        content_category: 'Cortinas'
-                    });
-                }
             } catch (error) {
                 console.error("Error enviando datos al CRM:", error);
             }
