@@ -501,6 +501,8 @@
             leadModal.classList.remove('pointer-events-none');
             leadModal.classList.remove('opacity-0');
             setTimeout(() => { leadContent.classList.remove('scale-95', 'opacity-0'); }, 50);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'open_lead_modal' });
         }
 
         function closeLeadModal() {
