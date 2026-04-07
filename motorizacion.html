@@ -376,8 +376,10 @@
                 <h3 class="text-3xl font-light font-display tracking-tight mb-2 relative z-10">Solicita tu visita</h3>
                 <p class="text-sm text-terracotta-50 relative z-10 font-body font-light">Completa tus datos para agilizar nuestro servicio a tu hogar.</p>
             </div>
-            <div class="px-6 py-6 md:p-8 overflow-y-auto no-scrollbar">
-                <form id="lead-form" class="space-y-4 md:space-y-6">
+            <div class="px-5 py-4 md:px-7 md:py-5 scrollbar-thin relative" style="overflow-y:auto; flex:1 1 0%; min-height:0;">
+                <!-- STEP 1: Formulario -->
+                <div id="modal-step-1" class="transition-opacity duration-300">
+                    <form id="lead-form" class="space-y-4 md:space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="lead-nombre" class="block text-[11px] uppercase tracking-widest font-semibold text-neutral-500 mb-2">Nombre y Apellidos *</label>
@@ -457,6 +459,23 @@
                         </button>
                     </div>
                 </form>
+                </div>
+                <!-- STEP 2: Calendario Cal.com inline -->
+                <div id="modal-step-2" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col">
+                    <p class="text-xs text-neutral-500 font-medium mb-3 text-center">Elige el día y la franja horaria. Recibirás confirmación por email en 24–48 horas.</p>
+                    <div id="cal-inline" style="width:100%; min-height:400px;"></div>
+                </div>
+                <!-- STEP 3: Confirmación Final -->
+                <div id="modal-step-3" style="display:none; opacity:0;" class="transition-opacity duration-300 flex flex-col items-center justify-center py-10 text-center">
+                    <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-5">
+                        <iconify-icon icon="lucide:check" width="28" class="text-green-600"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-display font-medium text-neutral-800 mb-3">¡Visita Reservada!</h4>
+                    <p class="text-sm text-neutral-500 font-body max-w-sm mb-4 leading-relaxed">Tu visita ha quedado registrada. Recibirás confirmación por email en 24–48 horas.</p>
+                    <p class="text-[11px] text-neutral-400 font-body mb-5">¿Dudas? Escríbenos a <a href="mailto:decort@marucc.com" class="text-terracotta-500 hover:underline">decort@marucc.com</a></p>
+                    <button type="button" onclick="closeLeadModal()" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-arena-200 hover:bg-arena-300 text-neutral-700 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">Cerrar</button>
+                </div>
+                <div class="sticky bottom-0 h-8 bg-gradient-to-t from-arena-50 to-transparent pointer-events-none -mx-6 md:-mx-8 mt-2"></div>
             </div>
         </div>
     </div>
@@ -485,6 +504,18 @@
                 leadModal.classList.add('opacity-0');
                 setTimeout(() => { leadModal.classList.add('pointer-events-none'); }, 300);
             }, 200);
+            // Reset steps
+            const step1 = document.getElementById('modal-step-1');
+            const step2 = document.getElementById('modal-step-2');
+            const step3 = document.getElementById('modal-step-3');
+            const calInline = document.getElementById('cal-inline');
+            const modalContent = document.getElementById('lead-modal-content');
+            if (step1) { step1.style.display = ''; step1.style.opacity = ''; }
+            if (step2) { step2.style.display = 'none'; step2.style.opacity = '0'; }
+            if (step3) { step3.style.display = 'none'; step3.style.opacity = '0'; }
+            if (calInline) calInline.innerHTML = '';
+            modalContent.classList.remove('max-w-4xl');
+            modalContent.classList.add('max-w-2xl');
         }
 
         openModalBtns.forEach(btn => btn.addEventListener('click', openLeadModal));
@@ -493,8 +524,8 @@
 
         leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
             const submitBtn = leadForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<iconify-icon icon="lucide:loader-2" class="animate-spin"></iconify-icon> Procesando...';
             submitBtn.disabled = true;
 
@@ -515,35 +546,89 @@
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             const uid = Array.from({length: 3}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 
-            try {
-                const makeWebhookUrl = 'https://hook.eu1.make.com/lvugka46o3im9e80vyl45p4rell3sw34';
-                await fetch(makeWebhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        prefijo_isla: prefijo, ano: ano, uid: uid,
-                        fecha: new Date().toISOString(), nombre, telefono, email,
-                        isla, direccion, producto, ventanas: cantidad, mensaje,
-                        fuente: 'Motorizacion'
-                    })
-                });
-            } catch (error) {
-                console.error("Error enviando datos al CRM:", error);
-            }
+            // Mostrar Step 2 con Cal.com (Make.com se dispara SOLO en bookingSuccessful)
+            const step1 = document.getElementById('modal-step-1');
+            const step2 = document.getElementById('modal-step-2');
+            const modalContent = document.getElementById('lead-modal-content');
 
-            submitBtn.innerHTML = '<iconify-icon icon="lucide:check-circle" width="16" stroke-width="2"></iconify-icon> ¡Solicitud Enviada con Éxito!';
-            submitBtn.classList.remove('bg-terracotta-500', 'hover:bg-terracotta-600', 'shadow-terracotta-500/30');
-            submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'shadow-green-600/30');
-
+            step1.style.opacity = '0';
             setTimeout(() => {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.classList.add('bg-terracotta-500', 'hover:bg-terracotta-600', 'shadow-terracotta-500/30');
-                submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'shadow-green-600/30');
-                submitBtn.disabled = false;
-                closeLeadModal();
-                leadForm.reset();
-            }, 2500);
+                step1.style.display = 'none';
+                step2.style.display = 'flex';
+                modalContent.classList.remove('max-w-2xl');
+                modalContent.classList.add('max-w-4xl');
+
+                const notesText = mensaje !== 'Ninguno' ? mensaje : '';
+                Cal("inline", {
+                    elementOrSelector: "#cal-inline",
+                    calLink: "decortmarucc/visita-showroom-movil",
+                    calOrigin: "https://cal.eu",
+                    config: {
+                        name: nombre,
+                        email: email !== 'No especificado' ? email : undefined,
+                        notes: notesText,
+                        layout: "month_view",
+                        theme: "light",
+                        "metadata[isla]": isla,
+                        "metadata[direccion]": direccion,
+                        "metadata[producto]": producto,
+                        "metadata[ventanas]": cantidad,
+                        "metadata[prefijo_isla]": prefijo,
+                        "metadata[ano]": ano,
+                        "metadata[uid]": uid
+                    }
+                });
+
+                Cal("ui", {
+                    styles: { branding: { brandColor: "#A0633B" } },
+                    hideEventTypeDetails: false
+                });
+
+                Cal("on", {
+                    action: "bookingSuccessful",
+                    callback: async () => {
+                        try {
+                            await fetch('https://hook.eu1.make.com/lvugka46o3im9e80vyl45p4rell3sw34', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    prefijo_isla: prefijo,
+                                    ano: ano,
+                                    uid: uid,
+                                    fecha: new Date().toISOString(),
+                                    nombre: nombre,
+                                    telefono: telefono,
+                                    email: email,
+                                    isla: isla,
+                                    direccion: direccion,
+                                    producto: producto,
+                                    ventanas: cantidad,
+                                    mensaje: mensaje,
+                                    fuente: 'Motorizacion'
+                                })
+                            });
+                        } catch (error) {
+                            console.error("Error enviando datos al CRM:", error);
+                        }
+                        const step3 = document.getElementById('modal-step-3');
+                        step2.style.opacity = '0';
+                        setTimeout(() => {
+                            step2.style.display = 'none';
+                            step3.style.display = 'flex';
+                            setTimeout(() => { step3.style.opacity = '1'; }, 50);
+                        }, 300);
+                    }
+                });
+
+                setTimeout(() => { step2.style.opacity = '1'; }, 50);
+            }, 300);
         });
+    </script>
+
+    <!-- Cal.com Embed SDK -->
+    <script>
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", {origin:"https://cal.eu"});
     </script>
 </body>
 </html>
