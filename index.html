@@ -1176,8 +1176,11 @@
         </div>
     </section>
 
-    <!-- Floating Contact Buttons -->
-    <div class="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-2">
+    <!-- Floating Buttons -->
+    <div class="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-2.5">
+        <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition-all duration-300 hover:scale-110 cursor-pointer">
+            <iconify-icon icon="lucide:arrow-up" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
+        </button>
         <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" aria-label="Llamar a DECORT MARUCC" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition-all duration-300 hover:scale-110">
             <iconify-icon icon="lucide:phone" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
         </a>
@@ -1185,11 +1188,6 @@
             <iconify-icon icon="lucide:message-circle" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
         </a>
     </div>
-
-    <!-- Scroll to Top Button -->
-    <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="fixed bottom-24 right-5 z-[90] w-10 h-10 bg-neutral-900/80 hover:bg-terracotta-500 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer border border-neutral-700/50">
-        <iconify-icon icon="lucide:arrow-up" width="16" stroke-width="1.5" class="text-arena-100"></iconify-icon>
-    </button>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[100] transform translate-y-full opacity-0 transition-all duration-500 ease-in-out font-body p-4 md:p-6">
