@@ -1176,14 +1176,41 @@
         </div>
     </section>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" onclick="if(typeof fbq!=='undefined') fbq('track','Contact');" class="whatsapp-float fixed bottom-6 right-6 z-[90] w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
-        <iconify-icon icon="lucide:message-circle" width="26" stroke-width="1.5" class="text-white"></iconify-icon>
-    </a>
+    <!-- Floating CTA Bar -->
+    <div class="fixed bottom-5 left-0 right-0 z-[90] flex justify-center px-4 pointer-events-none" id="floating-cta">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full max-w-sm pointer-events-auto">
+
+            <!-- Llamar -->
+            <a href="tel:+34641354788"
+               onclick="if(typeof fbq!=='undefined') fbq('track','Contact');"
+               aria-label="Llamar a DECORT MARUCC"
+               class="flex items-center justify-center gap-2.5 px-5 py-3.5 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-2xl text-white transition-all duration-300 hover:scale-[1.02] shadow-lg border border-white/10 group">
+                <iconify-icon icon="lucide:phone" width="17" stroke-width="1.5" class="text-terracotta-400 group-hover:text-white flex-shrink-0"></iconify-icon>
+                <div class="flex flex-col leading-tight">
+                    <span class="text-[10px] font-medium uppercase tracking-widest text-neutral-400 group-hover:text-white/70">Llamar ahora</span>
+                    <span class="text-sm font-semibold tracking-wide">641 35 47 88</span>
+                </div>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida"
+               target="_blank" rel="noopener noreferrer"
+               onclick="if(typeof fbq!=='undefined') fbq('track','Contact');"
+               aria-label="Pedir presupuesto por WhatsApp"
+               class="whatsapp-float flex items-center justify-center gap-2.5 px-5 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] rounded-2xl text-white transition-all duration-300 hover:scale-[1.02] shadow-lg group">
+                <iconify-icon icon="lucide:message-circle" width="17" stroke-width="1.5" class="flex-shrink-0"></iconify-icon>
+                <div class="flex flex-col leading-tight">
+                    <span class="text-[10px] font-medium uppercase tracking-widest text-white/70">WhatsApp</span>
+                    <span class="text-sm font-semibold">Pedir presupuesto</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="fixed bottom-6 right-24 z-[90] w-11 h-11 bg-neutral-900/80 hover:bg-terracotta-500 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer border border-neutral-700/50">
-        <iconify-icon icon="lucide:arrow-up" width="18" stroke-width="1.5" class="text-arena-100"></iconify-icon>
+    <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="fixed bottom-24 right-4 z-[90] w-10 h-10 bg-neutral-900/80 hover:bg-terracotta-500 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer border border-neutral-700/50">
+        <iconify-icon icon="lucide:arrow-up" width="16" stroke-width="1.5" class="text-arena-100"></iconify-icon>
     </button>
 
     <!-- Cookie Banner -->
