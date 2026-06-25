@@ -17,12 +17,9 @@ DECORT MARUCC es un showroom movil de cortinas, estores y persianas a medida que
 - Cortinas confeccionadas (pliegues, onda perfecta, visillos)
 - Persianas venecianas (madera y aluminio)
 - Paneles japoneses (division de ambientes y ventanales grandes)
-- Motorizacion y domotica (Somfy, compatible con Alexa, Google Home, Apple HomeKit, KNX)
+- Motorizacion y domotica (compatible con Alexa, Google Home, Apple HomeKit, KNX)
 - Servicio para arquitectos e interioristas (canal profesional B2B)
 - Servicio para hoteles y hosteleria (tejidos ignifugos, instalacion fuera de temporada)
-
-## Marcas con las que trabaja
-Silent Gliss, Hunter Douglas, Bandalux, Saxun, Somfy.
 
 ## Zona de servicio
 Islas Baleares: Mallorca (Palma, Son Vida, Puerto Portals, Andratx, Calvia, Santa Ponsa, Marratxi, Soller, Pollenca), Menorca, Ibiza y Formentera.
@@ -46,7 +43,6 @@ Leandro Orellano — arquitecto y fundador de MARUCC estudio de arquitectura y D
 - Showroom movil: el muestrario completo se lleva al domicilio del cliente.
 - Medicion laser: precision milimetrica sin margen de error.
 - Presupuesto en 24h: agilidad en la respuesta comercial.
-- Marcas premium europeas: Silent Gliss (Suiza), Hunter Douglas (Paises Bajos), Bandalux (Espana).
 - Cobertura en las 4 islas: Mallorca, Menorca, Ibiza y Formentera.
 - Canal profesional para arquitectos e interioristas con condiciones especiales.
 - Servicio especializado para hosteleria con tejidos certificados ignifugos.
