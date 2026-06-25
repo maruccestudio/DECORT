@@ -1454,16 +1454,6 @@
                 });
             }
         }
-        // Hide floating buttons while hero is visible
-        var floatingBtns=document.getElementById('floating-btns');
-        var hero=document.getElementById('hero');
-        if(floatingBtns&&hero){
-            var obs=new IntersectionObserver(function(entries){
-                floatingBtns.style.opacity=entries[0].isIntersecting?'0':'1';
-                floatingBtns.style.pointerEvents=entries[0].isIntersecting?'none':'auto';
-            },{threshold:0.1});
-            obs.observe(hero);
-        }
     })();
     </script>
 </body>
