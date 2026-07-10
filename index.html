@@ -366,7 +366,7 @@
     <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 text-neutral-800" id="main-nav" style="transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s, color 0.3s;">
         <a href="#" onclick="scrollToSection('#hero')" class="flex flex-col items-center cursor-pointer hover:opacity-70 transition-opacity w-32 md:w-40">
             <img src="public/images/logo_terracotta.png" alt="MARUCC" id="nav-logo" class="w-full h-auto mb-1.5 px-[2%]">
-            <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-terracotta-500 whitespace-nowrap leading-none" id="nav-tagline">Showroom móvil de cortinas</span>
+            <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-neutral-900 whitespace-nowrap leading-none" id="nav-tagline">Showroom móvil de cortinas</span>
         </a>
         
         <!-- Desktop Menu -->
@@ -1391,7 +1391,7 @@
                 mainNav.style.boxShadow = '0 1px 2px rgba(0,0,0,0.05)';
                 mainNav.style.color = '';
                 navLogo.src = 'public/images/logo_terracotta.png';
-                navTagline.style.color = '#A0633B';
+                navTagline.style.color = '#1a1a1a';
             } else {
                 // Top — transparente
                 mainNav.style.backgroundColor = '';
@@ -1401,7 +1401,7 @@
                 // Sin fondo — logo y texto siempre oscuros (neblina clara)
                 mainNav.style.color = '';
                 navLogo.src = 'public/images/logo_terracotta.png';
-                navTagline.style.color = '#A0633B';
+                navTagline.style.color = '#1a1a1a';
             }
         }
         window.addEventListener('scroll', updateNav);
