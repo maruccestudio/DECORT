@@ -413,14 +413,14 @@
             class="hero-video absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
             style="z-index: -15; filter: brightness(1) saturate(0.85);"
             autoplay muted loop playsinline aria-hidden="true" preload="metadata">
-            <source src="public/videos/portada ordenador_gwr_video_mvp.mp4" type="video/mp4">
+            <source src="public/videos/hero-desktop.mp4" type="video/mp4">
         </video>
         <!-- Video móvil (vertical, solo mobile) -->
         <video id="hero-video-mobile"
             class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
             style="z-index: -15; filter: brightness(1) saturate(0.85);"
             autoplay muted loop playsinline aria-hidden="true" preload="metadata">
-            <source src="public/videos/Create_a_vertical_cinematic_vi_gwr_video_mvp.mp4" type="video/mp4">
+            <source src="public/videos/hero-mobile.mp4" type="video/mp4">
         </video>
 
         <div class="hero-overlay absolute inset-0 pointer-events-none" style="z-index: -14; background: rgba(255,255,255,0.45);" aria-hidden="true"></div>
@@ -1419,31 +1419,6 @@
         window.addEventListener('resize', updateNav);
         updateNav();
 
-        // --- Boomerang: video avanza y retrocede en bucle ---
-        function setupBoomerang(videoEl) {
-            if (!videoEl) return;
-            videoEl.removeAttribute('loop');
-            let goingBack = false;
-            let timer = null;
-
-            videoEl.addEventListener('ended', function () {
-                goingBack = true;
-                stepBack();
-            });
-
-            function stepBack() {
-                if (videoEl.currentTime <= 0.05) {
-                    goingBack = false;
-                    videoEl.play();
-                    return;
-                }
-                videoEl.currentTime = Math.max(0, videoEl.currentTime - 0.05);
-                timer = setTimeout(stepBack, 50);
-            }
-        }
-
-        setupBoomerang(document.getElementById('hero-video'));
-        setupBoomerang(document.getElementById('hero-video-mobile'));
 
         // Dots canvas removed — element no longer in DOM
 
