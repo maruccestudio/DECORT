@@ -1397,17 +1397,10 @@
                 mainNav.style.backdropFilter = '';
                 mainNav.style.borderBottom = '';
                 mainNav.style.boxShadow = '';
-                if (isDesktop()) {
-                    // Con video: logo claro y texto blanco
-                    mainNav.style.color = 'white';
-                    navLogo.src = 'public/images/logo_light.png';
-                    navTagline.style.color = 'white';
-                } else {
-                    // Sin video (móvil): logo terracotta y texto oscuro
-                    mainNav.style.color = '';
-                    navLogo.src = 'public/images/logo_terracotta.png';
-                    navTagline.style.color = '#A0633B';
-                }
+                // Sin fondo — logo y texto siempre oscuros (neblina clara)
+                mainNav.style.color = '';
+                navLogo.src = 'public/images/logo_terracotta.png';
+                navTagline.style.color = '#A0633B';
             }
         }
         window.addEventListener('scroll', updateNav);
