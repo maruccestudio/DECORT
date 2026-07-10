@@ -110,6 +110,19 @@
             transform: translateY(0);
         }
 
+        /* Hero video — solo desktop */
+        #hero-video, .hero-overlay, .hero-gradient {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            #hero-video, .hero-overlay, .hero-gradient {
+                display: block;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #hero-video { display: none !important; }
+        }
+
         /* WhatsApp floating button */
         .whatsapp-float {
             animation: whatsapp-pulse 2s ease-in-out infinite;
@@ -347,7 +360,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 text-neutral-800" id="main-nav" style="transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;">
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 text-neutral-800" id="main-nav" style="transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s, color 0.3s;">
         <a href="#" onclick="scrollToSection('#hero')" class="flex flex-col items-center cursor-pointer hover:opacity-70 transition-opacity w-32 md:w-40">
             <img src="public/images/logo_terracotta.png" alt="MARUCC" id="nav-logo" class="w-full h-auto mb-1.5 px-[2%]">
             <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-terracotta-500 whitespace-nowrap leading-none" id="nav-tagline">Showroom móvil de cortinas</span>
@@ -389,6 +402,16 @@
     <!-- Hero Section -->
     <header id="hero" class="h-[100dvh] flex flex-col w-full px-6 md:px-12 relative overflow-hidden">
         
+        <!-- Video de fondo (solo desktop) -->
+        <video id="hero-video"
+            class="hero-video absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+            style="z-index: -15; filter: brightness(1) saturate(0.85);"
+            autoplay muted loop playsinline aria-hidden="true" preload="metadata">
+            <source src="public/videos/portada ordenador.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay absolute inset-0 pointer-events-none" style="z-index: -14; background: rgba(255,255,255,0.45);" aria-hidden="true"></div>
+        <div class="hero-gradient absolute top-0 left-0 w-full pointer-events-none" style="z-index: -13; height: 160px; background: linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 100%);" aria-hidden="true"></div>
+
         <!-- Background Elements -->
         <div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-terracotta-100 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 -z-20 opacity-30"></div>
         <div class="absolute bottom-0 left-0 w-[30vw] h-[30vw] bg-arena-300 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 -z-20 opacity-40"></div>
@@ -1352,21 +1375,43 @@
 
         // --- Nav scroll behavior ---
         const mainNav = document.getElementById('main-nav');
+        const navLogo = document.getElementById('nav-logo');
+        const navTagline = document.getElementById('nav-tagline');
+        const isDesktop = () => window.innerWidth >= 768;
 
         function updateNav() {
             if (window.scrollY > 80) {
+                // Scrolled — fondo crema, texto oscuro
                 mainNav.style.backgroundColor = 'rgba(250, 247, 242, 0.95)';
                 mainNav.style.backdropFilter = 'blur(12px)';
                 mainNav.style.borderBottom = '1px solid rgba(224, 213, 192, 0.5)';
                 mainNav.style.boxShadow = '0 1px 2px rgba(0,0,0,0.05)';
+                mainNav.style.color = '';
+                if (isDesktop()) {
+                    navLogo.src = 'public/images/logo_terracotta.png';
+                    navTagline.style.color = '#A0633B';
+                }
             } else {
+                // Top — transparente
                 mainNav.style.backgroundColor = '';
                 mainNav.style.backdropFilter = '';
                 mainNav.style.borderBottom = '';
                 mainNav.style.boxShadow = '';
+                if (isDesktop()) {
+                    // Con video: logo claro y texto blanco
+                    mainNav.style.color = 'white';
+                    navLogo.src = 'public/images/logo_light.png';
+                    navTagline.style.color = 'white';
+                } else {
+                    // Sin video (móvil): logo terracotta y texto oscuro
+                    mainNav.style.color = '';
+                    navLogo.src = 'public/images/logo_terracotta.png';
+                    navTagline.style.color = '#A0633B';
+                }
             }
         }
         window.addEventListener('scroll', updateNav);
+        window.addEventListener('resize', updateNav);
         updateNav();
 
         // Dots canvas removed — element no longer in DOM
