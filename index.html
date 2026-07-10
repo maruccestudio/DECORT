@@ -110,6 +110,11 @@
             transform: translateY(0);
         }
 
+        /* Hero video background */
+        @media (prefers-reduced-motion: reduce) {
+            #hero-video { display: none; }
+        }
+
         /* WhatsApp floating button */
         .whatsapp-float {
             animation: whatsapp-pulse 2s ease-in-out infinite;
@@ -347,10 +352,10 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 text-neutral-800" id="main-nav" style="transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;">
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-5 md:px-12 md:py-6 text-white" id="main-nav" style="transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s, color 0.3s;">
         <a href="#" onclick="scrollToSection('#hero')" class="flex flex-col items-center cursor-pointer hover:opacity-70 transition-opacity w-32 md:w-40">
-            <img src="public/images/logo_terracotta.png" alt="MARUCC" id="nav-logo" class="w-full h-auto mb-1.5 px-[2%]">
-            <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-terracotta-500 whitespace-nowrap leading-none" id="nav-tagline">Showroom móvil de cortinas</span>
+            <img src="public/images/logo_light.png" alt="MARUCC" id="nav-logo" class="w-full h-auto mb-1.5 px-[2%]">
+            <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-white whitespace-nowrap leading-none" id="nav-tagline">Showroom móvil de cortinas</span>
         </a>
         
         <!-- Desktop Menu -->
@@ -393,6 +398,21 @@
         <div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-terracotta-100 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 -z-20 opacity-30"></div>
         <div class="absolute bottom-0 left-0 w-[30vw] h-[30vw] bg-arena-300 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 -z-20 opacity-40"></div>
 
+        <!-- Gradiente superior para legibilidad del nav -->
+        <div class="absolute top-0 left-0 w-full h-40 pointer-events-none" style="z-index: -13; background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 100%);" aria-hidden="true"></div>
+
+        <!-- Hero Video Background -->
+        <video id="hero-video"
+            class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+            style="z-index: -15; filter: brightness(0.8) saturate(0.7);"
+            autoplay muted loop playsinline
+            aria-hidden="true"
+            preload="metadata">
+            <source src="public/videos/portada ordenador.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay para legibilidad del texto -->
+        <div class="absolute inset-0 bg-white/85 pointer-events-none" style="z-index: -14;" aria-hidden="true"></div>
+
         <!-- Top Spacer -->
         <div class="pt-24 md:pt-20 md:flex-grow"></div>
 
@@ -418,16 +438,16 @@
                             641 35 47 88
                         </a>
                     </div>
-                    <p class="text-[11px] text-neutral-400 font-body">Gratis · Sin compromiso · Respuesta rápida</p>
+                    <p class="text-[11px] text-white/70 font-body">Gratis · Sin compromiso · Respuesta rápida</p>
                 </div>
             </div>
 
             <!-- Descripción + Ver colecciones — móvil: tercero y centrado / desktop: izquierda -->
             <div class="order-3 md:order-1 w-full md:w-auto text-center md:text-left reveal-text flex flex-col items-center md:items-start">
-                <p class="text-xs md:text-sm font-normal leading-relaxed text-neutral-500 max-w-xs tracking-wide mb-6 font-body">
+                <p class="text-xs md:text-sm font-normal leading-relaxed text-white max-w-xs tracking-wide mb-6 font-body">
                     Llevamos el showroom a tu casa. 45 minutos, tejidos reales, tu luz — no una tienda bajo fluorescentes.
                 </p>
-                <button onclick="scrollToSection('#colecciones')" class="group inline-flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest border-b border-arena-400 pb-1 transition-colors hover:border-terracotta-500 hover:text-terracotta-600 cursor-pointer font-body">
+                <button onclick="scrollToSection('#colecciones')" class="group inline-flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest border-b border-white/60 pb-1 transition-colors hover:border-white text-white cursor-pointer font-body">
                     Ver Colecciones
                     <iconify-icon icon="lucide:arrow-down" width="14" stroke-width="1.5" class="group-hover:translate-y-0.5 transition-transform"></iconify-icon>
                 </button>
@@ -454,16 +474,16 @@
         <div class="hidden md:flex w-full py-6 justify-between items-center reveal-text delay-200">
             <div class="flex gap-12">
                  <div class="hidden md:block">
-                    <span class="text-xs font-medium flex items-center gap-2 font-body">
-                        <span class="w-2 h-2 bg-terracotta-500 rounded-full animate-pulse-warm"></span>
+                    <span class="text-xs font-medium flex items-center gap-2 font-body text-white">
+                        <span class="w-2 h-2 bg-terracotta-400 rounded-full animate-pulse-warm"></span>
                         Showroom Móvil disponible
                     </span>
-                    <span class="hidden md:inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase font-body px-3 py-1 rounded-full bg-oliva-100 text-oliva-600 border border-oliva-200">
+                    <span class="hidden md:inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase font-body px-3 py-1 rounded-full bg-white/20 text-white border border-white/30">
                         Baleares
                     </span>
                  </div>
             </div>
-            <div class="text-[10px] text-neutral-400 uppercase tracking-widest animate-pulse font-body pr-20 md:pr-24">
+            <div class="text-[10px] text-white/60 uppercase tracking-widest animate-pulse font-body pr-20 md:pr-24">
                 DESPLAZA PARA EXPLORAR
             </div>
         </div>
@@ -1303,7 +1323,7 @@
     </section>
 
     <!-- Floating Buttons -->
-    <div id="floating-btns" class="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-2.5 transition-opacity duration-300">
+    <div id="floating-btns" class="fixed bottom-6 left-5 z-[90] flex flex-col items-start gap-2.5 transition-opacity duration-300">
         <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition-all duration-300 hover:scale-110 cursor-pointer">
             <iconify-icon icon="lucide:arrow-up" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
         </button>
@@ -1311,7 +1331,7 @@
             <a href="tel:+34641354788" id="phone-float-btn" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" aria-label="Llamar a DECORT MARUCC" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition-all duration-300 hover:scale-110">
                 <iconify-icon icon="lucide:phone" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
             </a>
-            <div id="phone-tooltip" style="display:none;position:absolute;right:52px;top:50%;transform:translateY(-50%);background:#111827;color:white;font-size:11px;font-weight:500;padding:7px 14px;border-radius:10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);pointer-events:none;font-family:Inter,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.3);">+34 641 35 47 88</div>
+            <div id="phone-tooltip" style="display:none;position:absolute;left:52px;top:50%;transform:translateY(-50%);background:#111827;color:white;font-size:11px;font-weight:500;padding:7px 14px;border-radius:10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);pointer-events:none;font-family:Inter,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.3);">+34 641 35 47 88</div>
         </div>
         <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" aria-label="WhatsApp DECORT MARUCC" class="whatsapp-float w-11 h-11 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1353,17 +1373,26 @@
         // --- Nav scroll behavior ---
         const mainNav = document.getElementById('main-nav');
 
+        const navLogo = document.getElementById('nav-logo');
+        const navTagline = document.getElementById('nav-tagline');
+
         function updateNav() {
             if (window.scrollY > 80) {
                 mainNav.style.backgroundColor = 'rgba(250, 247, 242, 0.95)';
                 mainNav.style.backdropFilter = 'blur(12px)';
                 mainNav.style.borderBottom = '1px solid rgba(224, 213, 192, 0.5)';
                 mainNav.style.boxShadow = '0 1px 2px rgba(0,0,0,0.05)';
+                mainNav.style.color = '#1f2937';
+                navLogo.src = 'public/images/logo_terracotta.png';
+                navTagline.style.color = '#A0633B';
             } else {
                 mainNav.style.backgroundColor = '';
                 mainNav.style.backdropFilter = '';
                 mainNav.style.borderBottom = '';
                 mainNav.style.boxShadow = '';
+                mainNav.style.color = 'white';
+                navLogo.src = 'public/images/logo_light.png';
+                navTagline.style.color = 'white';
             }
         }
         window.addEventListener('scroll', updateNav);
