@@ -135,13 +135,15 @@
         </ol>
     </nav>
 
+    <main>
+
     <!-- Hero -->
     <section class="relative py-20 md:py-32 px-6 md:px-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
 
             <!-- Image -->
             <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200">
-                <img src="public/images/cortinas_a_medida.webp" alt="Cortinas a medida en lino natural con onda perfecta en salón mediterráneo de las Islas Baleares" class="w-full h-full object-cover" width="1023" height="1537">
+                <img src="public/images/cortinas_a_medida.webp" alt="Cortinas a medida en lino natural con onda perfecta en salón mediterráneo de las Islas Baleares" class="w-full h-full object-cover" loading="eager" fetchpriority="high" width="1023" height="1537">
             </div>
 
             <!-- Content -->
@@ -161,28 +163,28 @@
                     <div class="flex items-start gap-3">
                         <iconify-icon icon="lucide:scissors" width="20" class="text-terracotta-500 mt-0.5 shrink-0"></iconify-icon>
                         <div>
-                            <h3 class="text-sm font-semibold font-body">9 estilos de confección</h3>
+                            <p class="text-sm font-semibold font-body">9 estilos de confección</p>
                             <p class="text-xs text-neutral-400 font-body">Onda perfecta, fruncida, pinza americana, pasabarra, pasavarilla, trabillas, lazos, onda imperfecta y plana.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
                         <iconify-icon icon="lucide:shirt" width="20" class="text-terracotta-500 mt-0.5 shrink-0"></iconify-icon>
                         <div>
-                            <h3 class="text-sm font-semibold font-body">Tejidos naturales premium</h3>
+                            <p class="text-sm font-semibold font-body">Tejidos naturales premium</p>
                             <p class="text-xs text-neutral-400 font-body">Lino, algodón, terciopelo y mezclas de alta densidad — con cuerpo y una caída impecable que mejora con el tiempo.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
                         <iconify-icon icon="lucide:layers" width="20" class="text-terracotta-500 mt-0.5 shrink-0"></iconify-icon>
                         <div>
-                            <h3 class="text-sm font-semibold font-body">Doble capa: cortina + visillo</h3>
+                            <p class="text-sm font-semibold font-body">Doble capa: cortina + visillo</p>
                             <p class="text-xs text-neutral-400 font-body">Combina una cortina opaca con un visillo traslúcido. Privacidad total o luz tamizada según el momento del día.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
                         <iconify-icon icon="lucide:ruler" width="20" class="text-terracotta-500 mt-0.5 shrink-0"></iconify-icon>
                         <div>
-                            <h3 class="text-sm font-semibold font-body">100% a medida</h3>
+                            <p class="text-sm font-semibold font-body">100% a medida</p>
                             <p class="text-xs text-neutral-400 font-body">Medición láser, patronaje individual y acabados artesanales incluidos. Sin coste adicional.</p>
                         </div>
                     </div>
@@ -376,6 +378,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
         <footer class="bg-neutral-900 pt-14 pb-8 px-6 md:px-12">
