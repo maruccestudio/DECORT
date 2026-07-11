@@ -80,6 +80,13 @@
             animation: pulse-warm 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
+        /* Scroll hint móvil */
+        @keyframes scroll-hint {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            55% { transform: translateY(6px); opacity: 1; }
+        }
+        .animate-scroll-hint { animation: scroll-hint 2s ease-in-out infinite; }
+
         /* Elegant underline hover */
         .hover-line {
             position: relative;
@@ -487,6 +494,17 @@
 
         </div>
         
+        <!-- Scroll hint — solo móvil -->
+        <div class="flex md:hidden w-full justify-center flex-col items-center pb-6 gap-1.5">
+            <span class="text-[9px] text-neutral-900 uppercase tracking-[0.25em] font-body opacity-70">Explora</span>
+            <div class="animate-scroll-hint flex flex-col items-center">
+                <div class="w-px h-5 bg-neutral-800 opacity-30"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-neutral-800 opacity-50 -mt-px" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+
         <!-- Bottom Status Bar -->
         <div class="hidden md:flex w-full py-6 justify-between items-center reveal-text delay-200">
             <div class="flex gap-12">
