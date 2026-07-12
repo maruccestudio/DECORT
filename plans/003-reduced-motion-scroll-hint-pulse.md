@@ -1,6 +1,6 @@
 # 003 — Respect `prefers-reduced-motion` for the scroll hint and terracotta pulse
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: MEDIUM
 - **Category**: Accessibility

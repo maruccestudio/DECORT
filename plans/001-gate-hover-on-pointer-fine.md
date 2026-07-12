@@ -1,6 +1,6 @@
 # 001 — Gate all `hover:` motion behind `(hover: hover) and (pointer: fine)`
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: HIGH
 - **Category**: Accessibility

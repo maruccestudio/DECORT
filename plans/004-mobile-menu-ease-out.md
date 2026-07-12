@@ -1,6 +1,6 @@
 # 004 — Fullscreen mobile menu: swap `ease-in-out` for a strong `ease-out`
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: MEDIUM
 - **Category**: Easing & duration

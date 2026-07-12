@@ -1,6 +1,6 @@
 # 006 — Animate the FAQ `<details>`/`<summary>` open/close instead of an instant snap
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: MEDIUM (missed opportunity, but high-frequency surface)
 - **Category**: Missed opportunities / Interruptibility

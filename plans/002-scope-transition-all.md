@@ -1,6 +1,6 @@
 # 002 — Replace `transition-all` with scoped `transition`
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: MEDIUM
 - **Category**: Performance

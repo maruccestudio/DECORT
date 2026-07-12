@@ -1,6 +1,6 @@
 # 008 — Give the phone/WhatsApp floating buttons an entrance instead of appearing instantly
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: LOW (missed opportunity, polish)
 - **Category**: Missed opportunities

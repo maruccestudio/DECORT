@@ -1,6 +1,6 @@
 # 005 — Consolidate hand-typed cubic-béziers into CSS custom-property tokens
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: LOW
 - **Category**: Cohesion & tokens

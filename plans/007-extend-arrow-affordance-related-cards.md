@@ -1,6 +1,6 @@
 # 007 — Extend Home's arrow-reveal hover affordance to the "También te puede interesar" cards
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: a68fcf2
 - **Severity**: LOW (missed opportunity, cohesion)
 - **Category**: Cohesion & tokens / Missed opportunities
