@@ -142,3 +142,11 @@ Sistema plano por defecto. Las cards no tienen sombra en reposo; la sombra apare
 - **Don't** numerar una secuencia (01, 02, 03...) si no representa un orden real — la numeración se gana, no se aplica por reflejo de "así se ven los landing pages".
 - **Don't** repetir el mismo shell de card para productos conceptualmente distintos sin ninguna variación.
 - **Don't** usar lenguaje negativo o de miedo en ningún copy ("no te equivoques", "evita el error de...").
+
+## 7. Motion
+
+**Curva:** `--ease-out: cubic-bezier(0.16, 1, 0.3, 1)` — el ease-out fuerte del proyecto, definido en `:root` dentro del `<style>` de cada página que lo necesite. Se usa para toda entrada (hero, scroll-reveal) y para aperturas/cierres tipo drawer (menú móvil fullscreen). Reutilizar este token para cualquier animación nueva de entrada/salida en vez de tipear una curva nueva.
+
+**Reveal-on-scroll:** el contenido bajo el fold entra con fade + `translateY(24px)→0` vía `.reveal-up`/`.reveal-group`, gateado tras la clase `.js` en `<html>` (agregada de forma síncrona en `<head>`) para que nunca quede contenido invisible sin JS. Ver `index.html` para la implementación de referencia.
+
+**Reduced motion:** todo movimiento (scroll-reveal, scroll-hint, pulso terracota, menú móvil) respeta `prefers-reduced-motion: reduce` — se mantiene la opacidad/color, se retira el desplazamiento.

@@ -27,6 +27,8 @@
     <link rel="canonical" href="https://www.decortmarucc.com/">
     <!-- Redirect /index.html → / -->
     <script>if(window.location.pathname==='/index.html')window.location.replace('/');</script>
+    <!-- Marca temprano que hay JS activo: el reveal-on-scroll solo oculta contenido si esta clase está presente, así nunca hay contenido invisible sin JS -->
+    <script>document.documentElement.classList.add('js');</script>
     <!-- Preload LCP image -->
     <link rel="preload" as="image" href="public/images/hero-mobile-poster.webp" media="(max-width: 767px)">
     <link rel="preload" as="image" href="public/images/hero-desktop-poster.webp" media="(min-width: 768px)">
@@ -36,6 +38,11 @@
     <link rel="stylesheet" href="/public/output.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
     <style>
+        /* Motion tokens */
+        :root {
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         /* Base Typography */
         body {
             font-family: 'Inter', system-ui, sans-serif;
@@ -49,7 +56,7 @@
 
         /* Smooth Reveal Animation */
         .reveal-text {
-            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: reveal 0.8s var(--ease-out) forwards;
             opacity: 0;
             transform: translateY(20px);
         }
@@ -142,6 +149,73 @@
         @keyframes whatsapp-pulse {
             0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3); }
             50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.5); }
+        }
+
+        /* Entrada de los botones flotantes de telefono/WhatsApp: antes aparecian instantaneos */
+        @keyframes float-in {
+            from { opacity: 0; transform: scale(0.9) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .js #phone-wrap,
+        .js .whatsapp-float {
+            animation: float-in 0.4s var(--ease-out) 1.1s backwards;
+        }
+
+        /* Scroll reveal: el contenido bajo el fold entra igual que el hero, no aparece de golpe.
+           Gateado tras .js en <html> (agregada de forma síncrona en <head>): sin JS, en una
+           pestaña oculta o en un renderer headless que no dispare el observer, el contenido
+           nunca queda invisible — solo pierde la animación de entrada. */
+        .js .reveal-up,
+        .js .reveal-group > * {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+        }
+        .js .reveal-up.in-view,
+        .js .reveal-group.in-view > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .js .reveal-group.in-view > *:nth-child(2) { transition-delay: .08s; }
+        .js .reveal-group.in-view > *:nth-child(3) { transition-delay: .16s; }
+        .js .reveal-group.in-view > *:nth-child(4) { transition-delay: .24s; }
+        .js .reveal-group.in-view > *:nth-child(5) { transition-delay: .32s; }
+        .js .reveal-group.in-view > *:nth-child(6) { transition-delay: .4s; }
+        .js .reveal-group.in-view > *:nth-child(7) { transition-delay: .48s; }
+        .js .reveal-group.in-view > *:nth-child(8) { transition-delay: .56s; }
+        .js .reveal-group.in-view > *:nth-child(9) { transition-delay: .64s; }
+        .js .reveal-group.in-view > *:nth-child(10) { transition-delay: .7s; }
+        @media (prefers-reduced-motion: reduce) {
+            .js .reveal-up, .js .reveal-group > * {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .animate-scroll-hint {
+                animation: none;
+                opacity: 0.5;
+            }
+            .animate-pulse-warm {
+                animation: none;
+            }
+            .js #phone-wrap,
+            .js .whatsapp-float {
+                animation: none;
+            }
+        }
+
+        /* Foco visible consistente en todo el sitio: casi no existía */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid #A0633B;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* Feedback táctil de presión en botones y cards-link: no existía ningún estado :active */
+        .btn-press:active {
+            transform: scale(0.97);
         }
     </style>
 
@@ -388,20 +462,20 @@
 
         <!-- Mobile Menu Trigger -->
         <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none" aria-label="Abrir menú">
-            <span class="w-6 h-0.5 bg-current transition-all duration-300 origin-center"></span>
-            <span class="w-6 h-0.5 bg-current transition-all duration-300"></span>
-            <span class="w-6 h-0.5 bg-current transition-all duration-300 origin-center"></span>
+            <span class="w-6 h-0.5 bg-current transition duration-300 origin-center"></span>
+            <span class="w-6 h-0.5 bg-current transition duration-300"></span>
+            <span class="w-6 h-0.5 bg-current transition duration-300 origin-center"></span>
         </button>
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-neutral-900 text-arena-100 flex flex-col justify-center items-center gap-8 -translate-y-full transition-transform duration-500 ease-in-out font-display">
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-neutral-900 text-arena-100 flex flex-col justify-center items-center gap-8 -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] font-display">
         <button onclick="closeMobileMenu(); scrollToSection('#colecciones')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Colecciones</button>
         <button onclick="closeMobileMenu(); scrollToSection('#showroom')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Showroom</button>
         <button onclick="closeMobileMenu(); scrollToSection('#nosotros')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Nosotros</button>
         <button onclick="closeMobileMenu(); scrollToSection('#contacto')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Contacto</button>
 
-        <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu(); if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="mt-4 inline-flex items-center gap-3 px-8 py-4 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-sm font-semibold uppercase tracking-widest transition-all duration-300 font-body">
+        <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu(); if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="btn-press mt-4 inline-flex items-center gap-3 px-8 py-4 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-sm font-semibold uppercase tracking-widest transition duration-300 font-body">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Solicitar visita gratuita
         </a>
@@ -452,11 +526,11 @@
                 <!-- CTAs desktop (ocultos en móvil) -->
                 <div class="hidden md:flex flex-col items-end gap-2 mt-10">
                     <div class="flex flex-row items-center gap-3">
-                        <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-3 px-8 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body">
+                        <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="btn-press inline-flex items-center gap-3 px-8 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                             Solicitar visita gratuita
                         </a>
-                        <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-2 px-6 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body whitespace-nowrap">
+                        <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-2 px-6 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold tracking-wide transition duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body whitespace-nowrap">
                             <iconify-icon icon="lucide:phone" width="14" stroke-width="1.5"></iconify-icon>
                             641 35 47 88
                         </a>
@@ -479,11 +553,11 @@
             <!-- CTAs móvil (ocultos en desktop) — segundo y centrado -->
             <div class="order-2 md:hidden w-full flex flex-col items-center gap-2 mt-4 pb-2">
                 <div class="flex flex-row items-center gap-2">
-                    <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-2 px-5 py-2.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 shadow-lg shadow-terracotta-500/20 font-body">
+                    <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="btn-press inline-flex items-center gap-2 px-5 py-2.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-[10px] font-semibold uppercase tracking-widest transition duration-300 shadow-lg shadow-terracotta-500/20 font-body">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Solicitar visita gratuita
                     </a>
-                    <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-[10px] font-semibold tracking-wide transition-all duration-300 shadow-lg shadow-terracotta-500/20 font-body whitespace-nowrap">
+                    <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-[10px] font-semibold tracking-wide transition duration-300 shadow-lg shadow-terracotta-500/20 font-body whitespace-nowrap">
                         <iconify-icon icon="lucide:phone" width="12" stroke-width="1.5"></iconify-icon>
                         641 35 47 88
                     </a>
@@ -530,19 +604,19 @@
         <div class="max-w-7xl mx-auto w-full px-6 md:px-12">
             
             <!-- Header -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-4">
+            <div class="reveal-up flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-4">
                 <h2 class="text-4xl md:text-6xl font-light tracking-tight font-display text-neutral-800">
                     Cortinas a Medida para <span class="italic text-terracotta-500">Hogares en Baleares</span>
                 </h2>
             </div>
 
             <!-- Grid: 1 col mobile, 2 col tablet, 3 col desktop -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            <div class="reveal-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
 
                 <!-- Card 01: Cortinas a Medida -->
                 <a href="cortinas-a-medida.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_a_medida.webp" alt="Cortina a medida onda perfecta en lino terracota confeccionada para hogar en Mallorca" loading="eager" fetchpriority="high" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1023" height="1537">
+                        <img src="public/images/cortinas_a_medida.webp" alt="Cortina a medida onda perfecta en lino terracota confeccionada para hogar en Mallorca" loading="eager" fetchpriority="high" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1023" height="1537">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -558,7 +632,7 @@
                 <!-- Card 02: Visillos -->
                 <a href="visillos.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/visillos.webp" alt="Visillo de lino traslúcido con vista al mar en vivienda mediterránea en Mallorca" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1024" height="1536">
+                        <img src="public/images/visillos.webp" alt="Visillo de lino traslúcido con vista al mar en vivienda mediterránea en Mallorca" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1024" height="1536">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -574,7 +648,7 @@
                 <!-- Card 03: Blackout / Foscurit -->
                 <a href="cortinas-blackout.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_blackout.webp" alt="Cortina blackout de oscurecimiento total en dormitorio de lujo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
+                        <img src="public/images/cortinas_blackout.webp" alt="Cortina blackout de oscurecimiento total en dormitorio de lujo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -590,7 +664,7 @@
                 <!-- Card 04: Estor de Tela -->
                 <a href="estor-de-tela.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/estor_de_tela.webp" alt="Estor de tela paqueto romano con varillas en salón mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1448" height="1086">
+                        <img src="public/images/estor_de_tela.webp" alt="Estor de tela paqueto romano con varillas en salón mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1448" height="1086">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -606,7 +680,7 @@
                 <!-- Card 05: Cortinas Enrollables -->
                 <a href="cortinas-enrollables.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_enrollables.webp" alt="Cortina enrollable minimalista de un solo paño en salón mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
+                        <img src="public/images/cortinas_enrollables.webp" alt="Cortina enrollable minimalista de un solo paño en salón mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -622,7 +696,7 @@
                 <!-- Card 06: Lamas Verticales -->
                 <a href="cortinas-verticales.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/lamas_verticales.webp" alt="Lamas verticales en tejido natural para ventanal panorámico" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1448" height="1086">
+                        <img src="public/images/lamas_verticales.webp" alt="Lamas verticales en tejido natural para ventanal panorámico" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1448" height="1086">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -638,7 +712,7 @@
                 <!-- Card 07: Venecianas -->
                 <a href="venecianas.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/cortinas_venecianas.webp" alt="Persiana veneciana de madera premium para hogar mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
+                        <img src="public/images/cortinas_venecianas.webp" alt="Persiana veneciana de madera premium para hogar mediterráneo" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -654,7 +728,7 @@
                 <!-- Card 08: Plisadas -->
                 <a href="plisadas.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/plisadas.webp" alt="Estor plisado acordeón con control de luz para ventana en hogar" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1122" height="1402">
+                        <img src="public/images/plisadas.webp" alt="Estor plisado acordeón con control de luz para ventana en hogar" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="1122" height="1402">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -670,7 +744,7 @@
                 <!-- Card 09: Panel Japonés -->
                 <a href="paneles-japoneses.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200 relative">
-                        <img src="public/images/paneles_japoneses.webp" alt="Panel japonés deslizante en tejido minimalista para separar ambientes" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
+                        <img src="public/images/paneles_japoneses.webp" alt="Panel japonés deslizante en tejido minimalista para separar ambientes" loading="lazy" class="w-full h-full object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0 group-hover:scale-105" width="640" height="640">
                     </div>
                     <div class="mt-4 flex justify-between items-start">
                         <div>
@@ -686,7 +760,7 @@
                 <!-- Card 07: Motorización -->
                 <a href="motorizacion.html" class="block group cursor-pointer md:col-span-2 lg:col-span-3">
                     <div class="w-full h-64 md:h-80 overflow-hidden rounded-[40px] md:rounded-[60px] bg-neutral-900 relative">
-                        <img src="public/images/motorizacion.webp" alt="Motorización y control domótico de cortinas en Mallorca" loading="lazy" class="w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80" width="1024" height="1024">
+                        <img src="public/images/motorizacion.webp" alt="Motorización y control domótico de cortinas en Mallorca" loading="lazy" class="w-full h-full object-cover opacity-60 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="1024" height="1024">
                         <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/20 to-transparent flex flex-col justify-end p-8 md:p-12">
                             <h3 class="text-2xl md:text-4xl font-light tracking-tight font-display text-white mb-2">Motorización y <span class="italic text-terracotta-400">Domótica</span></h3>
                             <p class="text-sm text-neutral-300 font-body mb-6 max-w-md">Control inteligente para tus cortinas. Compatible con Alexa, Google Home y Apple HomeKit. Sin obra eléctrica.</p>
@@ -706,7 +780,7 @@
                 <!-- Para Arquitectos e Interioristas -->
                 <a href="para-arquitectos.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[4/3] overflow-hidden rounded-[40px] md:rounded-[60px] bg-neutral-900 relative">
-                        <img src="public/images/para_arquitectos.webp" alt="Cortinas a medida para arquitectos e interioristas en Mallorca — DECORT MARUCC" loading="lazy" class="w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75" width="2114" height="2114">
+                        <img src="public/images/para_arquitectos.webp" alt="Cortinas a medida para arquitectos e interioristas en Mallorca — DECORT MARUCC" loading="lazy" class="w-full h-full object-cover opacity-60 transition duration-700 group-hover:scale-105 group-hover:opacity-75" width="2114" height="2114">
                         <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/20 to-transparent flex flex-col justify-between p-8 md:p-12">
                             <!-- Top -->
                             <div class="relative z-10">
@@ -739,7 +813,7 @@
                 <!-- Para Hoteles y Hostelería -->
                 <a href="para-hoteles.html" class="block group cursor-pointer">
                     <div class="w-full aspect-[4/3] overflow-hidden rounded-[40px] md:rounded-[60px] bg-neutral-900 relative">
-                        <img src="public/images/para_hoteles.webp" alt="Cortinas ignífugas certificadas para hoteles y hostelería en Baleares — DECORT MARUCC" loading="lazy" class="w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75" width="1122" height="1402">
+                        <img src="public/images/para_hoteles.webp" alt="Cortinas ignífugas certificadas para hoteles y hostelería en Baleares — DECORT MARUCC" loading="lazy" class="w-full h-full object-cover opacity-60 transition duration-700 group-hover:scale-105 group-hover:opacity-75" width="1122" height="1402">
                         <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/20 to-transparent flex flex-col justify-between p-8 md:p-12">
                             <!-- Top -->
                             <div class="relative z-10 flex items-start justify-between">
@@ -772,7 +846,7 @@
                 <p class="text-white font-display text-2xl md:text-3xl font-light tracking-tight">¿Visitamos tu casa?</p>
                 <p class="text-white text-sm font-body mt-1">Llevamos el muestrario a tu casa. Gratis, sin compromiso.</p>
             </div>
-            <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="whitespace-nowrap inline-flex items-center gap-3 px-8 py-4 bg-white text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:bg-terracotta-50 shadow-lg font-body">
+            <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="btn-press whitespace-nowrap inline-flex items-center gap-3 px-8 py-4 bg-white text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 hover:bg-terracotta-50 shadow-lg font-body">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Solicitar visita gratuita
             </a>
@@ -784,7 +858,7 @@
         <div class="max-w-7xl mx-auto w-full px-6 md:px-12">
             
             <!-- Header -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+            <div class="reveal-up flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
                 <h2 class="text-4xl md:text-6xl font-light tracking-tight font-display text-neutral-800">
                     Showroom <span class="italic text-terracotta-500">Móvil</span>
                 </h2>
@@ -795,11 +869,11 @@
             </div>
 
             <!-- Showroom Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="reveal-group grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 
                 <!-- Feature 01 -->
                 <div class="group">
-                    <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
+                    <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
                         <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
                             <iconify-icon icon="lucide:truck" width="40" stroke-width="1.5"></iconify-icon>
                         </div>
@@ -816,7 +890,7 @@
 
                 <!-- Feature 02 -->
                 <div class="group">
-                    <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
+                    <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
                         <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
                             <iconify-icon icon="lucide:palette" width="40" stroke-width="1.5"></iconify-icon>
                         </div>
@@ -833,7 +907,7 @@
 
                 <!-- Feature 03 -->
                 <div class="group">
-                    <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
+                    <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
                         <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
                             <iconify-icon icon="lucide:ruler" width="40" stroke-width="1.5"></iconify-icon>
                         </div>
@@ -882,11 +956,11 @@
                 Llegamos con el muestrario completo. Medimos con precisión. El presupuesto llega rápido, sin cargo.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-3 px-8 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body">
+                <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="btn-press inline-flex items-center gap-3 px-8 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body">
                     <iconify-icon icon="lucide:message-circle" width="16" stroke-width="1.5"></iconify-icon>
                     Solicitar visita gratuita
                 </a>
-                <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-2 px-6 py-3 border border-arena-400 hover:border-terracotta-500 text-neutral-600 hover:text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 font-body">
+                <a href="tel:+34641354788" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="inline-flex items-center gap-2 px-6 py-3 border border-arena-400 hover:border-terracotta-500 text-neutral-600 hover:text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 font-body">
                     <iconify-icon icon="lucide:phone" width="14" stroke-width="1.5"></iconify-icon>
                     Llamar ahora
                 </a>
@@ -897,7 +971,7 @@
     <!-- Nuestro Proceso Section -->
     <section id="proceso" class="relative z-10 bg-arena-50 py-20 md:py-28">
         <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+            <div class="reveal-up flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
                 <h2 class="text-4xl md:text-5xl font-light tracking-tight font-display text-neutral-800">
                     Cómo <span class="italic text-terracotta-500">trabajamos</span>
                 </h2>
@@ -907,9 +981,9 @@
                 </div>
             </div>
 
-            <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-5 md:gap-4 md:overflow-visible md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
+            <div class="reveal-group flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-5 md:gap-4 md:overflow-visible md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
                 <!-- Step 01 -->
-                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
                     <div class="flex items-center gap-3 mb-5">
                         <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">01</span>
                         <div class="flex-1 h-px bg-arena-300"></div>
@@ -922,7 +996,7 @@
                 </div>
 
                 <!-- Step 02 -->
-                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
                     <div class="flex items-center gap-3 mb-5">
                         <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">02</span>
                         <div class="flex-1 h-px bg-arena-300"></div>
@@ -935,7 +1009,7 @@
                 </div>
 
                 <!-- Step 03 -->
-                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
                     <div class="flex items-center gap-3 mb-5">
                         <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">03</span>
                         <div class="flex-1 h-px bg-arena-300"></div>
@@ -948,7 +1022,7 @@
                 </div>
 
                 <!-- Step 04 -->
-                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
                     <div class="flex items-center gap-3 mb-5">
                         <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">04</span>
                         <div class="flex-1 h-px bg-arena-300"></div>
@@ -961,7 +1035,7 @@
                 </div>
 
                 <!-- Step 05 -->
-                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
+                <div class="shrink-0 w-72 snap-start md:w-auto group relative p-7 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-300 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/50">
                     <div class="flex items-center gap-3 mb-5">
                         <span class="text-[10px] font-bold tracking-widest text-terracotta-500 font-body">05</span>
                         <div class="flex-1 h-px bg-arena-300"></div>
@@ -979,7 +1053,7 @@
     <!-- Testimonios Section -->
     <section id="testimonios" class="relative z-10 bg-arena-100 py-20 md:py-28">
         <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
+            <div class="reveal-up flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
                 <h2 class="text-4xl md:text-5xl font-light tracking-tight font-display text-neutral-800">
                     Lo que dicen <span class="italic text-terracotta-500">nuestros clientes</span>
                 </h2>
@@ -989,10 +1063,10 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="reveal-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
                 <!-- Reseña real 00 — Chiara M. -->
-                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
                             <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400"></iconify-icon>
@@ -1021,7 +1095,7 @@
                 </div>
 
                 <!-- Reseña real 01 — Tamara Schlieper -->
-                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
                             <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400"></iconify-icon>
@@ -1050,7 +1124,7 @@
                 </div>
 
                 <!-- Reseña real 02 — Lautaro Justo -->
-                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
                             <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400"></iconify-icon>
@@ -1079,7 +1153,7 @@
                 </div>
 
                 <!-- Reseña real 03 — Nico TR -->
-                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition-all duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
+                <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
                             <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400"></iconify-icon>
@@ -1129,7 +1203,7 @@
                 <p class="text-white font-display text-2xl md:text-3xl font-light tracking-tight">¿Listo para ver las telas en tus ventanas?</p>
                 <p class="text-neutral-400 text-sm font-body mt-1">Llevamos el muestrario a domicilio. Sin coste, sin obligación.</p>
             </div>
-            <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="whitespace-nowrap inline-flex items-center gap-3 px-8 py-4 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 shadow-lg font-body">
+            <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="btn-press whitespace-nowrap inline-flex items-center gap-3 px-8 py-4 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 shadow-lg font-body">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.012a.75.75 0 0 0 .93.93l5.156-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.71 9.71 0 0 1-4.953-1.354l-.355-.212-3.68 1.052 1.052-3.68-.212-.355A9.71 9.71 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                 Solicitar visita gratuita
             </a>
@@ -1148,7 +1222,7 @@
 
             <div class="space-y-4" id="faq-container">
                 <!-- FAQ 01 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cómo funciona el servicio de showroom móvil?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1159,7 +1233,7 @@
                 </details>
 
                 <!-- FAQ 02 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿En qué zonas de las Islas Baleares trabajáis?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1170,7 +1244,7 @@
                 </details>
 
                 <!-- FAQ 03 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cuánto tarda la confección e instalación?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1181,7 +1255,7 @@
                 </details>
 
                 <!-- FAQ 04 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Qué marcas de telas y mecanismos utilizáis?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1192,7 +1266,7 @@
                 </details>
 
                 <!-- FAQ 05 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿El asesoramiento y la visita tienen algún coste?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1203,7 +1277,7 @@
                 </details>
 
                 <!-- FAQ 06 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Trabajáis con proyectos de interiorismo y hoteles?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1214,7 +1288,7 @@
                 </details>
 
                 <!-- FAQ 07 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Las cortinas a medida son muy caras?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1225,7 +1299,7 @@
                 </details>
 
                 <!-- FAQ 08 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Y si el color o la tela no encajan con mi decoración?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1236,7 +1310,7 @@
                 </details>
 
                 <!-- FAQ 09 -->
-                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition-all duration-300 hover:border-terracotta-200">
+                <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Podéis instalar sin cerrar mi negocio u hotel?</h3>
                         <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300"></iconify-icon>
@@ -1302,7 +1376,7 @@
                             <h4 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8 text-arena-100 font-display">
                                 ¿Tienes un proyecto<br><span class="italic text-terracotta-400">en mente?</span>
                             </h4>
-                            <a href="mailto:decort@marucc.com" class="inline-flex items-center gap-3 text-xl md:text-2xl font-medium transition-all border-b border-neutral-700 pb-1 text-neutral-400 hover:text-terracotta-400 hover:border-terracotta-400 hover:gap-4 group font-body">
+                            <a href="mailto:decort@marucc.com" class="inline-flex items-center gap-3 text-xl md:text-2xl font-medium transition border-b border-neutral-700 pb-1 text-neutral-400 hover:text-terracotta-400 hover:border-terracotta-400 hover:gap-4 group font-body">
                                 decort@marucc.com
                                 <iconify-icon icon="lucide:arrow-up-right" width="20" stroke-width="1.5" class="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></iconify-icon>
                             </a>
@@ -1321,13 +1395,13 @@
                         
                         <div class="flex flex-col items-start md:items-end gap-8 w-full md:w-auto">
                             <div class="flex gap-4">
-                                <a href="https://www.instagram.com/decort.marucc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                <a href="https://www.instagram.com/decort.marucc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
                                     <iconify-icon icon="lucide:instagram" width="18" stroke-width="1.5"></iconify-icon>
                                 </a>
-                                <a href="https://www.facebook.com/profile.php?id=61574998388055" target="_blank" rel="noopener noreferrer" aria-label="Facebook de DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                <a href="https://www.facebook.com/profile.php?id=61574998388055" target="_blank" rel="noopener noreferrer" aria-label="Facebook de DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
                                     <iconify-icon icon="lucide:facebook" width="18" stroke-width="1.5"></iconify-icon>
                                 </a>
-                                <a href="tel:+34641354788" aria-label="Llamar a DECORT MARUCC" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition-all duration-300">
+                                <a href="tel:+34641354788" aria-label="Llamar a DECORT MARUCC" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
                                     <iconify-icon icon="lucide:phone" width="18" stroke-width="1.5"></iconify-icon>
                                 </a>
                             </div>
@@ -1361,22 +1435,22 @@
 
     <!-- Floating Buttons -->
     <div id="floating-btns" class="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-2.5 transition-opacity duration-300">
-        <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition-all duration-300 hover:scale-110 cursor-pointer">
+        <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition duration-300 hover:scale-110 cursor-pointer">
             <iconify-icon icon="lucide:arrow-up" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
         </button>
         <div id="phone-wrap" style="position:relative;">
-            <a href="tel:+34641354788" id="phone-float-btn" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" aria-label="Llamar a DECORT MARUCC" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition-all duration-300 hover:scale-110">
+            <a href="tel:+34641354788" id="phone-float-btn" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" aria-label="Llamar a DECORT MARUCC" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition duration-300 hover:scale-110">
                 <iconify-icon icon="lucide:phone" width="17" stroke-width="1.5" class="text-white"></iconify-icon>
             </a>
             <div id="phone-tooltip" style="display:none;position:absolute;right:52px;top:50%;transform:translateY(-50%);background:#111827;color:white;font-size:11px;font-weight:500;padding:7px 14px;border-radius:10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);pointer-events:none;font-family:Inter,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.3);">+34 641 35 47 88</div>
         </div>
-        <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" aria-label="WhatsApp DECORT MARUCC" class="whatsapp-float w-11 h-11 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
+        <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq!=='undefined') fbq('track','Contact'); if(typeof gtag!=='undefined') gtag('event','conversion',{'send_to':'AW-18020830433/UTplCJKJ4KgcEOGZgJFD'});" aria-label="WhatsApp DECORT MARUCC" class="whatsapp-float w-11 h-11 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center shadow-lg transition duration-300 hover:scale-110">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
     </div>
 
     <!-- Cookie Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[100] transform translate-y-full opacity-0 transition-all duration-500 ease-in-out font-body p-4 md:p-6">
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[100] transform translate-y-full opacity-0 transition duration-500 ease-in-out font-body p-4 md:p-6">
         <div class="max-w-4xl mx-auto bg-neutral-900/95 backdrop-blur-md border border-neutral-700/50 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-6 md:items-center justify-between text-arena-100">
             <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -1527,5 +1601,32 @@
         }
     })();
     </script>
+    <script>
+    (function(){
+        // Scroll reveal: activa .reveal-up / .reveal-group al entrar en viewport
+        var targets = document.querySelectorAll('.reveal-up, .reveal-group');
+        if(!targets.length) return;
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if(reduced || !('IntersectionObserver' in window)){
+            targets.forEach(function(el){ el.classList.add('in-view'); });
+            return;
+        }
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    entry.target.classList.add('in-view');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+        targets.forEach(function(el){ io.observe(el); });
+        // Red de seguridad: si por lo que sea (pestaña oculta, renderer sin rAF) el observer
+        // nunca dispara para algo ya visible, no dejamos contenido invisible permanente.
+        setTimeout(function(){
+            targets.forEach(function(el){ el.classList.add('in-view'); });
+        }, 3000);
+    })();
+    </script>
+<script src="public/js/faq-animate.js" defer></script>
 </body>
 </html>
