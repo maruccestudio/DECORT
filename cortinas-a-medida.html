@@ -49,18 +49,13 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Product",
+        "@type": "Service",
         "name": "Cortinas a Medida",
         "description": "Cortinas confeccionadas a medida en 9 estilos: onda perfecta, fruncida, pinza americana, pasabarra, pasavarilla, trabillas, lazos, onda perfecta imperfecta y plana. Tejidos naturales de alta calidad para hogares y espacios premium en las Islas Baleares.",
-        "brand": { "@type": "Brand", "name": "DECORT MARUCC" },
+        "serviceType": "Confección e instalación de cortinas de tela a medida",
+        "provider": { "@type": "Organization", "name": "DECORT MARUCC" },
         "image": "https://www.decortmarucc.com/public/images/cortinas_a_medida.webp",
-        "offers": {
-            "@type": "Offer",
-            "price": "200",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock",
-            "areaServed": { "@type": "Place", "name": "Islas Baleares" }
-        }
+        "areaServed": { "@type": "Place", "name": "Islas Baleares" }
     }
     </script>
     <script type="application/ld+json">
@@ -117,11 +112,11 @@
 
     <!-- Nav -->
     <nav class="w-full px-6 py-6 md:px-12 md:py-8 border-b border-arena-400/30 flex justify-between items-center">
-        <a href="index.html" class="flex flex-col items-center hover:opacity-70 transition-opacity w-32 md:w-40">
+        <a href="/" class="flex flex-col items-center hover:opacity-70 transition-opacity w-32 md:w-40">
             <img src="public/images/logo_terracotta.png" alt="MARUCC" class="w-full h-auto mb-1.5 px-[2%]">
             <span class="w-full text-center text-[5px] md:text-[6.5px] tracking-[0.24em] font-medium uppercase font-body text-terracotta-500 whitespace-nowrap leading-none">Showroom móvil de cortinas</span>
         </a>
-        <a href="index.html" class="text-xs font-medium uppercase tracking-widest text-neutral-600 hover:text-terracotta-500 transition-colors flex items-center gap-2">
+        <a href="/" class="text-xs font-medium uppercase tracking-widest text-neutral-600 hover:text-terracotta-500 transition-colors flex items-center gap-2">
             <iconify-icon icon="lucide:arrow-left" width="16"></iconify-icon> <span class="hidden sm:inline">Volver al </span>inicio
         </a>
     </nav>
@@ -129,7 +124,7 @@
     <!-- Breadcrumb -->
     <nav aria-label="Ruta de navegación" class="px-6 md:px-12 py-3 border-b border-arena-400/20 bg-arena-50">
         <ol class="flex items-center gap-2 text-[11px] font-body text-neutral-400 max-w-7xl mx-auto">
-            <li><a href="index.html" class="hover:text-terracotta-500 transition-colors">Inicio</a></li>
+            <li><a href="/" class="hover:text-terracotta-500 transition-colors">Inicio</a></li>
             <li><iconify-icon icon="lucide:chevron-right" width="12"></iconify-icon></li>
             <li class="text-neutral-600 font-medium">Cortinas a Medida</li>
         </ol>
@@ -401,7 +396,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
                 <div class="sm:col-span-2">
-                    <a href="index.html"><img src="public/images/logo_light.png" alt="DECORT MARUCC" class="h-7 w-auto mb-4 opacity-75"></a>
+                    <a href="/"><img src="public/images/logo_light.png" alt="DECORT MARUCC" class="h-7 w-auto mb-4 opacity-75"></a>
                     <p class="text-sm text-neutral-400 font-body leading-relaxed mb-5">Showroom móvil de cortinas a medida en Mallorca, Menorca, Ibiza y Formentera. Fabricación propia, instalación incluida.</p>
                     <div class="flex gap-3">
                         <a href="https://www.instagram.com/decort.marucc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram DECORT MARUCC" class="w-9 h-9 rounded-full border border-neutral-700 flex items-center justify-center text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
@@ -427,7 +422,7 @@
                 <div>
                     <span class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 mb-4 block font-body">Páginas</span>
                     <ul class="space-y-2.5 font-body">
-                        <li><a href="index.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Inicio</a></li>
+                        <li><a href="/" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Inicio</a></li>
                         <li><a href="sobre-nosotros.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Sobre nosotros</a></li>
                         <li><a href="aviso-legal.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Aviso Legal</a></li>
                         <li><a href="politica-privacidad.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Privacidad</a></li>

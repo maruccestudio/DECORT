@@ -28,10 +28,10 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <nav class="w-full px-6 py-6 md:px-12 md:py-8 border-b border-arena-400/30 flex justify-between items-center">
-        <a href="index.html" class="hover:opacity-70 transition-opacity">
+        <a href="/" class="hover:opacity-70 transition-opacity">
             <img src="public/images/logo_terracotta.png" alt="MARUCC DECORT" class="h-6 md:h-8 w-auto">
         </a>
-        <a href="index.html" class="text-xs font-medium uppercase tracking-widest text-neutral-500 hover:text-terracotta-500 transition-colors flex items-center gap-2">
+        <a href="/" class="text-xs font-medium uppercase tracking-widest text-neutral-500 hover:text-terracotta-500 transition-colors flex items-center gap-2">
             <iconify-icon icon="lucide:arrow-left" width="16"></iconify-icon> Volver al inicio
         </a>
     </nav>
@@ -109,7 +109,7 @@
         document.getElementById('revoke-cookies').addEventListener('click', function() {
             localStorage.removeItem('marucc_cookies_accepted');
             alert('Has revocado el consentimiento con éxito. El panel de cookies volverá a aparecer al inicio.');
-            window.location.href = 'index.html';
+            window.location.href = '/';
         });
     </script>
 </body>
