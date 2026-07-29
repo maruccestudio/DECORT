@@ -11,6 +11,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/output.css">
+    <script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  var state = { necessary: true, analytics: false, ads: false };
+  var decided = false;
+
+  try {
+    var raw = localStorage.getItem('marucc_consent');
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (
+        parsed && typeof parsed === 'object' &&
+        parsed.version === 1 &&
+        typeof parsed.analytics === 'boolean' &&
+        typeof parsed.ads === 'boolean'
+      ) {
+        state.analytics = parsed.analytics;
+        state.ads = parsed.ads;
+        decided = true;
+      }
+    }
+  } catch (e) {
+    // JSON corrupto o localStorage no disponible: se mantiene el estado denegado por defecto
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage': state.analytics ? 'granted' : 'denied',
+    'ad_storage': state.ads ? 'granted' : 'denied',
+    'ad_user_data': state.ads ? 'granted' : 'denied',
+    'ad_personalization': state.ads ? 'granted' : 'denied'
+  });
+
+  window.__maruccConsentState = state;
+  window.__maruccConsentDecided = decided;
+
+  dataLayer.push({
+    event: 'consent_ready',
+    consent_analytics: state.analytics,
+    consent_ads: state.ads
+  });
+})();
+</script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -48,6 +93,7 @@
         .back a { color: #c4845a; text-decoration: none; }
         .back a:hover { text-decoration: underline; }
     </style>
+    <script defer src="/public/js/consent-manager.js"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->

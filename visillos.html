@@ -91,6 +91,51 @@
         ]
     }
     </script>
+    <script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  var state = { necessary: true, analytics: false, ads: false };
+  var decided = false;
+
+  try {
+    var raw = localStorage.getItem('marucc_consent');
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (
+        parsed && typeof parsed === 'object' &&
+        parsed.version === 1 &&
+        typeof parsed.analytics === 'boolean' &&
+        typeof parsed.ads === 'boolean'
+      ) {
+        state.analytics = parsed.analytics;
+        state.ads = parsed.ads;
+        decided = true;
+      }
+    }
+  } catch (e) {
+    // JSON corrupto o localStorage no disponible: se mantiene el estado denegado por defecto
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage': state.analytics ? 'granted' : 'denied',
+    'ad_storage': state.ads ? 'granted' : 'denied',
+    'ad_user_data': state.ads ? 'granted' : 'denied',
+    'ad_personalization': state.ads ? 'granted' : 'denied'
+  });
+
+  window.__maruccConsentState = state;
+  window.__maruccConsentDecided = decided;
+
+  dataLayer.push({
+    event: 'consent_ready',
+    consent_analytics: state.analytics,
+    consent_ads: state.ads
+  });
+})();
+</script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -98,6 +143,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WKCM4HB6');</script>
     <!-- End Google Tag Manager -->
+    <script defer src="/public/js/consent-manager.js"></script>
 </head>
 <body class="bg-arena-100 text-neutral-800 font-body antialiased">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKCM4HB6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -360,6 +406,7 @@
                         <li><a href="aviso-legal.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Aviso Legal</a></li>
                         <li><a href="politica-privacidad.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Privacidad</a></li>
                         <li><a href="politica-cookies.html" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Cookies</a></li>
+                        <li><a href="#" class="js-open-consent-preferences text-sm text-neutral-400 hover:text-terracotta-400 transition-colors">Preferencias de privacidad</a></li>
                     </ul>
                 </div>
             </div>
