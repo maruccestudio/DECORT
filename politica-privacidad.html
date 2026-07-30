@@ -13,6 +13,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/output.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+    <script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  var state = { necessary: true, analytics: false, ads: false };
+  var decided = false;
+
+  try {
+    var raw = localStorage.getItem('marucc_consent');
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (
+        parsed && typeof parsed === 'object' &&
+        parsed.version === 1 &&
+        typeof parsed.analytics === 'boolean' &&
+        typeof parsed.ads === 'boolean'
+      ) {
+        state.analytics = parsed.analytics;
+        state.ads = parsed.ads;
+        decided = true;
+      }
+    }
+  } catch (e) {
+    // JSON corrupto o localStorage no disponible: se mantiene el estado denegado por defecto
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage': state.analytics ? 'granted' : 'denied',
+    'ad_storage': state.ads ? 'granted' : 'denied',
+    'ad_user_data': state.ads ? 'granted' : 'denied',
+    'ad_personalization': state.ads ? 'granted' : 'denied'
+  });
+
+  window.__maruccConsentState = state;
+  window.__maruccConsentDecided = decided;
+
+  dataLayer.push({
+    event: 'consent_ready',
+    consent_analytics: state.analytics,
+    consent_ads: state.ads
+  });
+})();
+</script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -20,6 +65,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WKCM4HB6');</script>
     <!-- End Google Tag Manager -->
+    <script defer src="/public/js/privacidad-ui.js"></script>
 </head>
 <body class="bg-arena-100 text-neutral-800 font-body antialiased">
     <!-- Google Tag Manager (noscript) -->
