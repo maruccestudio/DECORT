@@ -490,8 +490,8 @@
         <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-[11px] font-medium tracking-widest uppercase font-body">
             <button onclick="scrollToSection('#colecciones')" class="hover:opacity-60 transition-opacity cursor-pointer">Colecciones</button>
-            <button onclick="scrollToSection('#showroom')" class="hover:opacity-60 transition-opacity cursor-pointer">Showroom</button>
-            <button onclick="scrollToSection('#nosotros')" class="hover:opacity-60 transition-opacity cursor-pointer">Nosotros</button>
+            <a href="/showroom-movil.html" class="hover:opacity-60 transition-opacity cursor-pointer">Showroom</a>
+            <a href="/sobre-nosotros.html" class="hover:opacity-60 transition-opacity cursor-pointer">Nosotros</a>
             <button onclick="scrollToSection('#contacto')" class="hover:opacity-60 transition-opacity cursor-pointer">Contacto</button>
         </div>
 
@@ -506,8 +506,8 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-neutral-900 text-arena-100 flex flex-col justify-center items-center gap-8 -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] font-display">
         <button onclick="closeMobileMenu(); scrollToSection('#colecciones')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Colecciones</button>
-        <button onclick="closeMobileMenu(); scrollToSection('#showroom')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Showroom</button>
-        <button onclick="closeMobileMenu(); scrollToSection('#nosotros')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Nosotros</button>
+        <a href="/showroom-movil.html" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Showroom</a>
+        <a href="/sobre-nosotros.html" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Nosotros</a>
         <button onclick="closeMobileMenu(); scrollToSection('#contacto')" class="text-4xl font-light hover:text-terracotta-400 transition-colors">Contacto</button>
 
         <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20visita%20gratuita" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu();" class="btn-press mt-4 inline-flex items-center gap-3 px-8 py-4 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-sm font-semibold uppercase tracking-widest transition duration-300 font-body">
