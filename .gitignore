@@ -1,1 +1,5 @@
 node_modules/
+
+# Fuentes de fotos en alta resolucion del usuario: se optimizan a webp antes de usarse,
+# el original no se versiona (pesan decenas de MB).
+public/images/Showroom.PNG
