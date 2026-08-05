@@ -176,8 +176,12 @@
     <!-- Hero -->
     <section class="relative py-20 md:py-32 px-6 md:px-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
-            <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200">
-                <img src="public/images/showroom-medicion.webp" alt="Medición de precisión en un proyecto real de DECORT MARUCC en Mallorca, con plano acotado sobre tablet" class="w-full h-full object-cover" loading="eager" fetchpriority="high" width="1024" height="1365">
+            <div class="w-full flex justify-center">
+                <!-- object-contain, no object-cover: la foto es vertical (3:4) y muy alta
+                     a columna completa; con un recorte fijo, techo y suelo quedaban fuera
+                     de la pantalla sin hacer scroll. max-h limita la altura a la ventana
+                     visible y se ve la foto entera, sin recortar nada. -->
+                <img src="public/images/showroom-medicion.webp" alt="Medición de precisión en un proyecto real de DECORT MARUCC en Mallorca, con plano acotado sobre tablet" class="w-auto h-auto max-w-full max-h-[65vh] md:max-h-[70vh] object-contain rounded-tl-[80px] md:rounded-tl-[120px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[80px] md:rounded-br-[120px]" loading="eager" fetchpriority="high" width="1024" height="1365">
             </div>
             <div>
                 <span class="text-[10px] font-medium tracking-widest uppercase text-terracotta-500 mb-4 block font-body">Cómo funciona
