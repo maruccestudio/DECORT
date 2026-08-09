@@ -55,13 +55,21 @@
     }
   }
 
+  // GTM solo interpreta los comandos de consentimiento cuando llegan al dataLayer como
+  // objeto `arguments` - que es justo lo que hace gtag(). Un array literal se ignora en
+  // silencio: los tags disparan igual (sus triggers leen `consent_analytics`), pero el
+  // Consent Mode de Google se queda en denied y no se escribe ninguna cookie.
+  function gtagCmd() {
+    window.dataLayer.push(arguments);
+  }
+
   function applyConsent(state, emitUpdatedEvent) {
-    window.dataLayer.push(['consent', 'update', {
+    gtagCmd('consent', 'update', {
       'analytics_storage': state.analytics ? 'granted' : 'denied',
       'ad_storage': state.ads ? 'granted' : 'denied',
       'ad_user_data': state.ads ? 'granted' : 'denied',
       'ad_personalization': state.ads ? 'granted' : 'denied'
-    }]);
+    });
 
     window.__maruccConsentState = state;
 
