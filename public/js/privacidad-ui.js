@@ -139,10 +139,17 @@
   }
 
   function buildBanner() {
-    var text = el('p', {
-      className: 'text-sm text-neutral-200 mb-4 leading-relaxed',
-      text: 'Usamos cookies propias necesarias para el funcionamiento del sitio, y opcionalmente analíticas (Google Analytics, Microsoft Clarity) y publicitarias (Meta, Google Ads) si nos das tu consentimiento. Podés cambiar tu elección cuando quieras desde "Preferencias de privacidad".'
+    var policyLink = el('a', {
+      href: '/politica-cookies.html',
+      className: 'underline underline-offset-2 hover:text-terracotta-400 transition-colors',
+      text: 'Política de cookies'
     });
+
+    var text = el('p', { className: 'text-sm text-neutral-200 mb-4 leading-relaxed' }, [
+      document.createTextNode('Queremos que esta web te resulte fácil de usar. Algunas cookies son necesarias para que funcione. Las demás, solo si nos das permiso, nos muestran qué páginas ayudan y cuáles confunden, para poder mejorarlas. Puedes cambiar tu elección cuando quieras. '),
+      policyLink,
+      document.createTextNode('.')
+    ]);
 
     var rejectBtn = el('button', {
       type: 'button', id: 'marucc-consent-reject',
@@ -194,11 +201,11 @@
 
   function buildModal() {
     var title = el('h2', { id: 'marucc-consent-title', className: 'text-lg font-semibold mb-2', text: 'Preferencias de privacidad' });
-    var desc = el('p', { id: 'marucc-consent-desc', className: 'text-sm text-neutral-500 mb-6', text: 'Elegí qué categorías de cookies querés permitir. Podés cambiar esta elección en cualquier momento desde este mismo panel.' });
+    var desc = el('p', { id: 'marucc-consent-desc', className: 'text-sm text-neutral-500 mb-6', text: 'Elige qué categorías quieres permitir. Puedes cambiar esta elección en cualquier momento desde este mismo panel.' });
 
-    var necessary = buildCategoryRow('Necesarias', 'Guardan tu elección de cookies. Siempre activas.', null, true);
-    var analytics = buildCategoryRow('Analíticas', 'Google Analytics y Microsoft Clarity, para entender cómo se usa el sitio.', 'marucc-consent-toggle-analytics', false);
-    var ads = buildCategoryRow('Publicitarias', 'Meta Pixel y conversiones de Google Ads.', 'marucc-consent-toggle-ads', false);
+    var necessary = buildCategoryRow('Necesarias', 'Solo guardan tu elección de cookies, para no volver a preguntarte. Siempre activas.', null, true);
+    var analytics = buildCategoryRow('Analíticas', 'Nos muestran qué páginas se leen y en qué punto se traba la navegación, para poder mejorarlas. Google Analytics y Microsoft Clarity.', 'marucc-consent-toggle-analytics', false);
+    var ads = buildCategoryRow('Publicitarias', 'Nos dicen si un anuncio trajo a alguien realmente interesado, para no gastar de más. Meta y Google Ads.', 'marucc-consent-toggle-ads', false);
     ads.row.className = ads.row.className.replace(' border-b border-neutral-100', '');
 
     toggleAnalytics = analytics.checkbox;
