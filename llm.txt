@@ -14,7 +14,7 @@ DECORT MARUCC es un showroom movil de cortinas, estores y persianas a medida que
 - Cortinas enrollables (screen solar 3%, 5%, 10%, opacos)
 - Cortinas blackout (oscurecimiento total)
 - Cortinas verticales (para grandes ventanales)
-- Cortinas confeccionadas (pliegues, onda perfecta, visillos)
+- Cortinas a medida / confeccionadas (9 estilos: onda perfecta, frunce, tablas, pasabarra, trabillas, lazos, plana)
 - Persianas venecianas (madera y aluminio)
 - Paneles japoneses (division de ambientes y ventanales grandes)
 - Motorizacion y domotica (compatible con Alexa, Google Home, Apple HomeKit, KNX)
