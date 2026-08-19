@@ -1,0 +1,49 @@
+/* Formulario de contacto DECORT MARUCC.
+   CSS propio y no clases de Tailwind: public/output.css es un build purgado
+   y no incluye varias de las utilidades que necesita este bloque. */
+
+.dm-form-wrap{max-width:42rem;margin:0 auto}
+.dm-form{display:flex;flex-direction:column;gap:1.1rem}
+
+.dm-field{display:flex;flex-direction:column;gap:.35rem}
+.dm-field label{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgb(115 115 115)}
+.dm-field input,.dm-field select,.dm-field textarea{
+    font-family:'Inter',sans-serif;font-size:.95rem;color:rgb(38 38 38);
+    background:#fff;border:1px solid rgb(214 211 209);border-radius:.5rem;
+    padding:.8rem .9rem;width:100%;transition:border-color .2s,box-shadow .2s;
+    -webkit-appearance:none;appearance:none}
+.dm-field select{background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right .8rem center;background-size:1.1rem;padding-right:2.4rem}
+.dm-field textarea{min-height:7rem;resize:vertical}
+.dm-field input:focus,.dm-field select:focus,.dm-field textarea:focus{
+    outline:none;border-color:rgb(160 80 52);box-shadow:0 0 0 3px rgba(160,80,52,.13)}
+
+.dm-consent{display:flex;align-items:flex-start;gap:.65rem;font-family:'Inter',sans-serif;font-size:.8rem;line-height:1.5;color:rgb(115 115 115)}
+.dm-consent input{margin-top:.15rem;width:1rem;height:1rem;flex-shrink:0;accent-color:rgb(160 80 52)}
+.dm-consent a{color:rgb(160 80 52);text-decoration:underline}
+
+.dm-submit{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+    background:rgb(160 80 52);color:#fff;border:none;border-radius:9999px;padding:1rem 2.5rem;cursor:pointer;
+    align-self:flex-start;transition:background .3s,transform .3s;box-shadow:0 10px 15px -3px rgba(160,80,52,.3)}
+.dm-submit:hover:not(:disabled){background:rgb(133 66 43);transform:scale(1.04)}
+.dm-submit:disabled{opacity:.55;cursor:default;transform:none}
+
+.dm-hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+.dm-msg{font-family:'Inter',sans-serif;font-size:.9rem;line-height:1.6;padding:1rem 1.15rem;border-radius:.5rem;display:none}
+.dm-msg.ok{display:block;background:rgb(240 242 234);color:rgb(101 107 67);border:1px solid rgb(101 107 67)}
+.dm-msg.err{display:block;background:rgb(248 242 240);color:rgb(160 80 52);border:1px solid rgb(217 184 173)}
+
+/* Variante sobre fondo oscuro (secciones bg-neutral-900) */
+.dm-dark .dm-field label{color:rgb(163 163 163)}
+.dm-dark .dm-field input,.dm-dark .dm-field select,.dm-dark .dm-field textarea{
+    background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18);color:#fff}
+.dm-dark .dm-field input::placeholder,.dm-dark .dm-field textarea::placeholder{color:rgb(115 115 115)}
+.dm-dark .dm-field select{background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a3a3a3' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e")}
+.dm-dark .dm-field input:focus,.dm-dark .dm-field select:focus,.dm-dark .dm-field textarea:focus{
+    border-color:rgb(199 122 94);box-shadow:0 0 0 3px rgba(199,122,94,.18)}
+.dm-dark .dm-consent{color:rgb(163 163 163)}
+.dm-dark .dm-consent a{color:rgb(199 122 94)}
+.dm-dark .dm-msg.ok{background:rgba(101,107,67,.18);color:rgb(196 202 168);border-color:rgb(101 107 67)}
+.dm-dark .dm-msg.err{background:rgba(160,80,52,.15);color:rgb(217 184 173);border-color:rgb(160 80 52)}
+
+@media (max-width:640px){.dm-submit{align-self:stretch;text-align:center}}
