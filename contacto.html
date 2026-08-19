@@ -203,6 +203,161 @@
         </div>
     </section>
 
+    <!-- Formulario -->
+    <style>
+    .dm-form-wrap{max-width:42rem;margin:0 auto}
+    .dm-form{display:flex;flex-direction:column;gap:1.1rem}
+    .dm-field{display:flex;flex-direction:column;gap:.35rem}
+    .dm-field label{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgb(115 115 115)}
+    .dm-field input,.dm-field select,.dm-field textarea{
+        font-family:'Inter',sans-serif;font-size:.95rem;color:rgb(38 38 38);
+        background:#fff;border:1px solid rgb(214 211 209);border-radius:.5rem;
+        padding:.8rem .9rem;width:100%;transition:border-color .2s,box-shadow .2s;
+        -webkit-appearance:none;appearance:none}
+    .dm-field select{background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right .8rem center;background-size:1.1rem;padding-right:2.4rem}
+    .dm-field textarea{min-height:7rem;resize:vertical}
+    .dm-field input:focus,.dm-field select:focus,.dm-field textarea:focus{
+        outline:none;border-color:rgb(160 80 52);box-shadow:0 0 0 3px rgba(160,80,52,.13)}
+    .dm-consent{display:flex;align-items:flex-start;gap:.65rem;font-family:'Inter',sans-serif;font-size:.8rem;line-height:1.5;color:rgb(115 115 115)}
+    .dm-consent input{margin-top:.15rem;width:1rem;height:1rem;flex-shrink:0;accent-color:rgb(160 80 52)}
+    .dm-consent a{color:rgb(160 80 52);text-decoration:underline}
+    .dm-submit{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+        background:rgb(160 80 52);color:#fff;border:none;border-radius:9999px;padding:1rem 2.5rem;cursor:pointer;
+        align-self:flex-start;transition:background .3s,transform .3s;box-shadow:0 10px 15px -3px rgba(160,80,52,.3)}
+    .dm-submit:hover:not(:disabled){background:rgb(133 66 43);transform:scale(1.04)}
+    .dm-submit:disabled{opacity:.55;cursor:default;transform:none}
+    .dm-hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+    .dm-msg{font-family:'Inter',sans-serif;font-size:.9rem;line-height:1.6;padding:1rem 1.15rem;border-radius:.5rem;display:none}
+    .dm-msg.ok{display:block;background:rgb(240 242 234);color:rgb(101 107 67);border:1px solid rgb(101 107 67)}
+    .dm-msg.err{display:block;background:rgb(248 242 240);color:rgb(160 80 52);border:1px solid rgb(217 184 173)}
+    @media (max-width:640px){.dm-submit{align-self:stretch;text-align:center}}
+    </style>
+    <section class="py-16 md:py-24 px-6 md:px-12" style="background-color:rgb(250 250 249)">
+        <div class="dm-form-wrap">
+            <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800 mb-3 text-center">
+                O escríbenos <span class="italic text-terracotta-500">por aquí</span>
+            </h2>
+            <p class="text-sm text-neutral-500 font-body leading-relaxed mb-10 text-center">
+                Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin compromiso.
+            </p>
+
+            <form class="dm-form" id="dm-contacto" novalidate>
+                <!-- Access Key pública de Web3Forms (cuenta leandro@marucc.com) -->
+                <input type="hidden" name="access_key" value="293480c4-1f30-4de8-9b6d-99c7082bd306">
+                <input type="hidden" name="subject" value="Nuevo contacto desde decortmarucc.com">
+                <input type="hidden" name="from_name" value="Web DECORT MARUCC">
+                <div class="dm-hp" aria-hidden="true">
+                    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-nombre">Nombre</label>
+                    <input type="text" id="dm-nombre" name="nombre" autocomplete="name" required>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-email">Email</label>
+                    <input type="email" id="dm-email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-telefono">Teléfono</label>
+                    <input type="tel" id="dm-telefono" name="telefono" autocomplete="tel" inputmode="tel">
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-direccion">Dirección de la visita o el montaje</label>
+                    <input type="text" id="dm-direccion" name="direccion" autocomplete="street-address"
+                           placeholder="Calle y municipio (o solo el municipio)" required>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-tipo">Tipo de proyecto</label>
+                    <select id="dm-tipo" name="tipo_proyecto">
+                        <option value="Vivienda particular">Vivienda particular</option>
+                        <option value="Hotel o restaurante">Hotel o restaurante</option>
+                        <option value="Bodega">Bodega</option>
+                        <option value="Promoción u obra nueva">Promoción u obra nueva</option>
+                        <option value="Arquitecto o interiorista">Arquitecto o interiorista</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-mensaje">Mensaje</label>
+                    <textarea id="dm-mensaje" name="mensaje" placeholder="Cuéntanos las estancias, el tipo de cortina que tienes en mente o cualquier duda."></textarea>
+                </div>
+
+                <label class="dm-consent">
+                    <input type="checkbox" name="consentimiento" required>
+                    <span>He leído y acepto la <a href="/politica-privacidad.html">política de privacidad</a>. Usaremos tus datos solo para responderte.</span>
+                </label>
+
+                <button type="submit" class="dm-submit" id="dm-submit">Enviar mensaje</button>
+
+                <div class="dm-msg" id="dm-msg" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+    (function () {
+        var form = document.getElementById('dm-contacto');
+        if (!form) return;
+        var btn = document.getElementById('dm-submit');
+        var msg = document.getElementById('dm-msg');
+
+        function show(kind, text) {
+            msg.className = 'dm-msg ' + kind;
+            msg.textContent = text;
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!form.checkValidity()) {
+                show('err', 'Revisa el nombre, el email, la dirección y la aceptación de la política de privacidad.');
+                form.reportValidity();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Enviando…';
+            msg.className = 'dm-msg';
+
+            var data = Object.fromEntries(new FormData(form));
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (res.success) {
+                    form.reset();
+                    show('ok', 'Recibido. Te respondemos en menos de 24 horas.');
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'form_submit',
+                        form_name: 'contacto',
+                        tipo_proyecto: data.tipo_proyecto || ''
+                    });
+                } else {
+                    show('err', 'No se ha podido enviar. Escríbenos por WhatsApp al 641 354 788.');
+                }
+            })
+            .catch(function () {
+                show('err', 'No se ha podido enviar. Escríbenos por WhatsApp al 641 354 788.');
+            })
+            .finally(function () {
+                btn.disabled = false;
+                btn.textContent = 'Enviar mensaje';
+            });
+        });
+    })();
+    </script>
+
     <!-- CTA -->
     <section class="py-16 md:py-20 px-6 md:px-12 bg-neutral-900 text-white">
         <div class="max-w-2xl mx-auto text-center">
