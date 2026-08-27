@@ -47,3 +47,9 @@
 .dm-dark .dm-msg.err{background:rgba(160,80,52,.15);color:rgb(217 184 173);border-color:rgb(160 80 52)}
 
 @media (max-width:640px){.dm-submit{align-self:stretch;text-align:center}}
+
+/* iOS Safari amplia la pagina al enfocar un campo con font-size < 16px.
+   En movil se fuerza 1rem para evitar ese zoom; en escritorio se mantiene .95rem. */
+@media (max-width:767px){
+    .dm-field input,.dm-field select,.dm-field textarea{font-size:1rem}
+}
