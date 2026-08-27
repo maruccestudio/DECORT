@@ -29,6 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/output.css">
+    <link rel="stylesheet" href="/public/form.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
 
     <!-- Product Schema -->
@@ -427,6 +428,74 @@
         </div>
     </section>
 
+    <!-- Formulario de contacto -->
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-white border-t border-arena-300/40">
+        <div class="dm-form-wrap">
+            <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800 mb-3 text-center">
+                Cuéntanos tus <span class="italic text-terracotta-500">ventanas</span>
+            </h2>
+            <p class="text-sm text-neutral-500 font-body leading-relaxed mb-10 text-center">
+                Llevamos el showroom a tu casa. Déjanos tus datos y te respondemos en menos de 24 horas.
+            </p>
+
+            <form class="dm-form" id="dm-contacto" data-form-name="cortinas-enrollables" novalidate>
+                <input type="hidden" name="access_key" value="293480c4-1f30-4de8-9b6d-99c7082bd306">
+                <input type="hidden" name="subject" value="Nuevo contacto desde decortmarucc.com (Enrollables)">
+                <input type="hidden" name="from_name" value="Web DECORT MARUCC">
+                <div class="dm-hp" aria-hidden="true">
+                    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-nombre">Nombre</label>
+                    <input type="text" id="dm-nombre" name="nombre" autocomplete="name" required>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-email">Email</label>
+                    <input type="email" id="dm-email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-telefono">Teléfono</label>
+                    <input type="tel" id="dm-telefono" name="telefono" autocomplete="tel" inputmode="tel">
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-direccion">Dirección de la visita o el montaje</label>
+                    <input type="text" id="dm-direccion" name="direccion" autocomplete="street-address"
+                           placeholder="Calle y municipio (o solo el municipio)" required>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-tipo">Tipo de proyecto</label>
+                    <select id="dm-tipo" name="tipo_proyecto">
+                            <option value="Vivienda particular" selected>Vivienda particular</option>
+                            <option value="Hotel o restaurante">Hotel o restaurante</option>
+                            <option value="Bodega">Bodega</option>
+                            <option value="Promoción u obra nueva">Promoción u obra nueva</option>
+                            <option value="Arquitecto o interiorista">Arquitecto o interiorista</option>
+                            <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="dm-field">
+                    <label for="dm-mensaje">Mensaje</label>
+                    <textarea id="dm-mensaje" name="mensaje" placeholder="Cuéntanos cuántas ventanas, sus medidas aproximadas y si buscas screen, blackout o tejido técnico."></textarea>
+                </div>
+
+                <label class="dm-consent">
+                    <input type="checkbox" name="consentimiento" required>
+                    <span>He leído y acepto la <a href="/politica-privacidad.html">política de privacidad</a>. Usaremos tus datos solo para responderte.</span>
+                </label>
+
+                <button type="submit" class="dm-submit">Enviar mensaje</button>
+
+                <div class="dm-msg" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="py-20 md:py-28 px-6 md:px-12 bg-neutral-900 text-white">
         <div class="max-w-3xl mx-auto text-center">
@@ -550,5 +619,6 @@
     })();
     </script>
 <script src="public/js/faq-animate.js" defer></script>
+<script src="/public/form.js" defer></script>
 </body>
 </html>
