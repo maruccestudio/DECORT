@@ -53,3 +53,9 @@
 @media (max-width:767px){
     .dm-field input,.dm-field select,.dm-field textarea{font-size:1rem}
 }
+
+/* Aire entre el boton de envio y la seccion siguiente (a menudo el bloque oscuro).
+   Se hace aqui con CSS plano y no con utilidades de Tailwind: output.css es un build
+   purgado y clases como pb-24 o md:pb-32 no existen en el. */
+.dm-form-wrap{padding-bottom:2.5rem}
+@media (min-width:768px){.dm-form-wrap{padding-bottom:4rem}}
