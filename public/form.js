@@ -10,6 +10,16 @@
     var msg = form.querySelector('.dm-msg');
     var etiquetaBoton = btn ? btn.textContent : 'Enviar';
 
+    // Textos personalizables por pagina (data-*), para que la version en ingles
+    // no necesite su propio JS. Si no se declaran, se usan los de siempre.
+    function txt(attr, porDefecto) {
+        return form.getAttribute(attr) || porDefecto;
+    }
+    var MSG_INVALIDO = txt('data-msg-invalido', 'Revisa el nombre, el email, la dirección y la aceptación de la política de privacidad.');
+    var MSG_OK       = txt('data-msg-ok', 'Recibido. Te respondemos en menos de 24 horas.');
+    var MSG_ERROR    = txt('data-msg-error', 'No se ha podido enviar. Escríbenos por WhatsApp al 641 354 788.');
+    var MSG_ENVIANDO = txt('data-msg-enviando', 'Enviando…');
+
     function show(kind, text) {
         if (!msg) return;
         msg.className = 'dm-msg ' + kind;
@@ -20,13 +30,13 @@
         e.preventDefault();
 
         if (!form.checkValidity()) {
-            show('err', 'Revisa el nombre, el email, la dirección y la aceptación de la política de privacidad.');
+            show('err', MSG_INVALIDO);
             form.reportValidity();
             return;
         }
 
         btn.disabled = true;
-        btn.textContent = 'Enviando…';
+        btn.textContent = MSG_ENVIANDO;
         if (msg) msg.className = 'dm-msg';
 
         var data = Object.fromEntries(new FormData(form));
@@ -42,7 +52,7 @@
         .then(function (res) {
             if (res.success) {
                 form.reset();
-                show('ok', 'Recibido. Te respondemos en menos de 24 horas.');
+                show('ok', MSG_OK);
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     event: 'form_submit',
@@ -50,11 +60,11 @@
                     tipo_proyecto: data.tipo_proyecto || ''
                 });
             } else {
-                show('err', 'No se ha podido enviar. Escríbenos por WhatsApp al 641 354 788.');
+                show('err', MSG_ERROR);
             }
         })
         .catch(function () {
-            show('err', 'No se ha podido enviar. Escríbenos por WhatsApp al 641 354 788.');
+            show('err', MSG_ERROR);
         })
         .finally(function () {
             btn.disabled = false;
