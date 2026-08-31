@@ -65,6 +65,19 @@ python .claude/skills/sync-shared-blocks/scripts/sync_block.py \
 Esto **nunca escribe nada**. Solo informa que paginas difieren y muestra
 el diff.
 
+**Para `<nav>` hace falta `--start` para desambiguar.** Cada pagina
+interior tiene DOS `<nav>`: el menu (que debe ser identico) y el
+breadcrumb (`aria-label="Ruta de navegación"`, que cambia a proposito en
+cada pagina y nunca debe sincronizarse). Sin `--start` el script se
+niega por ambiguedad -- es la proteccion funcionando, no un fallo.
+
+```bash
+python .claude/skills/sync-shared-blocks/scripts/sync_block.py \
+  --tag nav --start '<nav class="w-full' \
+  --ref cortinas-blackout.html \
+  --targets <las mismas 17 paginas de arriba>
+```
+
 ### 2. Aplicar la correccion (solo si se decide que la deriva es un bug)
 
 Anadir `--apply` al mismo comando, **dentro de una rama** (el script se
