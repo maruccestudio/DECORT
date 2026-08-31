@@ -25,8 +25,11 @@ import subprocess
 import sys
 
 
-def extraer_bloque(html: str, tag: str):
-    open_tag = f'<{tag}'
+def extraer_bloque(html: str, tag: str, start: str = None):
+    # `start` permite distinguir entre dos elementos con el mismo tag que
+    # cumplen roles distintos (ej. <nav> del menu vs <nav> del breadcrumb,
+    # que cambia pagina a pagina a proposito y nunca debe sincronizarse).
+    open_tag = start if start else f'<{tag}'
     close_tag = f'</{tag}>'
     i = html.find(open_tag)
     if i == -1:
@@ -36,8 +39,8 @@ def extraer_bloque(html: str, tag: str):
         return None, None, None
     j += len(close_tag)
     if html.find(open_tag, j) != -1:
-        # hay una segunda ocurrencia: la pagina tiene mas de un bloque con
-        # este tag y no podemos saber cual es el compartido. Nos negamos.
+        # hay una segunda ocurrencia con el mismo arranque: ambiguo, no
+        # adivinamos cual es el bloque compartido.
         return None, None, None
     return html[i:j], i, j
 
@@ -60,10 +63,15 @@ def main():
                           'una lista explicita decidida por una persona.')
     ap.add_argument('--apply', action='store_true',
                      help='Escribe los cambios. Sin esto, solo informa.')
+    ap.add_argument('--start', default=None,
+                     help='Prefijo exacto de la etiqueta de apertura, para '
+                          'desambiguar cuando hay dos elementos con el mismo '
+                          'tag (ej. --start \'<nav class="w-full\' para '
+                          'evitar el <nav> de breadcrumb).')
     args = ap.parse_args()
 
     ref_html = io.open(args.ref, encoding='utf-8').read()
-    ref_bloque, _, _ = extraer_bloque(ref_html, args.tag)
+    ref_bloque, _, _ = extraer_bloque(ref_html, args.tag, args.start)
     if ref_bloque is None:
         print(f'ERROR: no se pudo extraer <{args.tag}> de {args.ref} '
               f'de forma no ambigua. Nada que hacer.')
@@ -79,7 +87,7 @@ def main():
         if f == args.ref:
             continue
         html = io.open(f, encoding='utf-8').read()
-        bloque, i, j = extraer_bloque(html, args.tag)
+        bloque, i, j = extraer_bloque(html, args.tag, args.start)
         if bloque is None:
             print(f'  {f:38s}  AMBIGUO o sin <{args.tag}> -- se salta')
             continue
