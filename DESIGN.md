@@ -1,6 +1,6 @@
 ---
 name: DECORT MARUCC
-description: Showroom móvil de cortinas a medida para Baleares — calidez mediterránea con precisión de arquitecto
+description: Showroom móvil de cortinas a medida para Mallorca — calidez mediterránea con precisión de arquitecto
 colors:
   terracotta-primary: "#A0633B"
   terracotta-deep: "#73422a"
@@ -64,13 +64,13 @@ Este sistema rechaza explícitamente: fotografía de stock genérica, interiores
 
 ## 2. Colors
 
-Paleta de tierra mediterránea: terracota cocida al sol, arena de playa, hoja de olivo — el paisaje de Baleares traducido a interfaz.
+Paleta de tierra mediterránea: terracota cocida al sol, arena de playa, hoja de olivo — el paisaje de Mallorca traducido a interfaz.
 
 ### Primary
 - **Terracota** (`#A0633B`): botones principales, acentos, highlights, CTA. Es el color que "actúa" — nunca decorativo puro.
 
 ### Secondary
-- **Oliva** (`#8B8B3D`): badges, etiquetas secundarias, detalles puntuales (ej. "Baleares" en el hero). Uso deliberadamente escaso.
+- **Oliva** (`#8B8B3D`): badges, etiquetas secundarias, detalles puntuales (ej. "Mallorca" en el hero). Uso deliberadamente escaso.
 
 ### Neutral
 - **Arena** (`#FAF7F2` a `#EBE3D6`): fondos de sección, superficies cálidas. No es el "cream AI-default" — es un token de marca con nombre propio, ya presente en el brandbook.

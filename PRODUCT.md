@@ -10,7 +10,7 @@ web
 
 ## Users
 
-Propietarios de vivienda en Baleares (Mallorca, Menorca, Ibiza, Formentera) que buscan cortinas, estores, paneles japoneses o venecianas a medida, con capacidad de gasto media-alta y sensibilidad por el diseño de su espacio. Llegan buscando resolver una necesidad concreta (luz, intimidad, terminar de vestir un ambiente) sin saber aún qué producto exacto encaja. Secundariamente, arquitectos y estudios de interiorismo que prescriben para clientes, y hoteles/hostelería que compran por volumen y plazos de obra.
+Propietarios de vivienda en Mallorca que buscan cortinas, estores, paneles japoneses o venecianas a medida, con capacidad de gasto media-alta y sensibilidad por el diseño de su espacio. Llegan buscando resolver una necesidad concreta (luz, intimidad, terminar de vestir un ambiente) sin saber aún qué producto exacto encaja. Secundariamente, arquitectos y estudios de interiorismo que prescriben para clientes, y hoteles/hostelería que compran por volumen y plazos de obra.
 
 ## Product Purpose
 
