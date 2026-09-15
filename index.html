@@ -36,12 +36,10 @@
     <!-- Preload LCP image -->
     <link rel="preload" as="image" href="public/images/hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preload" as="image" href="public/images/hero-desktop.webp" media="(min-width: 768px)" fetchpriority="high">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="/public/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/public/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/public/output.css">
     <link rel="stylesheet" href="/public/form.css">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
     <style>
         /* Motion tokens */
         :root {
@@ -479,7 +477,7 @@
         </a>
 
         <button id="close-mobile-menu" aria-label="Cerrar menú" class="absolute top-6 right-6 p-4 text-arena-100/50 hover:text-arena-100 transition-colors">
-            <iconify-icon icon="lucide:x" width="32" aria-hidden="true"></iconify-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
     </div>
 
@@ -526,7 +524,7 @@
                             Solicitar visita gratuita
                         </a>
                         <a href="tel:+34641354788" class="inline-flex items-center gap-2 px-6 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold tracking-wide transition duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body whitespace-nowrap">
-                            <iconify-icon icon="lucide:phone" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
                             +34 641 35 47 88
                         </a>
                     </div>
@@ -541,7 +539,7 @@
                 </p>
                 <button onclick="scrollToSection('#colecciones')" class="group inline-flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest border-b border-neutral-800 pb-1 text-neutral-900 transition-colors hover:border-terracotta-500 hover:text-terracotta-600 cursor-pointer font-body">
                     Ver Colecciones
-                    <iconify-icon icon="lucide:arrow-down" width="14" stroke-width="1.5" class="group-hover:translate-y-0.5 transition-transform" aria-hidden="true"></iconify-icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg group-hover:translate-y-0.5 transition-transform" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7l-7 7l-7-7"/></svg>
                 </button>
             </div>
 
@@ -553,7 +551,7 @@
                         Solicitar visita gratuita
                     </a>
                     <a href="tel:+34641354788" class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-[10px] font-semibold tracking-wide transition duration-300 shadow-lg shadow-terracotta-500/20 font-body whitespace-nowrap">
-                        <iconify-icon icon="lucide:phone" width="12" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
                         +34 641 35 47 88
                     </a>
                 </div>
@@ -619,7 +617,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">9 estilos / lino premium</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -635,7 +633,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">lino / translúcido</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -651,7 +649,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">oscurecimiento total</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -667,7 +665,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">paqueto / romano / varillas</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -683,7 +681,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">screen / tejido técnico</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -699,7 +697,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">lamas / tejido natural</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -715,7 +713,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">madera / aluminio</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -731,7 +729,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">acordeón / luz filtrada</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -751,7 +749,7 @@
                             <p class="text-xs text-neutral-600 mt-1 font-body">deslizantes / minimalistas</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border border-arena-400 flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity translate-x-0 md:-translate-x-2 md:group-hover:translate-x-0 duration-300 text-terracotta-500">
-                            <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                         </div>
                     </div>
                 </a>
@@ -765,7 +763,7 @@
                             <p class="text-sm text-white/90 font-body mb-6 max-w-md">Control inteligente para tus cortinas. Compatible con Alexa, Google Home y Apple HomeKit. Sin obra eléctrica.</p>
                             <div class="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white font-body group-hover:text-terracotta-300 transition-colors">
                                 Ver Servicio
-                                <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"></iconify-icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg group-hover:translate-x-1 transition-transform" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                             </div>
                         </div>
                     </div>
@@ -789,20 +787,20 @@
                             <div class="relative z-10">
                                 <div class="flex items-center gap-3 mb-5">
                                     <div class="w-10 h-10 rounded-full bg-terracotta-500/20 flex items-center justify-center">
-                                        <iconify-icon icon="lucide:ruler" width="18" class="text-terracotta-400" aria-hidden="true"></iconify-icon>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-400" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Zm-6.8-2.8l2-2m-5-1l2-2m-5-1l2-2m7 11l2-2"/></svg>
                                     </div>
                                     <div class="w-10 h-10 rounded-full bg-terracotta-500/20 flex items-center justify-center">
-                                        <iconify-icon icon="lucide:calendar-check" width="18" class="text-terracotta-400" aria-hidden="true"></iconify-icon>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-400" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 2v3m8-3v3"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 15l2 2l4-4"/></g></svg>
                                     </div>
                                     <div class="w-10 h-10 rounded-full bg-terracotta-500/20 flex items-center justify-center">
-                                        <iconify-icon icon="lucide:palette" width="18" class="text-terracotta-400" aria-hidden="true"></iconify-icon>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-400" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></g></svg>
                                     </div>
                                 </div>
                                 <h3 class="text-2xl md:text-3xl font-light tracking-tight font-display text-white mb-2">Para <span class="italic">Arquitectos</span><br>e Interioristas</h3>
                                 <p class="text-xs text-white/90 font-body mb-5 leading-relaxed">Plazos firmados · Medición láser en obra · Muestrario a domicilio</p>
                                 <div class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-white font-body group-hover:text-terracotta-300 transition-colors">
                                     Canal Profesional
-                                    <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"></iconify-icon>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg group-hover:translate-x-1 transition-transform" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                                 </div>
                             </div>
                         </div>
@@ -828,7 +826,7 @@
                                 <p class="text-sm text-white/90 font-body mb-6 leading-relaxed">Tejidos ignífugos certificados · Instalación fuera de temporada · Motorización centralizada por zonas</p>
                                 <div class="inline-flex items-center gap-2 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-white font-body group-hover:text-terracotta-300 transition-colors">
                                     Ver Servicio
-                                    <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"></iconify-icon>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg group-hover:translate-x-1 transition-transform" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                                 </div>
                             </div>
                         </div>
@@ -874,7 +872,7 @@
                 <div class="group">
                     <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
                         <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
-                            <iconify-icon icon="lucide:truck" width="40" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2m10 0H9m10 0h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></g></svg>
                         </div>
                         <p class="text-xl md:text-2xl font-light tracking-tight font-display text-neutral-800 mb-4">La tienda <br><span class="italic text-terracotta-500">en tu puerta</span></p>
                         <p class="text-sm text-neutral-500 font-body leading-relaxed max-w-[200px]">
@@ -891,7 +889,7 @@
                 <div class="group">
                     <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
                         <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
-                            <iconify-icon icon="lucide:palette" width="40" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></g></svg>
                         </div>
                         <p class="text-xl md:text-2xl font-light tracking-tight font-display text-neutral-800 mb-4">Diseño <br><span class="italic text-terracotta-500">en contexto</span></p>
                         <p class="text-sm text-neutral-500 font-body leading-relaxed max-w-[200px]">
@@ -908,7 +906,7 @@
                 <div class="group">
                     <div class="relative w-full aspect-[4/3] md:aspect-square bg-white border border-arena-300/50 rounded-[40px] md:rounded-[60px] flex flex-col items-center justify-center p-8 text-center transition duration-500 group-hover:shadow-2xl group-hover:shadow-terracotta-500/10 group-hover:-translate-y-2 mb-6">
                         <div class="w-24 h-24 rounded-full bg-arena-50 text-terracotta-500 flex items-center justify-center mb-8 border border-arena-200 group-hover:scale-110 transition-transform duration-500">
-                            <iconify-icon icon="lucide:ruler" width="40" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Zm-6.8-2.8l2-2m-5-1l2-2m-5-1l2-2m7 11l2-2"/></svg>
                         </div>
                         <p class="text-xl md:text-2xl font-light tracking-tight font-display text-neutral-800 mb-4">Medición <br><span class="italic text-terracotta-500">exacta</span></p>
                         <p class="text-sm text-neutral-500 font-body leading-relaxed max-w-[200px]">
@@ -964,11 +962,11 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20cortinas%20a%20medida" target="_blank" rel="noopener noreferrer" class="btn-press inline-flex items-center gap-3 px-8 py-3.5 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 hover:scale-105 shadow-lg shadow-terracotta-500/20 font-body">
-                    <iconify-icon icon="lucide:message-circle" width="16" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719"/></svg>
                     Solicitar visita gratuita
                 </a>
                 <a href="tel:+34641354788" class="inline-flex items-center gap-2 px-6 py-3 border border-arena-400 hover:border-terracotta-500 text-neutral-600 hover:text-terracotta-600 rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 font-body">
-                    <iconify-icon icon="lucide:phone" width="14" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
                     Llamar ahora
                 </a>
             </div>
@@ -996,7 +994,7 @@
                         <div class="flex-1 h-px bg-arena-300"></div>
                     </div>
                     <div class="w-11 h-11 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-4 group-hover:bg-terracotta-100 transition-colors">
-                        <iconify-icon icon="lucide:message-square" width="20" stroke-width="1.5" class="text-terracotta-500" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="ico-svg text-terracotta-500" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <h3 class="text-base font-semibold tracking-tight font-display mb-2 text-neutral-800">Contacto</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed font-body">Escríbenos o llámanos. Respondemos unas pocas preguntas para preparar los muestrarios exactos para tu espacio.</p>
@@ -1009,7 +1007,7 @@
                         <div class="flex-1 h-px bg-arena-300"></div>
                     </div>
                     <div class="w-11 h-11 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-4 group-hover:bg-terracotta-100 transition-colors">
-                        <iconify-icon icon="lucide:home" width="20" stroke-width="1.5" class="text-terracotta-500" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="ico-svg text-terracotta-500" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></g></svg>
                     </div>
                     <h3 class="text-base font-semibold tracking-tight font-display mb-2 text-neutral-800">Visita a domicilio</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed font-body">Abre la puerta. El resto es nuestra tarea. Desplegamos las telas en tu salón, bajo la luz de tu espacio, y medimos con precisión.</p>
@@ -1022,7 +1020,7 @@
                         <div class="flex-1 h-px bg-arena-300"></div>
                     </div>
                     <div class="w-11 h-11 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-4 group-hover:bg-terracotta-100 transition-colors">
-                        <iconify-icon icon="lucide:file-text" width="20" stroke-width="1.5" class="text-terracotta-500" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="ico-svg text-terracotta-500" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10 9H8m8 4H8m8 4H8"/></g></svg>
                     </div>
                     <h3 class="text-base font-semibold tracking-tight font-display mb-2 text-neutral-800">Presupuesto detallado</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed font-body">Recibes el presupuesto detallado con todo el desglose. Lo revisas sin prisa, sin presión. Si pides ajustes, los hacemos.</p>
@@ -1035,7 +1033,7 @@
                         <div class="flex-1 h-px bg-arena-300"></div>
                     </div>
                     <div class="w-11 h-11 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-4 group-hover:bg-terracotta-100 transition-colors">
-                        <iconify-icon icon="lucide:scissors" width="20" stroke-width="1.5" class="text-terracotta-500" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="ico-svg text-terracotta-500" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12L12 12m8-8L8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8L20 20"/></g></svg>
                     </div>
                     <h3 class="text-base font-semibold tracking-tight font-display mb-2 text-neutral-800">Confección de autor</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed font-body">Taller propio, manos expertas, sin intermediarios. Cada pieza fabricada a medida con los materiales que elegiste en tu visita.</p>
@@ -1048,7 +1046,7 @@
                         <div class="flex-1 h-px bg-arena-300"></div>
                     </div>
                     <div class="w-11 h-11 rounded-2xl bg-terracotta-50 flex items-center justify-center mb-4 group-hover:bg-terracotta-100 transition-colors">
-                        <iconify-icon icon="lucide:check-circle" width="20" stroke-width="1.5" class="text-terracotta-500" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="ico-svg text-terracotta-500" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11l3 3L22 4"/></g></svg>
                     </div>
                     <h3 class="text-base font-semibold tracking-tight font-display mb-2 text-neutral-800">Instalación impecable</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed font-body">Montaje preciso y planchado in situ. No nos marchamos hasta que el tejido luzca perfecto y el espacio quede impecable.</p>
@@ -1076,11 +1074,11 @@
                 <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
                         </div>
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-label="Google"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     </div>
@@ -1105,11 +1103,11 @@
                 <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
                         </div>
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-label="Google"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     </div>
@@ -1134,11 +1132,11 @@
                 <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
                         </div>
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-label="Google"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     </div>
@@ -1163,11 +1161,11 @@
                 <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
                         </div>
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-label="Google"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     </div>
@@ -1192,11 +1190,11 @@
                 <div class="group p-8 bg-white rounded-3xl border border-arena-300/50 hover:border-terracotta-200 transition duration-500 hover:shadow-lg hover:shadow-terracotta-100/30 flex flex-col">
                     <div class="flex items-center justify-between mb-5">
                         <div class="flex gap-1">
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
-                            <iconify-icon icon="ph:star-fill" width="16" class="text-yellow-400" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" class="ico-svg text-yellow-400" aria-hidden="true" focusable="false"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>
                         </div>
                         <svg width="18" height="18" viewBox="0 0 24 24" aria-label="Google"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     </div>
@@ -1225,7 +1223,7 @@
                    class="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-terracotta-500 font-body transition-colors">
                     <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     Ver todas las reseñas en Google
-                    <iconify-icon icon="lucide:arrow-right" width="14" aria-hidden="true"></iconify-icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg>
                 </a>
             </div>
 
@@ -1261,7 +1259,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cómo funciona el servicio de showroom móvil?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Nos desplazamos hasta tu domicilio en Mallorca con un muestrario completo de telas, tejidos y mecanismos. Durante la visita, un asesor especializado analiza tus espacios, toma medidas con láser de precisión y te ayuda a elegir la solución perfecta. La visita es gratuita y sin compromiso.</p>
@@ -1272,7 +1270,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿En qué zonas de Mallorca trabajáis?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Trabajamos en toda Mallorca: Palma y su área metropolitana, la Serra de Tramuntana, el Llevant, el Migjorn y el Pla. Cubrimos zonas residenciales, proyectos hoteleros y comerciales en cualquier punto de la isla.</p>
@@ -1283,7 +1281,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cuánto tarda la confección e instalación?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">El plazo habitual desde la visita hasta la instalación es de 2 a 4 semanas, dependiendo del tipo de cortina y la disponibilidad de los materiales seleccionados. Para proyectos urgentes o con plazos especiales, consúltanos y haremos lo posible por adaptarnos.</p>
@@ -1294,7 +1292,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Qué marcas de telas y mecanismos utilizáis?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Seleccionamos los mejores tejidos del mercado para garantizar durabilidad, estética y funcionalidad, incluyendo opciones motorizadas compatibles con sistemas domóticos.</p>
@@ -1305,7 +1303,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿El asesoramiento y la visita tienen algún coste?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">No, la visita de nuestro showroom móvil y el asesoramiento personalizado son completamente gratuitos y sin compromiso. Creemos que ver y tocar los materiales en tu propio espacio es la mejor forma de tomar la decisión correcta.</p>
@@ -1316,7 +1314,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Trabajáis con proyectos de interiorismo y hoteles?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Sí, colaboramos habitualmente con estudios de interiorismo, arquitectos y hoteles boutique en Mallorca. Ofrecemos condiciones especiales para proyectos profesionales, con plazos firmados y comunicación proactiva en cada fase. DECORT MARUCC nace de un estudio de arquitectura — hablamos el mismo idioma.</p>
@@ -1327,7 +1325,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Las cortinas a medida son muy caras?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Depende de cinco variables, y conviene conocerlas antes de pedir precio: el tejido (densidad, ancho del rollo y si lleva estampado), la cantidad de tela —que no la marca el ancho de tu ventana sino el tipo de confección: una onda perfecta lleva entre dos y dos veces y media el ancho del riel, una cortina plana lleva una vez—, el sistema (riel o barra, manual o motorizado), los acabados de taller y la instalación. La visita, la medición láser y el presupuesto detallado son gratuitos. Lo explicamos entero en <a href="/precio-cortinas-a-medida.html" class="text-terracotta-500 underline underline-offset-2 hover:text-terracotta-600 transition-colors">cuánto cuesta una cortina a medida</a>.</p>
@@ -1338,7 +1336,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Y si el color o la tela no encajan con mi decoración?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Por eso llevamos el showroom a tu casa. Pones la muestra en tu ventana, con tu luz, junto a tu mobiliario. No adivinas: confirmas. La decisión se toma en tu espacio real, no en una tienda bajo luz artificial. No hay foto que reemplace tocar un lino natural bajo la luz de tu salón.</p>
@@ -1349,7 +1347,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Podéis instalar sin cerrar mi negocio u hotel?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-500 leading-relaxed font-body">Instalamos cuando tú lo decides: antes de abrir, después de cerrar, o en el día de menor actividad. Somos rápidos, limpios y no dejamos el espacio hasta que todo está en orden. Tu negocio no para.</p>
@@ -1449,19 +1447,19 @@
                                 <span class="block text-[10px] font-semibold tracking-widest text-neutral-400 uppercase mb-6 font-body">Servicios</span>
                                 <ul class="space-y-3 text-sm font-normal text-neutral-300 font-body">
                                     <li class="flex items-center gap-3 group">
-                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true"></iconify-icon> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg> 
                                         Cortinas a medida
                                     </li>
                                     <li class="flex items-center gap-3 group">
-                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true"></iconify-icon> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg> 
                                         Asesoramiento en diseño
                                     </li>
                                     <li class="flex items-center gap-3 group">
-                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true"></iconify-icon> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg> 
                                         Instalación profesional
                                     </li>
                                     <li class="flex items-center gap-3 group">
-                                        <iconify-icon icon="lucide:arrow-right" width="14" stroke-width="1.5" class="opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true"></iconify-icon> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="ico-svg opacity-30 group-hover:opacity-100 transition-opacity text-neutral-500 group-hover:text-terracotta-400" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7l-7 7"/></svg> 
                                         Showroom móvil
                                     </li>
                                 </ul>
@@ -1482,7 +1480,7 @@
                             </h4>
                             <a href="mailto:decort@marucc.com" class="inline-flex items-center gap-3 text-xl md:text-2xl font-medium transition border-b border-neutral-700 pb-1 text-neutral-400 hover:text-terracotta-400 hover:border-terracotta-400 hover:gap-4 group font-body">
                                 decort@marucc.com
-                                <iconify-icon icon="lucide:arrow-up-right" width="20" stroke-width="1.5" class="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true"></iconify-icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="ico-svg group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10v10M7 17L17 7"/></svg>
                             </a>
                             <address class="mt-6 flex flex-col gap-2 not-italic">
                                 <a href="tel:+34641354788" class="text-sm text-neutral-400 hover:text-terracotta-400 transition-colors font-body">
@@ -1500,13 +1498,13 @@
                         <div class="flex flex-col items-start md:items-end gap-8 w-full md:w-auto">
                             <div class="flex gap-4">
                                 <a href="https://www.instagram.com/decort.marucc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
-                                    <iconify-icon icon="lucide:instagram" width="18" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8A4 4 0 0 1 16 11.37m1.5-4.87h.01"/></g></svg>
                                 </a>
                                 <a href="https://www.facebook.com/profile.php?id=61574998388055" target="_blank" rel="noopener noreferrer" aria-label="Facebook de DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
-                                    <iconify-icon icon="lucide:facebook" width="18" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                                 </a>
                                 <a href="tel:+34641354788" aria-label="Llamar a DECORT MARUCC" class="p-3 rounded-full border border-neutral-800 text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
-                                    <iconify-icon icon="lucide:phone" width="18" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
                                 </a>
                             </div>
                             <div class="flex flex-col items-start md:items-end gap-3 mt-4">
@@ -1542,11 +1540,11 @@
     <!-- Floating Buttons -->
     <div id="floating-btns" class="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-2.5 transition-opacity duration-300">
         <button id="scroll-top-btn" onclick="scrollToSection('#hero')" aria-label="Volver arriba" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-500 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition duration-300 hover:scale-110 cursor-pointer">
-            <iconify-icon icon="lucide:arrow-up" width="17" stroke-width="1.5" class="text-white" aria-hidden="true"></iconify-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" class="ico-svg text-white" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12l7-7l7 7m-7 7V5"/></svg>
         </button>
         <div id="phone-wrap" style="position:relative;">
             <a href="tel:+34641354788" id="phone-float-btn" aria-label="Llamar a DECORT MARUCC" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition duration-300 hover:scale-110">
-                <iconify-icon icon="lucide:phone" width="17" stroke-width="1.5" class="text-white" aria-hidden="true"></iconify-icon>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" class="ico-svg text-white" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
             </a>
             <div id="phone-tooltip" style="display:none;position:absolute;right:52px;top:50%;transform:translateY(-50%);background:#111827;color:white;font-size:11px;font-weight:500;padding:7px 14px;border-radius:10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);pointer-events:none;font-family:Inter,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.3);">+34 641 35 47 88</div>
         </div>
