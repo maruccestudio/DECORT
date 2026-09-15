@@ -24,11 +24,9 @@
     <meta name="twitter:description" content="No hay un precio por metro que valga para todo. Te explicamos qué mueve de verdad el presupuesto de una cortina a medida, y en qué orden.">
     <meta name="twitter:image" content="https://www.decortmarucc.com/public/images/og_share_1200x630.jpg">
     <link rel="canonical" href="https://www.decortmarucc.com/precio-cortinas-a-medida.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="/public/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/public/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/public/output.css">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -168,7 +166,7 @@
     <nav aria-label="Ruta de navegación" class="px-6 md:px-12 py-3 border-b border-arena-400/20 bg-arena-50">
         <ol class="flex items-center gap-2 text-[11px] font-body text-neutral-600 max-w-7xl mx-auto">
             <li><a href="/" class="hover:text-terracotta-500 transition-colors">Inicio</a></li>
-            <li><iconify-icon icon="lucide:chevron-right" width="12" aria-hidden="true"></iconify-icon></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"/></svg></li>
             <li class="text-neutral-700 font-medium">Cuánto cuesta</li>
         </ol>
     </nav>
@@ -297,10 +295,10 @@
                 Lo que <span class="italic text-terracotta-500">no cuesta nada</span>
             </h2>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <li class="flex gap-3 text-sm text-neutral-600 font-body"><iconify-icon icon="lucide:check" width="16" class="text-oliva-600 shrink-0 mt-0.5" aria-hidden="true"></iconify-icon><span>La visita a tu casa, en cualquier punto de Mallorca</span></li>
-                <li class="flex gap-3 text-sm text-neutral-600 font-body"><iconify-icon icon="lucide:check" width="16" class="text-oliva-600 shrink-0 mt-0.5" aria-hidden="true"></iconify-icon><span>El muestrario completo, para verlo con tu luz</span></li>
-                <li class="flex gap-3 text-sm text-neutral-600 font-body"><iconify-icon icon="lucide:check" width="16" class="text-oliva-600 shrink-0 mt-0.5" aria-hidden="true"></iconify-icon><span>La medición láser de todas las ventanas</span></li>
-                <li class="flex gap-3 text-sm text-neutral-600 font-body"><iconify-icon icon="lucide:check" width="16" class="text-oliva-600 shrink-0 mt-0.5" aria-hidden="true"></iconify-icon><span>El presupuesto detallado por escrito, en 24 h</span></li>
+                <li class="flex gap-3 text-sm text-neutral-600 font-body"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg text-oliva-600 shrink-0 mt-0.5" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"/></svg><span>La visita a tu casa, en cualquier punto de Mallorca</span></li>
+                <li class="flex gap-3 text-sm text-neutral-600 font-body"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg text-oliva-600 shrink-0 mt-0.5" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"/></svg><span>El muestrario completo, para verlo con tu luz</span></li>
+                <li class="flex gap-3 text-sm text-neutral-600 font-body"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg text-oliva-600 shrink-0 mt-0.5" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"/></svg><span>La medición láser de todas las ventanas</span></li>
+                <li class="flex gap-3 text-sm text-neutral-600 font-body"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg text-oliva-600 shrink-0 mt-0.5" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6L9 17l-5-5"/></svg><span>El presupuesto detallado por escrito, en 24 h</span></li>
             </ul>
             <p class="text-sm text-neutral-600 leading-relaxed font-body">
                 Sin compromiso y sin coste de desplazamiento. Si el presupuesto no te encaja, no has perdido más que 45 minutos en tu propio salón.
@@ -322,7 +320,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Cuánto cuesta una cortina a medida en Mallorca?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-600 leading-relaxed font-body">No existe un precio por metro que sirva para todo, porque el presupuesto depende de cinco variables: el tejido, la cantidad de tela que pide el tipo de confección, el sistema (riel o barra, manual o motorizado), los acabados de taller y la instalación. De todas ellas, las dos que más peso tienen son el tejido y el estilo de confección. La visita, la medición y el presupuesto detallado son gratuitos.</p>
@@ -332,7 +330,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Por qué dos cortinas de la misma ventana pueden costar el doble?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-600 leading-relaxed font-body">Porque la cantidad de tela no la marca el ancho de la ventana, la marca el tipo de confección. Una cortina de onda perfecta lleva entre dos y dos veces y media el ancho del riel en tela, porque el pliegue necesita material para existir. Una cortina plana lleva una vez. Misma ventana y mismo tejido, presupuesto muy distinto.</p>
@@ -342,7 +340,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Qué encarece más: el tejido o la motorización?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-600 leading-relaxed font-body">Depende del proyecto. En una vivienda con muchos metros de cortina manda el tejido, porque cada metro adicional multiplica. En pocas ventanas pero de gran formato, o cuando se quiere integración con domótica, la motorización suele ser el salto de precio más claro.</p>
@@ -352,7 +350,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿La medición y el presupuesto tienen coste?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-600 leading-relaxed font-body">No. La visita a domicilio, llevarte el muestrario completo a casa, la medición láser y el presupuesto detallado por escrito son gratuitos y sin compromiso, en cualquier punto de Mallorca.</p>
@@ -362,7 +360,7 @@
                 <details class="group bg-white rounded-2xl border border-arena-300/50 overflow-hidden transition duration-300 hover:border-terracotta-200">
                     <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none font-body">
                         <h3 class="text-sm md:text-base font-medium text-neutral-800 pr-4">¿Podéis dar un precio por teléfono?</h3>
-                        <iconify-icon icon="lucide:plus" width="18" stroke-width="1.5" class="text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true"></iconify-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="ico-svg text-terracotta-500 shrink-0 group-open:rotate-45 transition-transform duration-300" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/></svg>
                     </summary>
                     <div class="px-8 pb-6">
                         <p class="text-sm text-neutral-600 leading-relaxed font-body">Podemos orientarte sobre qué variables van a pesar más en tu caso, pero no dar una cifra cerrada sin ver la ventana. El ancho, la altura, el tipo de pared, la orientación y el estilo de caída que busques cambian el presupuesto lo suficiente como para que una cifra dada a ciegas no te sirva.</p>
@@ -388,7 +386,7 @@
                     Solicitar visita gratuita
                 </a>
                 <a href="tel:+34641354788" class="inline-flex items-center justify-center gap-3 px-10 py-4 border border-white/20 hover:border-white/50 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 hover:scale-105 font-body">
-                    <iconify-icon icon="lucide:phone" width="16" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
                     +34 641 35 47 88
                 </a>
             </div>
@@ -406,13 +404,13 @@
                     <p class="text-sm text-neutral-400 font-body leading-relaxed mb-5">Showroom móvil de cortinas a medida en toda Mallorca. Fabricación propia, instalación incluida.</p>
                     <div class="flex gap-3">
                         <a href="https://www.instagram.com/decort.marucc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram DECORT MARUCC" class="w-9 h-9 rounded-full border border-neutral-700 flex items-center justify-center text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
-                            <iconify-icon icon="lucide:instagram" width="16" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8A4 4 0 0 1 16 11.37m1.5-4.87h.01"/></g></svg>
                         </a>
                         <a href="https://www.facebook.com/profile.php?id=61574998388055" target="_blank" rel="noopener noreferrer" aria-label="Facebook DECORT MARUCC" class="w-9 h-9 rounded-full border border-neutral-700 flex items-center justify-center text-neutral-500 hover:bg-terracotta-500 hover:text-white hover:border-terracotta-500 transition duration-300">
-                            <iconify-icon icon="lucide:facebook" width="16" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         </a>
                         <a href="https://wa.me/34641354788" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp DECORT MARUCC" class="w-9 h-9 rounded-full border border-neutral-700 flex items-center justify-center text-neutral-500 hover:bg-oliva-600 hover:text-white hover:border-oliva-600 transition duration-300">
-                            <iconify-icon icon="lucide:message-circle" width="16" stroke-width="1.5" aria-hidden="true"></iconify-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719"/></svg>
                         </a>
                     </div>
                 </div>
@@ -477,7 +475,7 @@
     <div class="fixed bottom-6 right-5 z-[90] flex flex-col items-end gap-2">
         <div id="phone-wrap" style="position:relative;">
             <a href="tel:+34641354788" id="phone-float-btn" aria-label="Llamar a DECORT MARUCC" class="w-11 h-11 bg-neutral-900/90 hover:bg-terracotta-600 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-white/10 transition duration-300 hover:scale-110">
-                <iconify-icon icon="lucide:phone" width="17" stroke-width="1.5" class="text-white" aria-hidden="true"></iconify-icon>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" class="ico-svg text-white" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"/></svg>
             </a>
             <div id="phone-tooltip" style="display:none;position:absolute;right:52px;top:50%;transform:translateY(-50%);background:#111827;color:white;font-size:11px;font-weight:500;padding:7px 14px;border-radius:10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);pointer-events:none;font-family:Inter,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.3);">+34 641 35 47 88</div>
         </div>
