@@ -13,10 +13,10 @@ import argparse
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageFilter, ImageOps
 
 # KB maximos por ancho. Mas pesado que esto empieza a notarse en movil.
-BUDGET_KB = {480: 35, 800: 70, 1125: 120}
+BUDGET_KB = {480: 35, 640: 50, 650: 55, 800: 70, 1024: 90, 1125: 120}
 MIN_QUALITY = 55
 
 
@@ -51,6 +51,8 @@ def main():
     ap.add_argument("--widths", default="480,800,1125")
     ap.add_argument("--quality", type=int, default=74)
     ap.add_argument("--out", default="public/images")
+    ap.add_argument("--suavizar", type=float, default=0.0,
+                    help="radio de desenfoque tras reducir (0,3-0,6) para tramas muy finas que no entran en peso; no toca luz ni color")
     a = ap.parse_args()
 
     im = ImageOps.exif_transpose(Image.open(a.src)).convert("RGB")
@@ -66,7 +68,10 @@ def main():
             continue
         h = round(im.height * w / im.width)
         p = out / f"{a.name}-{w}.webp"
-        kb, q = save_fitting(im.resize((w, h), Image.LANCZOS), p, BUDGET_KB.get(w, 120), a.quality)
+        small = im.resize((w, h), Image.LANCZOS)
+        if a.suavizar:
+            small = small.filter(ImageFilter.GaussianBlur(a.suavizar))
+        kb, q = save_fitting(small, p, BUDGET_KB.get(w, 120), a.quality)
         srcset.append(f"/{out.as_posix()}/{p.name} {w}w")
         rows.append((w, h, kb, q, BUDGET_KB.get(w, 120)))
 
