@@ -46,6 +46,25 @@ Dos trampas de verificacion que ya han costado tiempo:
 correr `npm run build` antes de dar el cambio por verificado. No asumir
 que una clase "no existe" sin comprobar con el escapado correcto.
 
+## Fotos: siempre optimizadas, sin excepciones
+
+Toda foto nueva (proyectos terminados, taller, showroom) pasa por
+`tools/optimizar_imagen.py` antes de tocar un HTML. Genera 3 WebP
+(480/800/1125 px), quita el EXIF (una foto de casa de cliente puede llevar
+GPS) y baja la calidad solo hasta entrar en el presupuesto de peso:
+**35 KB a 480 px, 70 KB a 800 px, 120 KB a 1125 px**.
+
+```bash
+python tools/optimizar_imagen.py ORIGEN nombre-descriptivo --ratio 3:4 --focus-y 0.5
+```
+
+En el HTML: `srcset` con los 3 anchos y `sizes` real, `width`/`height`
+siempre (evitan que la pagina salte), `alt` que describa lo que se ve,
+nombre de archivo en kebab-case sin nombres de personas ni direcciones.
+`loading="lazy"` en todo lo que quede bajo el pliegue; solo la imagen
+LCP lleva `fetchpriority="high"` (y su `<link rel="preload">`, ver `index.html`).
+No subir nunca el JPG/PNG original a `public/images/`.
+
 ## Flujo de git en este proyecto
 
 - Nunca commits ni push directos a `main`. Siempre rama nueva
