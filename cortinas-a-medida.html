@@ -330,6 +330,151 @@
         </div>
     </section>
 
+    <!-- Proyectos: galería de cortinas a medida instaladas. Fotos de Leandro: no se toca luz ni color,
+         solo encuadre (2:3) y tools/optimizar_imagen.py (WebP, sin EXIF; 480/650 px, que es lo máximo que pide una
+         casilla de 325 px en pantalla de densidad 2). Bajo el pliegue: lazy, con width/height.
+         En móvil la última (la etiqueta) ocupa la fila entera para no dejar una casilla suelta. -->
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-arena-50 border-t border-arena-300/40">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-12 text-center max-w-2xl mx-auto">
+                <p class="text-[10px] font-medium tracking-widest uppercase text-neutral-600 mb-3 font-body">Nuestros proyectos</p>
+                <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800">
+                    Cortinas <span class="italic text-terracotta-500">en su sitio</span>
+                </h2>
+            </div>
+            <div class="w-full aspect-[16/9] overflow-hidden rounded-tl-[80px] md:rounded-tl-[120px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[80px] md:rounded-br-[120px] bg-arena-200">
+                <img src="/public/images/salon-cortinas-suelo-techo-panoramica-1024.webp"
+                     srcset="/public/images/salon-cortinas-suelo-techo-panoramica-640.webp 640w, /public/images/salon-cortinas-suelo-techo-panoramica-1024.webp 1024w, /public/images/salon-cortinas-suelo-techo-panoramica-1600.webp 1600w"
+                     sizes="(min-width: 1120px) 1024px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"
+                     width="1024" height="576" loading="lazy" decoding="async"
+                     alt="Salón con cortinas a medida de suelo a techo y visillos a lo largo de todo el ventanal"
+                     class="w-full h-full object-cover">
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6">
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/cortina-lino-brisa-terraza-palmeras-650.webp"
+                         srcset="/public/images/cortina-lino-brisa-terraza-palmeras-480.webp 480w, /public/images/cortina-lino-brisa-terraza-palmeras-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Cortina a medida movida por la brisa junto a una puerta abierta a una terraza con palmeras"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/preparando-cortina-salon-vistas-mar-650.webp"
+                         srcset="/public/images/preparando-cortina-salon-vistas-mar-480.webp 480w, /public/images/preparando-cortina-salon-vistas-mar-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Integrante del equipo preparando una cortina sobre el sofá, con vistas al mar al fondo"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/bajo-cortina-lino-suelo-650.webp"
+                         srcset="/public/images/bajo-cortina-lino-suelo-480.webp 480w, /public/images/bajo-cortina-lino-suelo-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Bajo de una cortina a medida apoyado sobre el suelo de piedra"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/cortinas-lino-dormitorio-vistas-mar-650.webp"
+                         srcset="/public/images/cortinas-lino-dormitorio-vistas-mar-480.webp 480w, /public/images/cortinas-lino-dormitorio-vistas-mar-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Dormitorio con cortinas de suelo a techo en tono arena y vistas al mar"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/cortinas-confeccionadas-dobladas-650.webp"
+                         srcset="/public/images/cortinas-confeccionadas-dobladas-480.webp 480w, /public/images/cortinas-confeccionadas-dobladas-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Cortinas confeccionadas a medida, dobladas sobre una mesa antes de la instalación"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/instalando-cortinas-escalera-650.webp"
+                         srcset="/public/images/instalando-cortinas-escalera-480.webp 480w, /public/images/instalando-cortinas-escalera-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Instalando cortinas de suelo a techo desde una escalera en un salón"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/salon-cortinas-visillos-sofa-650.webp"
+                         srcset="/public/images/salon-cortinas-visillos-sofa-480.webp 480w, /public/images/salon-cortinas-visillos-sofa-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Salón con cortinas a medida en tono arena y visillos detrás del sofá"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/cabezal-fruncido-cortina-preparacion-650.webp"
+                         srcset="/public/images/cabezal-fruncido-cortina-preparacion-480.webp 480w, /public/images/cabezal-fruncido-cortina-preparacion-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Preparando el cabezal fruncido de una cortina a medida antes de colgarla"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/pasillo-cortinas-cuadro-650.webp"
+                         srcset="/public/images/pasillo-cortinas-cuadro-480.webp 480w, /public/images/pasillo-cortinas-cuadro-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Pasillo con cortinas de suelo a techo junto a una cristalera"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/cortinas-suelo-techo-pasillo-650.webp"
+                         srcset="/public/images/cortinas-suelo-techo-pasillo-480.webp 480w, /public/images/cortinas-suelo-techo-pasillo-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Integrante del equipo con cortinas en brazos en un pasillo con cortinas de suelo a techo ya colgadas"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/visillos-blancos-salon-fruncido-650.webp"
+                         srcset="/public/images/visillos-blancos-salon-fruncido-480.webp 480w, /public/images/visillos-blancos-salon-fruncido-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Salón con cortinas blancas de cabezal fruncido de suelo a techo"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/marcando-tela-confeccion-650.webp"
+                         srcset="/public/images/marcando-tela-confeccion-480.webp 480w, /public/images/marcando-tela-confeccion-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Marcando con tiza y cinta métrica una tela antes de cortarla para una cortina a medida"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/dormitorio-cortinas-ondas-jardin-650.webp"
+                         srcset="/public/images/dormitorio-cortinas-ondas-jardin-480.webp 480w, /public/images/dormitorio-cortinas-ondas-jardin-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Dormitorio con cortinas de ondas en tono beige abiertas hacia el jardín"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200">
+                    <img src="/public/images/abriendo-cortinas-ondas-jardin-650.webp"
+                         srcset="/public/images/abriendo-cortinas-ondas-jardin-480.webp 480w, /public/images/abriendo-cortinas-ondas-jardin-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(50vw - 32px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Abriendo unas cortinas de ondas en tono beige frente a una puerta al jardín"
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="w-full aspect-[2/3] overflow-hidden rounded-3xl bg-arena-200 col-span-2 md:col-span-1">
+                    <img src="/public/images/etiqueta-cortina-confeccion-propia-650.webp"
+                         srcset="/public/images/etiqueta-cortina-confeccion-propia-480.webp 480w, /public/images/etiqueta-cortina-confeccion-propia-650.webp 650w"
+                         sizes="(min-width: 1120px) 325px, (min-width: 768px) calc(33vw - 48px), calc(100vw - 48px)"
+                         width="650" height="975" loading="lazy" decoding="async"
+                         alt="Etiqueta de MARUCC DECORT cosida en el cabezal de una cortina confeccionada a medida"
+                         class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="py-16 md:py-24 px-6 md:px-12 bg-arena-100 border-t border-arena-300/40">
         <div class="max-w-3xl mx-auto">

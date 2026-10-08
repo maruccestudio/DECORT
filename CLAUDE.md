@@ -65,6 +65,13 @@ nombre de archivo en kebab-case sin nombres de personas ni direcciones.
 LCP lleva `fetchpriority="high"` (y su `<link rel="preload">`, ver `index.html`).
 No subir nunca el JPG/PNG original a `public/images/`.
 
+**Galerías (rejilla de casillas 2:3 de 325 px como máximo):** basta con
+`--widths 480,650`; 650 px cubre una pantalla de densidad 2 y más ancho
+solo añade peso que nadie descarga. Primeros planos de tejido con trama
+muy fina pueden no entrar en el presupuesto: `--suavizar 0.4` a `0.7`
+(desenfoque leve tras reducir; no toca luz ni color). Fotos que Leandro
+ya editó: no tocar luz ni color, solo encuadre y optimización.
+
 ## Flujo de git en este proyecto
 
 - Nunca commits ni push directos a `main`. Siempre rama nueva
