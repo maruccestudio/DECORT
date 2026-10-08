@@ -35,6 +35,13 @@
         "name": "Sobre DECORT MARUCC",
         "url": "https://www.decortmarucc.com/sobre-nosotros.html",
         "description": "Showroom móvil de cortinas a medida en Mallorca. Nace de marucc, estudio de arquitectura. Asesoramiento personalizado, confección en taller propio e instalación profesional.",
+        "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "contentUrl": "https://www.decortmarucc.com/public/images/nosotros-marcado-de-tela-1125.webp",
+            "width": 1125,
+            "height": 1500,
+            "caption": "Medir y marcar la tela antes de cortar: así empieza cada cortina."
+        },
         "mainEntity": { "@id": "https://www.decortmarucc.com/#business" }
     }
     </script>
@@ -171,6 +178,19 @@
                 <p class="text-base md:text-lg font-light leading-relaxed text-neutral-500 font-body">
                     DECORT MARUCC nace de esa necesidad. Un servicio que lleva el muestrario directamente al espacio real, con criterio de arquitectura y conocimiento de los materiales. No vendemos cortinas: resolvemos ventanas.
                 </p>
+                <!-- Foto real de confección. Generada con tools/optimizar_imagen.py (3 anchos, WebP, sin EXIF).
+                     Queda bajo el pliegue: lazy, y width/height reservan el hueco para no mover el diseño. -->
+                <figure>
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200">
+                        <img src="/public/images/nosotros-marcado-de-tela-800.webp"
+                             srcset="/public/images/nosotros-marcado-de-tela-480.webp 480w, /public/images/nosotros-marcado-de-tela-800.webp 800w, /public/images/nosotros-marcado-de-tela-1125.webp 1125w"
+                             sizes="(min-width: 1024px) 520px, calc(100vw - 48px)"
+                             width="800" height="1067" loading="lazy" decoding="async"
+                             alt="Manos marcando con tiza y cinta métrica una tela cruda antes de cortarla para una cortina a medida"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="mt-4 text-xs text-neutral-500 font-body leading-relaxed">Medir y marcar la tela antes de cortar: así empieza cada cortina.</figcaption>
+                </figure>
             </div>
         </div>
     </section>
