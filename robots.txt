@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Render de venecianas: no es una foto real. Fuera del índice de imágenes de
+# Google para que no salga como miniatura en los resultados.
+User-agent: Googlebot-Image
+Disallow: /public/images/cortinas_venecianas.webp
+
 Sitemap: https://www.decortmarucc.com/sitemap.xml
