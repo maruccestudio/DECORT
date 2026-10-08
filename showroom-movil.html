@@ -258,6 +258,44 @@
         </div>
     </section>
 
+    <!-- En una visita real: galería de fotos propias del showroom móvil.
+         Fotos retocadas y pasadas por tools/optimizar_imagen.py (WebP, sin EXIF).
+         Bajo el pliegue: lazy, y width/height reservan el hueco. Las siguientes se suman a esta rejilla. -->
+    <section class="py-16 md:py-24 px-6 md:px-12 bg-arena-50 border-t border-arena-300/40">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-12 text-center max-w-2xl mx-auto">
+                <p class="text-[10px] font-medium tracking-widest uppercase text-neutral-600 mb-3 font-body">En una visita real</p>
+                <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display text-neutral-800">
+                    Los tejidos, <span class="italic text-terracotta-500">con tu luz</span>
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8">
+                <figure>
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200">
+                        <img src="/public/images/showroom-muestras-tejido-ventanal-800.webp"
+                             srcset="/public/images/showroom-muestras-tejido-ventanal-480.webp 480w, /public/images/showroom-muestras-tejido-ventanal-800.webp 800w, /public/images/showroom-muestras-tejido-ventanal-1125.webp 1125w"
+                             sizes="(min-width: 1120px) 496px, (min-width: 768px) calc(50vw - 64px), calc(100vw - 48px)"
+                             width="800" height="1067" loading="lazy" decoding="async"
+                             alt="Probando muestras de tejido para cortinas contra un ventanal con vistas al campo, durante una visita del showroom móvil"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="mt-4 text-xs text-neutral-500 font-body leading-relaxed">Probamos cada muestra contra el ventanal, con la luz real de la casa.</figcaption>
+                </figure>
+                <figure>
+                    <div class="w-full aspect-[3/4] overflow-hidden rounded-tl-[120px] md:rounded-tl-[160px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[120px] md:rounded-br-[160px] bg-arena-200">
+                        <img src="/public/images/showroom-tejido-a-contraluz-800.webp"
+                             srcset="/public/images/showroom-tejido-a-contraluz-480.webp 480w, /public/images/showroom-tejido-a-contraluz-800.webp 800w, /public/images/showroom-tejido-a-contraluz-975.webp 975w"
+                             sizes="(min-width: 1120px) 496px, (min-width: 768px) calc(50vw - 64px), calc(100vw - 48px)"
+                             width="800" height="1067" loading="lazy" decoding="async"
+                             alt="Muestra de tejido claro sostenida a contraluz frente a una ventana para ver cuánta luz deja pasar"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <figcaption class="mt-4 text-xs text-neutral-500 font-body leading-relaxed">A contraluz se ve de verdad cuánta luz deja pasar cada tejido.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <!-- Cobertura: toda Mallorca -->
     <section class="py-16 md:py-20 px-6 md:px-12 bg-arena-100 border-t border-arena-300/40">
         <div class="max-w-7xl mx-auto text-center">
