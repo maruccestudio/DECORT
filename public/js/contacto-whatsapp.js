@@ -68,7 +68,15 @@
     return mensajePagina;
   }
 
-  function waHref(msg) { return WA_BASE + encodeURIComponent(msg); }
+  // Si la visita vino de un anuncio de Google (lo decide privacidad-ui.js),
+  // el mensaje termina en "(ref. G)": asi Leandro sabe que ese WhatsApp lo
+  // trajo Ads sin tener que preguntar.
+  function sufijo() {
+    var o = window.maruccOrigen && window.maruccOrigen();
+    return o && o.canal === 'google-ads' ? ' (ref. G)' : '';
+  }
+
+  function waHref(msg) { return WA_BASE + encodeURIComponent(msg + sufijo()); }
 
   function textoDe(href) {
     var q = href.split('?text=')[1];
@@ -87,6 +95,10 @@
         a.href = waHref(mensajeFoto);
       } else if (GENERICOS.indexOf(textoDe(a.getAttribute('href'))) !== -1) {
         a.href = waHref(mensajeSegunBoton(a));
+      } else if (sufijo()) {
+        // Textos propios de la pagina (o el icono del pie, sin texto): se
+        // respetan y solo se les añade la referencia.
+        a.href = waHref(textoDe(a.getAttribute('href')) || 'Hola, vengo de vuestra web.');
       }
     }
   }

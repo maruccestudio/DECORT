@@ -73,6 +73,9 @@
 
     window.__maruccConsentState = state;
 
+    // El origen del clic solo se guarda con consentimiento publicitario.
+    if (state.ads) guardarOrigen(); else borrarOrigen();
+
     if (emitUpdatedEvent) {
       // Este evento (no consent_ready) es el que habilita, dentro de GTM, los
       // triggers de "consentimiento concedido durante la sesion" para cada tag.
@@ -83,6 +86,51 @@
       });
     }
   }
+
+  // ---------- Origen de la visita (atribucion de Google Ads) ----------
+  // Si la visita llega desde un anuncio (gclid/gbraid/wbraid o utm de pago de
+  // Google), se marca para que el WhatsApp lleve "(ref. G)" y el formulario
+  // mande el origen. Sin consentimiento publicitario vive solo en memoria, en
+  // la pagina de llegada; con consentimiento se guarda 90 dias para que siga
+  // valiendo si el visitante navega o vuelve otro dia.
+  var ORIGEN_KEY = 'marucc_origen';
+  var ORIGEN_MS = 90 * 24 * 60 * 60 * 1000;
+  var origenActual = null;
+
+  function leerOrigenUrl() {
+    var p;
+    try { p = new URLSearchParams(location.search); } catch (e) { return null; }
+    var clic = p.get('gclid') || p.get('gbraid') || p.get('wbraid') || '';
+    var fuente = (p.get('utm_source') || '').toLowerCase();
+    var medio = (p.get('utm_medium') || '').toLowerCase();
+    if (clic || (fuente.indexOf('google') !== -1 && /^(cpc|ppc|paid)/.test(medio))) {
+      return { canal: 'google-ads', clic: clic, fecha: Date.now() };
+    }
+    return null;
+  }
+
+  function guardarOrigen() {
+    if (!origenActual) return;
+    try { localStorage.setItem(ORIGEN_KEY, JSON.stringify(origenActual)); } catch (e) {}
+  }
+
+  function borrarOrigen() {
+    try { localStorage.removeItem(ORIGEN_KEY); } catch (e) {}
+  }
+
+  origenActual = leerOrigenUrl();
+  var consentAds = !!(window.__maruccConsentState && window.__maruccConsentState.ads);
+  if (!origenActual && consentAds) {
+    try {
+      var guardado = JSON.parse(localStorage.getItem(ORIGEN_KEY));
+      if (guardado && guardado.canal && Date.now() - guardado.fecha < ORIGEN_MS) origenActual = guardado;
+      else borrarOrigen();
+    } catch (e) {}
+  }
+  if (consentAds) guardarOrigen();
+
+  // Lo leen contacto-whatsapp.js y form.js.
+  window.maruccOrigen = function () { return origenActual; };
 
   function commitChoice(newState) {
     var current = readState();
