@@ -42,6 +42,15 @@
         var data = Object.fromEntries(new FormData(form));
         // De qué página salió el contacto, para saberlo desde el propio correo.
         data.pagina = document.title + ' (' + location.pathname + ')';
+        // Origen de la visita (lo decide privacidad-ui.js). El gclid se guarda
+        // aparte para poder subir las ventas cerradas a Google Ads en el futuro.
+        var origen = window.maruccOrigen && window.maruccOrigen();
+        if (origen && origen.canal === 'google-ads') {
+            data.origen = 'Google Ads';
+            if (origen.clic) data.gclid = origen.clic;
+        } else {
+            data.origen = 'No identificado';
+        }
 
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
