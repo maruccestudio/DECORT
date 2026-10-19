@@ -28,6 +28,7 @@
     'paneles-japoneses': 'los paneles japoneses',
     'visillos': 'los visillos',
     'estor-de-tela': 'los estores de tela',
+    'estores-a-medida': 'los estores a medida',
     'plisadas': 'las cortinas plisadas',
     'motorizacion': 'las cortinas motorizadas',
     'cortinas-palma-de-mallorca': 'las cortinas a medida en Palma'
@@ -35,23 +36,37 @@
 
   // Paginas cuyo cliente no encaja en "me interesan las ___".
   var MENSAJE_PROPIO = {
-    'para-hoteles': 'Hola, vengo de la web. Tengo un hotel o restaurante y me gustaría hablar de cortinas para el proyecto.',
-    'para-arquitectos': 'Hola, vengo de la web. Tengo un proyecto de arquitectura o interiorismo en el que necesito cortinas.'
+    'para-hoteles': 'Hola, vengo de vuestra web. Tengo un hotel o restaurante y solicito información sobre cortinas para el proyecto.',
+    'para-arquitectos': 'Hola, vengo de vuestra web. Tengo un proyecto de arquitectura o interiorismo y solicito información sobre cortinas.'
   };
 
-  // Textos genericos que se sustituyen. Los demas (p. ej. "que vinierais a
-  // medir mis ventanas" o "solicitar una visita gratuita") ya son buenos.
+  // Textos genericos que se sustituyen segun el boton. Los demas (p. ej. "que
+  // vinierais a medir mis ventanas") ya son especificos y se respetan.
   var GENERICOS = [
     'Hola, me gustaría pedir presupuesto',
-    'Hola, me gustaría pedir presupuesto para cortinas a medida'
+    'Hola, me gustaría pedir presupuesto para cortinas a medida',
+    'Hola, me gustaría solicitar una visita gratuita'
   ];
 
   var slug = location.pathname.replace(/^\/|\.html$/g, '') || 'index';
   var producto = PRODUCTO[slug] || 'las cortinas a medida';
 
   var mensajePagina = MENSAJE_PROPIO[slug] ||
-    'Hola, vengo de la web. Me interesan ' + producto + '. ¿Podéis venir a medir?';
-  var mensajeFoto = 'Hola, vengo de la web. Os envío una foto de mi ventana para que me asesoréis sobre ' + producto + '.';
+    'Hola, vengo de vuestra web. Solicito información sobre ' + producto + '.';
+  var mensajeFoto = 'Hola, vengo de vuestra web. Os envío una foto de mi ventana y solicito información sobre ' + producto + '.';
+  var mensajePresupuesto = MENSAJE_PROPIO[slug] ||
+    'Hola, vengo de vuestra web. Solicito información y presupuesto sin compromiso sobre ' + producto + '.';
+  var mensajeTelas = MENSAJE_PROPIO[slug] ||
+    'Hola, vengo de vuestra web. Solicito información sobre ' + producto + ' y me gustaría ver las telas.';
+
+  // Los botones alternan "presupuesto gratis", "ver las telas" y "visita":
+  // el mensaje acompaña a lo que dice el boton.
+  function mensajeSegunBoton(a) {
+    var t = (a.textContent || '').toLowerCase();
+    if (t.indexOf('presupuesto') !== -1) return mensajePresupuesto;
+    if (t.indexOf('telas') !== -1) return mensajeTelas;
+    return mensajePagina;
+  }
 
   function waHref(msg) { return WA_BASE + encodeURIComponent(msg); }
 
@@ -71,7 +86,7 @@
       } else if (a.getAttribute('data-wa') === 'foto') {
         a.href = waHref(mensajeFoto);
       } else if (GENERICOS.indexOf(textoDe(a.getAttribute('href'))) !== -1) {
-        a.href = waHref(mensajePagina);
+        a.href = waHref(mensajeSegunBoton(a));
       }
     }
   }
@@ -127,11 +142,11 @@
       style: 'padding-bottom:max(12px, env(safe-area-inset-bottom))'
     }, [
       el('a', {
-        href: waHref(mensajePagina),
+        href: waHref(mensajePresupuesto),
         target: '_blank',
         rel: 'noopener noreferrer',
         className: 'flex-1 inline-flex items-center justify-center gap-2 h-12 bg-terracotta-500 text-white rounded-full text-[11px] font-semibold uppercase tracking-widest font-body shadow-lg shadow-terracotta-500/20'
-      }, [icon(ICON_WA, 16), document.createTextNode('Pedir visita por WhatsApp')]),
+      }, [icon(ICON_WA, 16), document.createTextNode('Pedir presupuesto gratis')]),
       el('a', {
         href: 'tel:+' + PHONE,
         'aria-label': 'Llamar a DECORT MARUCC',
@@ -192,7 +207,7 @@
     cerrar.addEventListener('click', cerrarModal);
 
     var qr = el('img', {
-      'data-src': '/public/images/whatsapp-qr.svg',
+      'data-src': '/public/images/whatsapp-qr-v2.svg',
       alt: 'Código QR para abrir el chat de WhatsApp de DECORT MARUCC',
       width: '168',
       height: '168',
