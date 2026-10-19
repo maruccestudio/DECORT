@@ -150,4 +150,28 @@
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    <url>
+        <loc>https://www.decortmarucc.com/blog.html</loc>
+        <lastmod>2026-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.decortmarucc.com/formas-abrir-cortina-vertical.html</loc>
+        <lastmod>2026-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.decortmarucc.com/estores-screen-que-apertura-elegir.html</loc>
+        <lastmod>2026-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.decortmarucc.com/mosquiteras-a-medida.html</loc>
+        <lastmod>2026-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
