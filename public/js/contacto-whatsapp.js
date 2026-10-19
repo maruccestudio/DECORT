@@ -276,12 +276,18 @@
   }
 
   function ventanaEscritorio() {
-    var escritorio = window.matchMedia('(hover: hover) and (pointer: fine)');
+    // QR en ordenadores y tablets; en el movil, WhatsApp directo.
+    // Tablet = pantalla tactil cuyo lado corto mide 600 px o mas (un movil
+    // no pasa de ~430 ni en horizontal, por eso no se usa el ancho actual).
+    var raton = window.matchMedia('(hover: hover) and (pointer: fine)');
+    function conQR() {
+      return raton.matches || Math.min(screen.width, screen.height) >= 600;
+    }
     // Captura en window: corre antes que el listener de contact_click
     // (document, captura) y que el de GTM, asi el clic que solo abre la
     // ventana no cuenta como conversion. Cuenta el enlace de dentro.
     window.addEventListener('click', function (e) {
-      if (!escritorio.matches) return;
+      if (!conQR()) return;
       var a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
       if (!a || a.hasAttribute('data-wa-modal')) return;
       if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
