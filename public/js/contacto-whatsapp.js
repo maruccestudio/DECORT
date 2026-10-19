@@ -29,6 +29,8 @@
     'visillos': 'los visillos',
     'estor-de-tela': 'los estores de tela',
     'estores-a-medida': 'los estores a medida',
+    'estores-sin-taladrar': 'los estores sin taladrar',
+    'estores-noche-y-dia': 'los estores noche y día',
     'plisadas': 'las cortinas plisadas',
     'motorizacion': 'las cortinas motorizadas',
     'cortinas-palma-de-mallorca': 'las cortinas a medida en Palma'
