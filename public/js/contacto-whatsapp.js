@@ -31,6 +31,13 @@
     'estores-a-medida': 'los estores a medida',
     'estores-sin-taladrar': 'los estores sin taladrar',
     'estores-noche-y-dia': 'los estores noche y día',
+    'mosquiteras-a-medida': 'las mosquiteras',
+    'guia-estores-enrollables': 'los estores enrollables',
+    'estores-guiados-cable-guias': 'los estores guiados',
+    'estores-seguridad-ninos': 'los estores sin cadena',
+    'estor-magnetico-encastrado': 'el estor encastrado',
+    'estores-screen-que-apertura-elegir': 'los estores screen',
+    'formas-abrir-cortina-vertical': 'las cortinas verticales',
     'plisadas': 'las cortinas plisadas',
     'motorizacion': 'las cortinas motorizadas',
     'cortinas-palma-de-mallorca': 'las cortinas a medida en Palma'
