@@ -16,3 +16,7 @@
 
 @tailwind components;
 @tailwind utilities;
+
+/* Desplegable "Colecciones": la flecha gira al abrir */
+details.menu-colecciones[open] .menu-chev { transform: rotate(180deg); }
+details.menu-colecciones > summary::-webkit-details-marker { display: none; }
