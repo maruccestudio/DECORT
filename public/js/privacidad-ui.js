@@ -75,6 +75,8 @@
 
     // El origen del clic solo se guarda con consentimiento publicitario.
     if (state.ads) guardarOrigen(); else borrarOrigen();
+    // El canal de llegada solo se guarda con consentimiento de analitica.
+    if (state.analytics) guardarVisita(); else borrarVisita();
 
     if (emitUpdatedEvent) {
       // Este evento (no consent_ready) es el que habilita, dentro de GTM, los
@@ -131,6 +133,80 @@
 
   // Lo leen contacto-whatsapp.js y form.js.
   window.maruccOrigen = function () { return origenActual; };
+
+  // ---------- Canal de llegada (lo manda el formulario) ----------
+  // De donde vino la visita: Google, ChatGPT, Instagram, directo... Se deduce
+  // del referrer y de los utm de la pagina de llegada. Sin consentimiento de
+  // analitica no se guarda nada: solo se conoce en esa misma pagina. Con
+  // consentimiento se guarda en sessionStorage (dura lo que la pestana) para
+  // que siga valiendo cuando el visitante llega a Contacto.
+  var VISITA_KEY = 'marucc_visita';
+  var CANALES = [
+    [/chatgpt\.com|chat\.openai\.com|openai/, 'ChatGPT'],
+    [/perplexity/, 'Perplexity'],
+    [/gemini\.google|bard\.google/, 'Gemini'],
+    [/copilot\.microsoft|bing\.com\/chat/, 'Copilot'],
+    [/claude\.ai/, 'Claude'],
+    [/instagram/, 'Instagram'],
+    [/facebook|fb\.com|fb\.me/, 'Facebook'],
+    [/whatsapp|wa\.me/, 'WhatsApp'],
+    [/linkedin|lnkd\.in/, 'LinkedIn'],
+    [/pinterest/, 'Pinterest'],
+    [/google\./, 'Google'],
+    [/bing\.com/, 'Bing'],
+    [/duckduckgo|ecosia|yahoo|qwant/, 'Otro buscador'],
+    [/mail\.|outlook|gmail/, 'Email']
+  ];
+
+  function nombreCanal(texto) {
+    for (var i = 0; i < CANALES.length; i++) if (CANALES[i][0].test(texto)) return CANALES[i][1];
+    return null;
+  }
+
+  function leerVisitaUrl() {
+    var p, host = '';
+    try { p = new URLSearchParams(location.search); } catch (e) { p = null; }
+    var fuente = p ? (p.get('utm_source') || '').toLowerCase() : '';
+    var medio = p ? (p.get('utm_medium') || '').toLowerCase() : '';
+    var canal = null;
+    if (origenActual && origenActual.canal === 'google-ads') canal = 'Google Ads';
+    else if (fuente) canal = (nombreCanal(fuente) || fuente) + (/^(cpc|ppc|paid)/.test(medio) ? ' (anuncio)' : '');
+    else {
+      try { host = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+      if (host === location.hostname.replace(/^www\./, '')) return null; // navegacion interna
+      canal = host ? (nombreCanal(host) || 'Otra web: ' + host) : 'Directo (sin referencia)';
+    }
+    return { canal: canal, entrada: location.pathname, fecha: Date.now() };
+  }
+
+  var visitaActual = leerVisitaUrl();
+
+  function guardarVisita() {
+    if (!visitaActual) return;
+    try { sessionStorage.setItem(VISITA_KEY, JSON.stringify(visitaActual)); } catch (e) {}
+  }
+
+  function borrarVisita() {
+    try { sessionStorage.removeItem(VISITA_KEY); } catch (e) {}
+  }
+
+  if (window.__maruccConsentState && window.__maruccConsentState.analytics) {
+    // Se respeta la primera llegada de la pestana (first touch de la sesion).
+    try {
+      var visitaGuardada = JSON.parse(sessionStorage.getItem(VISITA_KEY));
+      if (visitaGuardada && visitaGuardada.canal) visitaActual = visitaGuardada;
+    } catch (e) {}
+    guardarVisita();
+  }
+
+  window.maruccVisita = function () {
+    var interna = null;
+    try {
+      var r = document.referrer ? new URL(document.referrer) : null;
+      if (r && r.hostname === location.hostname) interna = r.pathname;
+    } catch (e) {}
+    return { canal: visitaActual && visitaActual.canal, entrada: visitaActual && visitaActual.entrada, veniaDe: interna };
+  };
 
   function commitChoice(newState) {
     var current = readState();
