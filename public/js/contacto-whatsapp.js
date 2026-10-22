@@ -32,6 +32,7 @@
     'estores-sin-taladrar': 'los estores sin taladrar',
     'estores-noche-y-dia': 'los estores noche y día',
     'mosquiteras-a-medida': 'las mosquiteras',
+    'cortinas-onda-perfecta': 'las cortinas de onda perfecta',
     'guia-estores-enrollables': 'los estores enrollables',
     'estores-guiados-cable-guias': 'los estores guiados',
     'estores-seguridad-ninos': 'los estores sin cadena',
@@ -326,4 +327,22 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+})();
+
+// Desplegable "Colecciones" del menu: se cierra al pulsar fuera, con Escape
+// o al bajar por la pagina (el panel cuelga del menu, que no es fijo).
+(function () {
+  function menus() { return document.querySelectorAll('details.menu-colecciones[open]'); }
+  function cerrar(excepto) { menus().forEach(function (d) { if (d !== excepto) d.removeAttribute('open'); }); }
+  document.addEventListener('click', function (e) {
+    var d = e.target.closest && e.target.closest('details.menu-colecciones');
+    cerrar(d);
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(null); });
+  var y0 = null;
+  window.addEventListener('scroll', function () {
+    if (!menus().length) { y0 = null; return; }
+    if (y0 === null) y0 = window.scrollY;
+    if (Math.abs(window.scrollY - y0) > 120) { cerrar(null); y0 = null; }
+  }, { passive: true });
 })();
