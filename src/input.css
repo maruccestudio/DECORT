@@ -36,16 +36,7 @@ details.menu-colecciones[open] > div {
   animation: menu-colecciones-in 180ms var(--ease-ui);
 }
 
-/* FAQ: el texto se despliega en vez de saltar (Chrome/Edge; el resto abre como siempre) */
-@supports (interpolate-size: allow-keywords) {
-  :root { interpolate-size: allow-keywords; }
-  details.group::details-content {
-    block-size: 0;
-    overflow: hidden;
-    transition: block-size 250ms var(--ease-ui), content-visibility 250ms allow-discrete;
-  }
-  details.group[open]::details-content { block-size: auto; }
-}
+/* FAQ: la animacion de altura la hace public/js/faq-animate.js (no duplicar aqui) */
 
 /* Botones principales: respuesta al pulsar, tambien en movil */
 a.rounded-full.bg-terracotta-500,
@@ -60,7 +51,6 @@ button.rounded-full.bg-terracotta-500:active {
 
 @media (prefers-reduced-motion: reduce) {
   details.menu-colecciones[open] > div { animation: none; }
-  details.group::details-content { transition: none; }
   a.rounded-full.bg-terracotta-500:active,
   button.rounded-full.bg-terracotta-500:active { transform: none; }
 }

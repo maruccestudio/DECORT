@@ -6,7 +6,9 @@
     var EASE_OUT = 'cubic-bezier(0.16, 1, 0.3, 1)'; // este proyecto's ease-out - ver DESIGN.md / index.html --ease-out
     var DURATION = 350; // ms - dentro del rango 200-500ms de AUDIT.md para drawers
 
-    document.querySelectorAll('details').forEach(function (details) {
+    // Solo las FAQ: el desplegable del menu (details.menu-colecciones) es un panel
+    // flotante; si se le anima la altura, empuja toda la cabecera hacia abajo.
+    document.querySelectorAll('details:not(.menu-colecciones)').forEach(function (details) {
         var summary = details.querySelector('summary');
         var content = details.querySelector('summary + *');
         if (!summary || !content) return;
