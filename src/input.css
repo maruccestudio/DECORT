@@ -43,6 +43,7 @@ a.rounded-full.bg-terracotta-500,
 button.rounded-full.bg-terracotta-500 {
   transition-property: color, background-color, border-color, box-shadow, transform;
 }
+.btn-press:active,
 a.rounded-full.bg-terracotta-500:active,
 button.rounded-full.bg-terracotta-500:active {
   transform: scale(0.97);
@@ -51,6 +52,7 @@ button.rounded-full.bg-terracotta-500:active {
 
 @media (prefers-reduced-motion: reduce) {
   details.menu-colecciones[open] > div { animation: none; }
+  .btn-press:active,
   a.rounded-full.bg-terracotta-500:active,
   button.rounded-full.bg-terracotta-500:active { transform: none; }
 }
