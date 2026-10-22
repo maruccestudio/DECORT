@@ -49,8 +49,17 @@
             data.origen = 'Google Ads';
             if (origen.clic) data.gclid = origen.clic;
         } else {
-            data.origen = 'No identificado';
+            // Canal de llegada (privacidad-ui.js): Google, ChatGPT, Instagram, directo...
+            // Sin cookies de analitica solo se sabe si el visitante lleno el
+            // formulario en la misma pagina por la que entro.
+            var visita = window.maruccVisita && window.maruccVisita();
+            var conAnalitica = !!(window.__maruccConsentState && window.__maruccConsentState.analytics);
+            data.origen = (visita && visita.canal) ||
+                (conAnalitica ? 'No identificado' : 'No identificado (no aceptó cookies de analítica)');
         }
+        var v = window.maruccVisita && window.maruccVisita();
+        if (v && v.entrada && v.entrada !== location.pathname) data.pagina_entrada = v.entrada;
+        if (v && v.veniaDe && v.veniaDe !== location.pathname && v.veniaDe !== data.pagina_entrada) data.venia_de = v.veniaDe;
 
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
