@@ -338,7 +338,16 @@
     var d = e.target.closest && e.target.closest('details.menu-colecciones');
     cerrar(d);
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(null); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var abierto = menus()[0];
+    cerrar(null);
+    if (abierto) abierto.querySelector('summary').focus();
+  });
+  // Con teclado: al salir del panel con Tab, se cierra
+  document.addEventListener('focusin', function (e) {
+    menus().forEach(function (d) { if (!d.contains(e.target)) d.removeAttribute('open'); });
+  });
   var y0 = null;
   window.addEventListener('scroll', function () {
     if (!menus().length) { y0 = null; return; }
