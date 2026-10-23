@@ -126,8 +126,8 @@ def crumbs(items):
 import json
 
 URL = "proyecto-cortinas-portals-nous.html"
-TITLE = "Cortinas para una villa en Portals Nous | Proyecto DECORT"
-DESC = "Más de 30 cortinas fruncidas a medida en una villa de Portals Nous (Calvià): visillos de gran formato de más de 6 m, blackout decorativo y domótica."
+TITLE = "Cortinas motorizadas para ventanales grandes | DECORT"
+DESC = "Proyecto real en Mallorca: más de 30 cortinas motorizadas y fruncidas para ventanales grandes, con visillos de lino y poliéster y blackout. En seis semanas."
 HERO = "salon-visillos-lino"
 HERO_SIZES = "(min-width: 1280px) 1216px, 100vw"
 
@@ -184,7 +184,7 @@ FICHA = [
     ("Confección", "Cortina fruncida en toda la casa"),
     ("Planta baja", "Visillo de lino y poliéster"),
     ("Planta alta", "Blackout decorativo + visillo"),
-    ("Sistema", "Motorización integrada en la domótica"),
+    ("Sistema", "Cortinas motorizadas, integradas en la domótica"),
     ("Volumen", "Más de 30 cortinas"),
     ("Plazo", "Mes y medio, de la confirmación al montaje"),
 ]
@@ -306,14 +306,14 @@ main = f'''
                 Una villa en Portals Nous con <span class="italic text-terracotta-500">cortinas de gran formato</span>
             </h1>
             <p class="text-lg md:text-2xl font-display text-neutral-700 leading-snug max-w-3xl [text-wrap:pretty]">
-                Más de treinta cortinas fruncidas a medida para una casa en final de obra: visillos de gran formato en la planta baja, blackout decorativo en los dormitorios y todo motorizado con la domótica de la vivienda.
+                Más de treinta cortinas fruncidas y motorizadas para los ventanales grandes de una villa en final de obra: visillos de techo a suelo en la planta baja, blackout decorativo en los dormitorios y todo integrado en la domótica de la casa.
             </p>
         </div>
     </header>
 
     <figure class="px-4 md:px-12">
         <div class="max-w-7xl mx-auto">
-            <img src="/public/images/{P}{HERO}-800.webp" srcset="{hero_srcset}" sizes="{HERO_SIZES}" width="800" height="533" alt="Salón de la villa de Portals Nous con visillos fruncidos que cubren los ventanales de suelo a techo" fetchpriority="high" class="w-full h-auto {FEAT}">
+            <img src="/public/images/{P}{HERO}-800.webp" srcset="{hero_srcset}" sizes="{HERO_SIZES}" width="800" height="533" alt="Salón de la villa de Portals Nous con cortinas motorizadas fruncidas que cubren los ventanales grandes de suelo a techo" fetchpriority="high" class="w-full h-auto {FEAT}">
             <figcaption class="mt-3 px-2 text-xs text-neutral-600 font-body">Salón principal. Visillo de lino y poliéster con confección fruncida, motorizado.</figcaption>
         </div>
     </figure>
@@ -333,7 +333,7 @@ main = f'''
         <div class="max-w-7xl mx-auto">
         {lado(texto('El encargo: <span class="italic text-terracotta-500">gran formato</span> y domótica',
                     'El encargo nos llegó del project manager de la obra, con la casa a punto de entregarse: cortinas para toda la vivienda, a medida, sin margen en el calendario.',
-                    'Ventanales de suelo a techo, paños de más de seis metros y una condición desde el primer día: cada cortina tenía que moverse con motor, integrada en la domótica de la casa.'),
+                    'Ventanales grandes, de suelo a techo, paños de más de seis metros y una condición desde el primer día: cortinas motorizadas, integradas en la domótica de la casa.'),
               pic("obra-antes", "La vivienda en obra, con andamios en la fachada y los ventanales ya colocados", S_7, "aspect-[4/5]", FEAT_R, "La casa, semanas antes de la entrega."), align="items-start")}
         </div>
     </section>
@@ -361,7 +361,7 @@ main = f'''
         <div class="max-w-7xl mx-auto space-y-14 md:space-y-20">
         {lado(texto('Planta baja: <span class="italic text-terracotta-500">intimidad</span> sin perder la luz',
                     f'Para toda la planta baja, solo visillo: intimidad frente al exterior sin renunciar a la luz de Mallorca. Elegimos un <a href="/visillos.html" {ENLACE}>visillo de mezcla de lino y poliéster</a>, con la textura del lino pero más estable frente al sol y la humedad.',
-                    'Confeccionado con <strong class="font-semibold text-neutral-800">frunce</strong>: pliegues blandos y regulares que, a contraluz, tamizan la luz en lugar de cortarla.'),
+                    'Son <strong class="font-semibold text-neutral-800">cortinas fruncidas</strong>: pliegues blandos y regulares que, a contraluz, tamizan la luz en lugar de cortarla.'),
               pic("salon-visillo-fruncido", "Sofá del salón frente a los visillos fruncidos con la luz de la tarde", S_7, "aspect-[4/5]", FEAT), align="items-end")}
             {tres([("visillo-sofa", "Visillo en primer plano junto al sofá del salón"),
                    ("paso-visillos-planta-baja", "Paso acristalado de la planta baja vestido con visillos de suelo a techo, con una cortina recién confeccionada en brazos"),
@@ -376,7 +376,7 @@ main = f'''
                 <p class="font-display font-light text-6xl md:text-8xl leading-none text-terracotta-400 mb-2 whitespace-nowrap">6,00 × 3,20 m</p>
                 <p class="text-sm text-neutral-400 font-body mb-10">Algunos paños de la planta baja superan los 6 metros de largo.</p>
                 {texto('El reto: cortinas de <span class="italic text-terracotta-400">gran formato</span>',
-                       'A esta escala, lo sencillo se vuelve precisión: mantener el frunce regular en más de seis metros de tejido, que el bajo quede a la misma altura en todo el recorrido y que riel y motor arrastren ese peso con suavidad, día tras día.',
+                       'En cortinas para ventanales grandes, lo sencillo se vuelve precisión: mantener el frunce regular en más de seis metros de tejido, que el bajo quede a la misma altura en todo el recorrido y que riel y motor arrastren ese peso con suavidad, día tras día.',
                        'Todo montado en altura, con la casa ya terminada alrededor.', inv=True)}
             </div>
             <div class="lg:col-span-7 space-y-3 md:space-y-6">
@@ -411,7 +411,7 @@ main = f'''
     <section class="{SEC} pt-14 md:pt-20 pb-20 md:pb-28">
         <div class="max-w-7xl mx-auto">
         {lado(texto('Motorización y <span class="italic text-terracotta-500">domótica</span>',
-                    'Cada paño lleva su riel motorizado, con el motor dimensionado para su ancho y su peso, y preparado para integrarse en el sistema de la vivienda.',
+                    'Son cortinas motorizadas de principio a fin: cada paño lleva su riel eléctrico, con el motor dimensionado para su ancho y su peso, y preparado para integrarse en el sistema de la vivienda.',
                     f'Nadie tiene que tirar de una cortina de seis metros: el salón se abre por la mañana y los dormitorios se oscurecen por la noche sin tocar un tejido. Más en <a href="/motorizacion.html" {ENLACE}>motorización de cortinas</a>.'),
               dos([("medicion-obra", "Medición del ventanal en obra con cinta métrica y el plano acotado en una tableta"),
                    ("motores-riel", "Motores de cortina instalados en el riel del techo, cableados para la domótica antes de colgar los paños")], "aspect-[2/3]"))}
