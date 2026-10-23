@@ -47,7 +47,9 @@
   // Paginas cuyo cliente no encaja en "me interesan las ___".
   var MENSAJE_PROPIO = {
     'para-hoteles': 'Hola, vengo de vuestra web. Tengo un hotel o restaurante y solicito información sobre cortinas para el proyecto.',
-    'para-arquitectos': 'Hola, vengo de vuestra web. Tengo un proyecto de arquitectura o interiorismo y solicito información sobre cortinas.'
+    'para-arquitectos': 'Hola, vengo de vuestra web. Tengo un proyecto de arquitectura o interiorismo y solicito información sobre cortinas.',
+    'proyectos': 'Hola, vengo de vuestra web. He visto vuestros proyectos y solicito información sobre cortinas.',
+    'proyecto-cortinas-portals-nous': 'Hola, vengo de vuestra web (proyecto de Portals Nous). Solicito información sobre cortinas.'
   };
 
   // Textos genericos que se sustituyen segun el boton. Los demas (p. ej. "que
