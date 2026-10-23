@@ -16,7 +16,8 @@ from pathlib import Path
 from PIL import Image, ImageFilter, ImageOps
 
 # KB maximos por ancho. Mas pesado que esto empieza a notarse en movil.
-BUDGET_KB = {480: 35, 640: 50, 650: 55, 800: 70, 1024: 90, 1125: 120}
+# 1200 y 1600 solo los descargan pantallas grandes o de alta densidad: el movil sigue bajando 480.
+BUDGET_KB = {480: 35, 640: 50, 650: 55, 800: 70, 1024: 90, 1125: 120, 1200: 190, 1600: 300, 2000: 420}
 MIN_QUALITY = 55
 
 
@@ -32,11 +33,11 @@ def crop_ratio(im, ratio, fx, fy):
     return im.crop((left, top, left + new_w, top + new_h))
 
 
-def save_fitting(im, path, budget_kb, quality):
+def save_fitting(im, path, budget_kb, quality, min_quality=MIN_QUALITY):
     while True:
         im.save(path, "WEBP", quality=quality, method=6)  # sin exif= : no se copian metadatos
         kb = path.stat().st_size / 1024
-        if kb <= budget_kb or quality <= MIN_QUALITY:
+        if kb <= budget_kb or quality <= min_quality:
             return kb, quality
         quality -= 4
 
@@ -50,6 +51,8 @@ def main():
     ap.add_argument("--focus-y", type=float, default=0.5, help="centro vertical del recorte, 0 a 1")
     ap.add_argument("--widths", default="480,800,1125")
     ap.add_argument("--quality", type=int, default=74)
+    ap.add_argument("--min-quality", type=int, default=MIN_QUALITY,
+                    help="calidad minima; por debajo de ~70 la trama de los tejidos se empasta")
     ap.add_argument("--out", default="public/images")
     ap.add_argument("--suavizar", type=float, default=0.0,
                     help="radio de desenfoque tras reducir (0,3-0,6) para tramas muy finas que no entran en peso; no toca luz ni color")
@@ -71,7 +74,7 @@ def main():
         small = im.resize((w, h), Image.LANCZOS)
         if a.suavizar:
             small = small.filter(ImageFilter.GaussianBlur(a.suavizar))
-        kb, q = save_fitting(small, p, BUDGET_KB.get(w, 120), a.quality)
+        kb, q = save_fitting(small, p, BUDGET_KB.get(w, 120), a.quality, a.min_quality)
         srcset.append(f"/{out.as_posix()}/{p.name} {w}w")
         rows.append((w, h, kb, q, BUDGET_KB.get(w, 120)))
 
