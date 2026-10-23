@@ -17,11 +17,12 @@ WA_SVG = re.search(r'<svg width="15" height="15" viewBox="0 0 24 24" fill="curre
 TEL_SVG = re.search(r'(<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"[^>]*><path[^>]*d="M13\.832.*?</svg>)', S, re.S).group(1)
 CHEV = '<li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" class="ico-svg" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"/></svg></li>'
 WA_HREF = "https://wa.me/34641354788?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto"
-P = "proyecto-portals-nous-"
+P = "portals-nous-"
 
 
 def widths(name):
-    return sorted(int(p.stem.rsplit("-", 1)[1]) for p in IMG.glob(f"{P}{name}-*.webp"))
+    # solo "<nombre>-<ancho>": sin esto "dormitorio-blackout" recogia tambien "dormitorio-blackout-visillo"
+    return sorted({int(p.stem[len(P + name) + 1:]) for p in IMG.glob(f"{P}{name}-*.webp") if p.stem[len(P + name) + 1:].isdigit()})
 
 
 def img(name, alt, sizes, eager=False, cls="w-full h-auto"):
@@ -138,7 +139,7 @@ ld = json.dumps({
             "@id": f"{DOM}/{URL}#article",
             "headline": "Una villa en Portals Nous con cortinas de gran formato",
             "description": DESC,
-            "image": [f"{DOM}/public/images/{P}{HERO}-1125.webp", f"{DOM}/public/images/{P}salon-panoramica-1125.webp"],
+            "image": [f"{DOM}/public/images/{P}{HERO}-1200.webp", f"{DOM}/public/images/{P}salon-panoramica-1200.webp"],
             "datePublished": "2026-10-23",
             "dateModified": "2026-10-23",
             "inLanguage": "es-ES",
@@ -480,7 +481,7 @@ main = f'''
 
 '''
 
-page = head(TITLE, DESC, URL, f"{P}{HERO}-1125.webp", ld,
+page = head(TITLE, DESC, URL, f"{P}{HERO}-1200.webp", ld,
             (f"{P}{HERO}-800.webp", hero_srcset, HERO_SIZES)) + body_open + crumbs([("Inicio", "/"), ("Proyectos", "/proyectos.html"), ("Villa en Portals Nous", None)]) + main + tail
 (ROOT / URL).write_text(page, encoding="utf-8")
 
@@ -536,6 +537,6 @@ imain = f'''
     </section>
 
 '''
-ipage = head(ITITLE, IDESC, IURL, f"{P}{HERO}-1125.webp", ild).replace('content="article"', 'content="website"') + body_open + crumbs([("Inicio", "/"), ("Proyectos", None)]) + imain + tail
+ipage = head(ITITLE, IDESC, IURL, f"{P}{HERO}-1200.webp", ild).replace('content="article"', 'content="website"') + body_open + crumbs([("Inicio", "/"), ("Proyectos", None)]) + imain + tail
 (ROOT / IURL).write_text(ipage, encoding="utf-8")
 print("ok")
