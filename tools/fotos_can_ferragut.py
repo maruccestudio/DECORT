@@ -1,6 +1,6 @@
-"""Fotos del proyecto de Camp Ferragut (cerca de Palma): casa rustica con visillos blancos de lino.
+"""Fotos del proyecto de la finca Can Ferragut (Ponent, Mallorca) con visillos blancos de lino.
 
-Uso (desde ANTIGRAVITY_DECORT):  python tools/fotos_camp_ferragut.py
+Uso (desde ANTIGRAVITY_DECORT):  python tools/fotos_can_ferragut.py
 Mismos ajustes que los otros proyectos: alta calidad, sin suavizar, sin recorte
 (la proporcion la pone el CSS). Las mcc-*.png son fotos ya editadas por Leandro:
 no se toca luz ni color.
@@ -44,5 +44,5 @@ for name, src in FOTOS:
         continue
     print(f"== {name}", flush=True)
     anchos = "480,800,1200,1600,2000" if name.endswith("panoramica") else "480,800,1200,1600"
-    subprocess.run([sys.executable, "tools/optimizar_imagen.py", str(SRC / src), f"camp-ferragut-{name}",
+    subprocess.run([sys.executable, "tools/optimizar_imagen.py", str(SRC / src), f"can-ferragut-{name}",
                     "--widths", anchos, "--quality", "84", "--min-quality", "74"], check=True)

@@ -222,19 +222,20 @@ def ficha_html(items):
     </section>'''
 
 # ---------------------------------------------------------------------------
-# Proyecto: casa rustica en Camp Ferragut (cerca de Palma), visillos blancos de lino
+# Proyecto: finca Can Ferragut (Ponent, Mallorca), cortinas mediterraneas de lino blanco
 # (cabecera, consentimiento, menu y pie: andamiaje de showroom-movil.html)
 # ---------------------------------------------------------------------------
-P = "camp-ferragut-"
-URL = "proyecto-visillos-lino-camp-ferragut.html"
+P = "can-ferragut-"
+URL = "proyecto-cortinas-mediterraneas-can-ferragut.html"
 TITLE = "Visillos blancos de lino para una casa rústica | DECORT"
-DESC = "Casa rústica en Camp Ferragut, cerca de Palma: visillos blancos de lino en toda la vivienda, herrajes negros bajo vigas de madera y estores enrollables. En un mes."
-HERO = "dormitorio-visillos-panoramica"
-HERO_SIZES = "(min-width: 1280px) 1216px, 100vw"
+DESC = "Finca Can Ferragut, en Ponent (Mallorca): visillos blancos de lino en toda la casa, herrajes negros bajo vigas de madera y estores enrollables. En un mes."
+# Portada vertical (elegida por Leandro): el arco con las vigas y los visillos al fondo
+HERO = "arco-comedor-visillos"
+HERO_SIZES = "(min-width: 1024px) 600px, 100vw"
 
 FAQ = [
     ("¿Qué cortinas quedan bien en una casa rústica?",
-     "Las que acompañan en lugar de imponerse: tejidos naturales como el lino, colores claros que hagan de contrapunto a la madera y la piedra, y herrajes discretos. En esta casa de Camp Ferragut, visillo de lino blanco con riel y barras en negro, a juego con la carpintería y las vigas."),
+     "Las que acompañan en lugar de imponerse: tejidos naturales como el lino, colores claros que hagan de contrapunto a la madera y la piedra, y herrajes discretos. En esta casa de Can Ferragut, visillo de lino blanco con riel y barras en negro, a juego con la carpintería y las vigas."),
     ("¿Se puede poner solo visillo en un dormitorio?",
      "Sí, si no se busca oscuridad total. El visillo da privacidad y tamiza la luz del sol sin oscurecer la habitación. Es lo que eligió la clienta en toda la casa; si más adelante quisiera oscurecer, se puede añadir un blackout en un segundo riel."),
     ("¿Qué se pone donde el techo es muy bajo?",
@@ -247,7 +248,7 @@ ld = json.dumps({
         {
             "@type": "Article",
             "@id": f"{DOM}/{URL}#article",
-            "headline": "Cortinas de lino con estilo mediterráneo para una casa en Camp Ferragut",
+            "headline": "Cortinas mediterráneas para la finca Can Ferragut, en Ponent, Mallorca",
             "description": DESC,
             "image": [f"{DOM}/public/images/{P}{HERO}-1200.webp", f"{DOM}/public/images/{P}salon-visillos-blancos-1200.webp"],
             "datePublished": "2026-10-25",
@@ -262,15 +263,15 @@ ld = json.dumps({
                 {"@type": "Thing", "name": "Cortinas mediterráneas"},
                 {"@type": "Thing", "name": "Estores enrollables"}
             ],
-            "contentLocation": {"@type": "Place", "name": "Camp Ferragut, Mallorca",
-                                "address": {"@type": "PostalAddress", "addressLocality": "Palma", "addressRegion": "Islas Baleares", "addressCountry": "ES"}}
+            "contentLocation": {"@type": "Place", "name": "Ponent, Mallorca",
+                                "address": {"@type": "PostalAddress", "addressRegion": "Islas Baleares", "addressCountry": "ES"}}
         },
         {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Inicio", "item": f"{DOM}/"},
                 {"@type": "ListItem", "position": 2, "name": "Proyectos", "item": f"{DOM}/proyectos.html"},
-                {"@type": "ListItem", "position": 3, "name": "Casa rústica en Camp Ferragut", "item": f"{DOM}/{URL}"}
+                {"@type": "ListItem", "position": 3, "name": "Finca Can Ferragut", "item": f"{DOM}/{URL}"}
             ]
         },
         {
@@ -284,7 +285,7 @@ hero_ws = widths(HERO)
 hero_srcset = ", ".join(f"/public/images/{P}{HERO}-{x}.webp {x}w" for x in hero_ws)
 
 FICHA = [
-    ("Ubicación", "Camp Ferragut, cerca de Palma"),
+    ("Ubicación", "Ponent, Mallorca"),
     ("Encargo", "Clienta particular"),
     ("Alcance", "Toda la casa, solo visillo"),
     ("Plazo", "Un mes"),
@@ -302,30 +303,28 @@ benef = "\n".join(
                     <p class="text-sm leading-relaxed text-neutral-300 font-body max-w-md">{d}</p>
                 </div>''' for t, d in BENEFICIOS)
 
-WA_PRO = 'data-wa-msg="Hola, vengo de vuestra web (proyecto de Camp Ferragut). Solicito información sobre cortinas para mi casa."'
+WA_PRO = 'data-wa-msg="Hola, vengo de vuestra web (proyecto de Can Ferragut). Solicito información sobre cortinas para mi casa."'
 
 main = f'''
     <article>
 
     <!-- Apertura -->
-    <header class="{SEC} pt-14 md:pt-24 pb-10 md:pb-14">
-        <div class="max-w-7xl mx-auto">
-            <p class="text-sm font-body text-terracotta-600 mb-6">Proyecto · Camp Ferragut, cerca de Palma</p>
-            <h1 class="text-5xl md:text-7xl lg:text-[6rem] font-light tracking-tight font-display text-neutral-800 leading-[0.95] mb-8 max-w-5xl [text-wrap:balance]">
-                Cortinas de lino con <span class="italic text-terracotta-500">estilo mediterráneo</span> para una casa en Camp Ferragut
-            </h1>
-            <p class="text-lg md:text-2xl font-display text-neutral-700 leading-snug max-w-3xl [text-wrap:pretty]">
-                Visillos blancos de lino en toda la vivienda, herrajes negros bajo las vigas de madera y una idea sencilla: cortinas mediterráneas que no compiten con la casa, la acompañan.
-            </p>
+    <header class="{SEC} pt-14 md:pt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+            <div class="lg:col-span-6">
+                <p class="text-sm font-body text-terracotta-600 mb-6">Proyecto · Ponent, Mallorca</p>
+                <h1 class="text-5xl md:text-6xl lg:text-[4.75rem] font-light tracking-tight font-display text-neutral-800 leading-[0.98] mb-8 [text-wrap:balance]">
+                    Cortinas <span class="italic text-terracotta-500">mediterráneas</span> para la finca Can Ferragut, en Ponent, Mallorca
+                </h1>
+                <p class="text-lg md:text-2xl font-display text-neutral-700 leading-snug [text-wrap:pretty]">
+                    Visillos blancos de lino en toda la vivienda, herrajes negros bajo las vigas de madera y una idea sencilla: cortinas mediterráneas que no compiten con la casa, la acompañan.
+                </p>
+            </div>
+            <figure class="lg:col-span-6">
+                <img src="/public/images/{P}{HERO}-800.webp" srcset="{hero_srcset}" sizes="{HERO_SIZES}" width="800" height="1422" alt="Arco con techo de vigas de madera que da al comedor, con visillos blancos de lino de suelo a techo a lo largo de los ventanales" fetchpriority="high" class="w-full h-auto aspect-[4/5] object-cover {FEAT}">
+            </figure>
         </div>
     </header>
-
-    <figure class="px-4 md:px-12">
-        <div class="max-w-7xl mx-auto">
-            <img src="/public/images/{P}{HERO}-800.webp" srcset="{hero_srcset}" sizes="{HERO_SIZES}" width="800" height="450" alt="Dormitorio luminoso con visillos blancos de lino de suelo a techo frente a la puerta de la terraza" fetchpriority="high" class="w-full h-auto aspect-[16/9] object-cover {FEAT}">
-            <figcaption class="mt-3 px-2 text-xs text-neutral-600 font-body">Dormitorio principal: solo visillo, para la privacidad y para tamizar el sol.</figcaption>
-        </div>
-    </figure>
 
     {ficha_html(FICHA)}
 
@@ -349,10 +348,9 @@ main = f'''
                     f'La clienta no quería oscuridad total en ningún momento, ni siquiera en los dormitorios. Toda la casa lleva <a href="/visillos.html" {ENLACE}>visillos blancos de lino</a>: dan privacidad y tamizan el sol de Mallorca sin quitar la luz.',
                     'Un mismo tejido de punta a punta, para que la casa se lea como un conjunto y no como una suma de habitaciones.'),
               pic("salon-visillos-blancos", "Salón con sofá blanco y visillos blancos de lino de suelo a techo", S_7, "aspect-[4/5]", FEAT), foto_izq=True, align="items-end")}
-            {cuatro([("salon-sofa-visillo", "Salón con visillos blancos de lino tamizando la luz sobre el sofá"),
-                     ("dormitorio-visillo-luz", "Dormitorio con visillo blanco de lino delante de la ventana"),
-                     ("dormitorio-escritorio-visillo", "Dormitorio con escritorio de madera y visillo blanco a contraluz"),
-                     ("dormitorio-cama-visillos", "Dormitorio con cama blanca y visillos de lino frente a la terraza")])}
+            {tres([("salon-sofa-visillo", "Salón con visillos blancos de lino tamizando la luz sobre el sofá"),
+                   ("dormitorio-visillo-luz", "Dormitorio con visillo blanco de lino delante de la ventana"),
+                   ("dormitorio-escritorio-visillo", "Dormitorio con escritorio de madera y visillo blanco a contraluz")])}
         </div>
     </section>
 
@@ -367,7 +365,7 @@ main = f'''
             <div class="lg:col-span-7 space-y-3 md:space-y-6">
                 {pic("pasillo-arco-vigas", "Pasillo con arco y techo de vigas de madera vestido con visillos blancos de lino", S_7, "aspect-[4/5]", FEAT, "Bajo el arco, el lino blanco frente a la madera.", inv=True)}
                 {dos([("salon-vigas-visillo", "Salón con techo de vigas de madera y visillo blanco de lino junto a la puerta"),
-                      ("arco-comedor-visillos", "Arco hacia el comedor con techo de vigas y visillos blancos a la derecha")], "aspect-[2/3]", inv=True)}
+                      ("dormitorio-cama-visillos", "Dormitorio con cama blanca y visillos de lino frente a la terraza")], "aspect-[2/3]", inv=True)}
             </div>
         </div>
     </section>
@@ -475,6 +473,6 @@ main = f'''
 '''
 
 page = head(TITLE, DESC, URL, f"{P}{HERO}-1200.webp", ld,
-            (f"{P}{HERO}-800.webp", hero_srcset, HERO_SIZES)) + body_open + crumbs([("Inicio", "/"), ("Proyectos", "/proyectos.html"), ("Casa rústica en Camp Ferragut", None)]) + main + tail
+            (f"{P}{HERO}-800.webp", hero_srcset, HERO_SIZES)) + body_open + crumbs([("Inicio", "/"), ("Proyectos", "/proyectos.html"), ("Finca Can Ferragut", None)]) + main + tail
 (ROOT / URL).write_text(page, encoding="utf-8")
 print("ok", URL)

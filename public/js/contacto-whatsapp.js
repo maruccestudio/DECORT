@@ -51,7 +51,7 @@
     'proyectos': 'Hola, vengo de vuestra web. He visto vuestros proyectos y solicito información sobre cortinas.',
     'proyecto-cortinas-portals-nous': 'Hola, vengo de vuestra web (proyecto de Portals Nous). Solicito información sobre cortinas.',
     'proyecto-cortinas-reforma-palma': 'Hola, vengo de vuestra web (proyecto de reforma en Palma). Solicito información sobre cortinas.',
-    'proyecto-visillos-lino-camp-ferragut': 'Hola, vengo de vuestra web (proyecto de Camp Ferragut). Solicito información sobre cortinas para mi casa.'
+    'proyecto-cortinas-mediterraneas-can-ferragut': 'Hola, vengo de vuestra web (proyecto de Can Ferragut). Solicito información sobre cortinas para mi casa.'
   };
 
   // Textos genericos que se sustituyen segun el boton. Los demas (p. ej. "que
