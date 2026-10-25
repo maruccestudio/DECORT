@@ -13,7 +13,7 @@ SRC = Path("../CORTINAS/PROYECTOS/03-MAZAGÁN 31/Selección web")
 # nombre, original
 FOTOS = [
     ("dormitorio-vigas-panoramica", "IMG_0054.JPEG"),
-    ("ajuste-visillo-ventana", "IMG_0049.JPEG"),
+    ("ajuste-cabezal-fruncido", "IMG_0029.JPEG"),
     ("dormitorio-vigas-visillo", "IMG_0052.JPEG"),
     ("dormitorio-abrir-visillo", "IMG_0041.JPEG"),
     ("dormitorio-luz-tamizada", "IMG_0045.JPEG"),

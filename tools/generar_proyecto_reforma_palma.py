@@ -335,7 +335,7 @@ main = f'''
         {lado(texto('El encargo: <span class="italic text-terracotta-500">toda la vivienda</span>',
                     'El project manager de la promoción nos encargó las cortinas de una reforma integral en Palma, junto al Pueblo Español. Una casa reformada de arriba abajo, con una paleta de tonos naturales que las cortinas tenían que continuar.',
                     'Llevamos el showroom móvil a la obra. Las telas y las confecciones se decidieron allí mismo, con la luz de cada estancia, y de esa visita salió el presupuesto.'),
-              pic("ajuste-visillo-ventana", "Ajuste a mano de un visillo de lino en mezcla junto a la ventana de un dormitorio", S_7, "aspect-[4/5]", FEAT_R, "Visillo de lino en mezcla, ajustado a mano."), align="items-start")}
+              pic("ajuste-cabezal-fruncido", "Manos ajustando el cabezal fruncido de un visillo de lino en mezcla colgado en un foseado", S_7, "aspect-[4/5]", FEAT_R, "Visillo de lino en mezcla con confección fruncida, ajustado a mano."), align="items-start")}
         </div>
     </section>
 
