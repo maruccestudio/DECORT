@@ -430,16 +430,15 @@ main = f'''
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-[2.75rem] font-light tracking-tight font-display text-neutral-800 leading-[1.05] mb-10 md:mb-14 [text-wrap:balance]">Antes y <span class="italic text-terracotta-500">después</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-                <figure class="relative">
+                <figure>
                     {img("dormitorio-cama-panoramica", "El dormitorio principal antes de las cortinas: puerta a la terraza y paredes blancas sin vestir", "(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw", False, "w-full h-auto aspect-[3/2] object-cover " + FEAT)}
-                    <figcaption class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 text-xs font-semibold font-body text-neutral-800">Antes</figcaption>
+                    <figcaption class="mt-3 text-sm text-neutral-700 font-body"><strong class="font-semibold text-neutral-800">Antes del dormitorio principal.</strong> El cristal desnudo y la luz directa de la terraza.</figcaption>
                 </figure>
-                <figure class="relative">
+                <figure>
                     {img("dormitorio-visillos-panoramica", "El mismo dormitorio con visillos blancos de lino de suelo a techo tamizando la luz de la terraza", "(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw", False, "w-full h-auto aspect-[3/2] object-cover " + FEAT_R)}
-                    <figcaption class="absolute top-4 left-4 px-3 py-1 rounded-full bg-terracotta-600 text-xs font-semibold font-body text-white">Después</figcaption>
+                    <figcaption class="mt-3 text-sm text-neutral-700 font-body"><strong class="font-semibold text-terracotta-600">Después del dormitorio principal.</strong> La luz tamizada por el lino, de suelo a techo.</figcaption>
                 </figure>
             </div>
-            <p class="mt-4 text-xs text-neutral-600 font-body">Dormitorio principal: del cristal desnudo a la luz tamizada por el lino, de suelo a techo.</p>
         </div>
     </section>
 
