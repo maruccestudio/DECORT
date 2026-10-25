@@ -328,6 +328,14 @@ main = f'''
 
     {ficha_html(FICHA)}
 
+    <!-- Fotos de apertura (7305 y 7306, elegidas por Leandro para ir arriba) -->
+    <section class="{SEC} pb-20 md:pb-28">
+        <div class="max-w-7xl mx-auto">
+            {dos([("paso-arco-cocina", "Paso bajo vigas de madera con visillo blanco de lino junto a un arco que da a la cocina"),
+                  ("paso-vigas-visillo", "Visillos blancos de lino colgados de una barra negra bajo las vigas, con el arco de la cocina al fondo")], "aspect-[4/5]")}
+        </div>
+    </section>
+
     <!-- El encargo -->
     <section class="{SEC} pb-20 md:pb-28">
         <div class="max-w-7xl mx-auto space-y-14 md:space-y-20">

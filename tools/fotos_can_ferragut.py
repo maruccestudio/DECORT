@@ -23,6 +23,8 @@ FOTOS = [
     ("dormitorio-escritorio-visillo", "IMG_7340.JPEG"),
     ("dormitorio-cama-visillos", "IMG_7330.JPEG"),
     ("pasillo-arco-vigas", "IMG_7317.JPEG"),
+    ("paso-arco-cocina", "IMG_7305.JPEG"),
+    ("paso-vigas-visillo", "IMG_7306.JPEG"),
     ("salon-vigas-visillo", "IMG_7321.JPEG"),
     ("arco-comedor-visillos", "mcc-6.png"),
     ("barra-negra-puerta", "IMG_7325.JPEG"),
