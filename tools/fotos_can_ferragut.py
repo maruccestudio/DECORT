@@ -29,7 +29,8 @@ FOTOS = [
     ("soporte-pared-viga", "IMG_7289.JPEG"),
     ("puerta-madera-visillo", "mcc-5.png"),
     ("visillo-arco-cocina", "mcc-3.png"),
-    ("estor-enrollable-montaje", "IMG_7318.JPEG"),
+    # recortada sin la cara del montador (pedido de Leandro): solo la mano con la cinta
+    ("estor-enrollable-medicion", "recortes/IMG_7318-sin-cara.jpg"),
     ("montaje-escalera", "IMG_7292.JPEG"),
     ("visillo-orquidea", "IMG_7299.JPEG"),
     ("visillo-terraza", "mcc-2.png"),

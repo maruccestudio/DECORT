@@ -388,7 +388,7 @@ main = f'''
         <div class="max-w-7xl mx-auto">
         {lado(texto('Donde el techo baja: <span class="italic text-terracotta-500">estores enrollables</span>',
                     f'En una zona de la casa el techo es muy bajo y una cortina no habría caído con proporción. Allí pusimos <a href="/cortinas-enrollables.html" {ENLACE}>estores enrollables</a> blancos: se recogen arriba, liberan el espacio y mantienen la misma luz suave que el resto de la vivienda.'),
-              pic("estor-enrollable-montaje", "Montaje de un estor enrollable blanco en una ventana bajo un techo de vigas", S_7, "aspect-[4/5]", FEAT), foto_izq=True, align="items-end")}
+              pic("estor-enrollable-medicion", "Estor enrollable blanco en una ventana bajo un techo de vigas, medido a mano con cinta métrica", S_7, "aspect-[4/5]", FEAT), foto_izq=True, align="items-end")}
         </div>
     </section>
 
