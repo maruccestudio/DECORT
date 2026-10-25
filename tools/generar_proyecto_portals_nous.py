@@ -178,22 +178,26 @@ V3 = "(min-width: 1024px) 26vw, (min-width: 640px) 33vw, 50vw"
 WIDE = "(min-width: 1280px) 1216px, 100vw"
 
 FICHA = [
-    ("Proyecto", "Vivienda unifamiliar de obra nueva"),
-    ("Ubicación", "Portals Nous, Calvià (Mallorca)"),
+    ("Ubicación", "Portals Nous, Calvià"),
     ("Encargo", "Project manager de la obra"),
-    ("Confección", "Cortina fruncida en toda la casa"),
-    ("Planta baja", "Visillo de lino y poliéster"),
-    ("Planta alta", "Blackout decorativo + visillo"),
-    ("Sistema", "Cortinas motorizadas, integradas en la domótica"),
-    ("Volumen", "Más de 30 cortinas"),
-    ("Plazo", "Mes y medio, de la confirmación al montaje"),
+    ("Cortinas", "Más de 30, fruncidas y motorizadas"),
+    ("Plazo", "Mes y medio"),
 ]
 
-ficha = "\n".join(
-    f'''                <div class="py-5 border-t border-arena-300/70">
-                    <dt class="text-xs font-medium text-terracotta-600 font-body mb-1.5">{k}</dt>
-                    <dd class="text-lg md:text-xl font-display text-neutral-800 leading-snug">{v}</dd>
-                </div>''' for k, v in FICHA)
+
+def ficha_html(items):
+    """Datos clave del proyecto en una sola franja (Leandro: pocos datos, que la gente no lee tanto)."""
+    filas = "\n".join(
+        f'''                <div>
+                    <dt class="text-xs font-medium text-terracotta-600 font-body mb-1">{k}</dt>
+                    <dd class="text-base md:text-lg font-display text-neutral-800 leading-snug">{v}</dd>
+                </div>''' for k, v in items)
+    return f'''<section aria-labelledby="datos" class="px-6 md:px-12 py-10 md:py-14">
+        <h2 id="datos" class="sr-only">Datos del proyecto</h2>
+        <dl class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 border-y border-arena-300/70 py-6 md:py-8">
+{filas}
+        </dl>
+    </section>'''
 
 BENEFICIOS = [
     ("Un solo interlocutor", "El project manager habló con una persona para todo el capítulo de cortinas: propuesta, medición, confección, montaje y puesta en marcha con la domótica."),
@@ -318,15 +322,7 @@ main = f'''
         </div>
     </figure>
 
-    <!-- Ficha -->
-    <section aria-labelledby="ficha" class="{SEC} py-16 md:py-24">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <h2 id="ficha" class="lg:col-span-3 text-2xl md:text-3xl font-light font-display text-neutral-800">Ficha del proyecto</h2>
-            <dl class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10">
-{ficha}
-            </dl>
-        </div>
-    </section>
+    {ficha_html(FICHA)}
 
     <!-- El encargo -->
     <section class="{SEC} pb-10 md:pb-14">
@@ -485,58 +481,5 @@ page = head(TITLE, DESC, URL, f"{P}{HERO}-1200.webp", ld,
             (f"{P}{HERO}-800.webp", hero_srcset, HERO_SIZES)) + body_open + crumbs([("Inicio", "/"), ("Proyectos", "/proyectos.html"), ("Villa en Portals Nous", None)]) + main + tail
 (ROOT / URL).write_text(page, encoding="utf-8")
 
-# ---------- Indice de proyectos ----------
-IURL = "proyectos.html"
-ITITLE = "Proyectos de cortinas a medida en Mallorca | DECORT MARUCC"
-IDESC = "Casas reales vestidas por DECORT MARUCC en Mallorca: qué se pidió, qué tejidos y confecciones elegimos y cómo se resolvió cada obra."
-ild = json.dumps({
-    "@context": "https://schema.org",
-    "@graph": [
-        {"@type": "CollectionPage", "@id": f"{DOM}/{IURL}#page", "name": "Proyectos", "description": IDESC, "url": f"{DOM}/{IURL}",
-         "inLanguage": "es-ES", "publisher": {"@id": f"{DOM}/#business"},
-         "mainEntity": {"@type": "ItemList", "itemListElement": [
-             {"@type": "ListItem", "position": 1, "url": f"{DOM}/{URL}", "name": "Villa en Portals Nous"}]}},
-        {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": f"{DOM}/"},
-            {"@type": "ListItem", "position": 2, "name": "Proyectos", "item": f"{DOM}/{IURL}"}]}
-    ]
-}, ensure_ascii=False, indent=4)
-
-imain = f'''
-    <header class="px-6 md:px-12 pt-14 md:pt-24 pb-12 md:pb-16">
-        <div class="max-w-7xl mx-auto">
-            <h1 class="text-5xl md:text-7xl lg:text-[6rem] font-light tracking-tight font-display text-neutral-800 leading-[0.95] mb-8 [text-wrap:balance]">Proyectos</h1>
-            <p class="text-lg md:text-2xl font-display text-neutral-700 leading-snug max-w-3xl [text-wrap:pretty]">Casas reales en Mallorca, contadas desde dentro: qué nos pidieron, qué confecciones y tejidos elegimos y cómo se resolvió cada obra.</p>
-        </div>
-    </header>
-
-    <section class="px-4 md:px-12 pb-20 md:pb-28">
-        <div class="max-w-7xl mx-auto">
-            <a href="/{URL}" class="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                <div class="lg:col-span-8 overflow-hidden rounded-tl-[60px] md:rounded-tl-[120px] rounded-br-[60px] md:rounded-br-[120px] rounded-tr-[10px] rounded-bl-[10px]">
-                    {img(HERO, "Salón de la villa de Portals Nous con visillos fruncidos de suelo a techo", "(min-width: 1024px) 66vw, 100vw", True, "w-full h-auto transition-transform duration-700 [transition-timing-function:var(--ease-ui)] group-hover:scale-[1.03]")}
-                </div>
-                <div class="lg:col-span-4 px-2">
-                    <p class="text-sm font-body text-terracotta-600 mb-4">Portals Nous, Calvià · Vivienda unifamiliar</p>
-                    <h2 class="text-3xl md:text-5xl font-light tracking-tight font-display text-neutral-800 leading-[1.05] mb-5 [text-wrap:balance]">Una villa con <span class="italic text-terracotta-500">cortinas de gran formato</span></h2>
-                    <p class="text-base leading-relaxed text-neutral-700 font-body mb-6">Más de 30 cortinas fruncidas: visillos de lino y poliéster de más de 6 m en la planta baja, blackout decorativo y visillo en los dormitorios, todo motorizado con domótica. Mes y medio de la confirmación al montaje.</p>
-                    <span class="inline-flex items-center gap-2 text-sm font-semibold font-body text-terracotta-600 group-hover:text-terracotta-700">Ver el proyecto <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <section id="cta-final" class="py-20 md:py-28 px-6 md:px-12 bg-neutral-900 text-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-light tracking-tight font-display mb-6 leading-tight [text-wrap:balance]">¿Tienes una obra <span class="italic text-terracotta-400">entre manos</span>?</h2>
-            <p class="text-sm text-neutral-300 max-w-xl mx-auto mb-10 font-body leading-relaxed">Project managers, arquitectos, interioristas o propietarios: vamos a la obra o a tu casa con el muestrario completo, en cualquier punto de Mallorca.</p>
-            <a href="{WA_HREF}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-10 py-4 bg-terracotta-500 hover:bg-terracotta-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition duration-300 font-body">
-                {WA_SVG} Solicitar visita gratuita
-            </a>
-        </div>
-    </section>
-
-'''
-ipage = head(ITITLE, IDESC, IURL, f"{P}{HERO}-1200.webp", ild).replace('content="article"', 'content="website"') + body_open + crumbs([("Inicio", "/"), ("Proyectos", None)]) + imain + tail
-(ROOT / IURL).write_text(ipage, encoding="utf-8")
-print("ok")
+# El indice (proyectos.html) se edita a mano: lista varios proyectos y este script lo sobrescribiria.
+print("ok", URL)
