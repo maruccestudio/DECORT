@@ -135,6 +135,7 @@ html.visor-abierto { overflow: hidden; }
   .visor-sig { right: 24px; }
 }
 
+.visor-una .visor-ant, .visor-una .visor-sig { display: none; }
 .visor-pie {
   position: absolute;
   left: 72px;

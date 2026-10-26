@@ -1,11 +1,12 @@
-/* Visor de fotos de los proyectos (26-10-2026).
+/* Visor de fotos (26-10-2026): proyectos y paginas de producto.
    Clarity registro clics muertos en las fotos: la gente intentaba ampliarlas.
-   Toma todas las <figure><img> del <main>, las abre a pantalla completa en un
+   Toma las fotos del <main> que no son enlaces (las de "Tambien te puede
+   interesar" llevan a otra pagina), las abre a pantalla completa en un
    <dialog> nativo y permite pasar con flechas, teclado o deslizando el dedo.
-   Estilos en src/input.css (bloque "Visor de fotos"). */
+   Para excluir una foto: data-visor="no". Estilos en src/input.css. */
 (function () {
-  var imgs = Array.prototype.slice.call(document.querySelectorAll('main figure img'))
-    .filter(function (img) { return !img.closest('a, button'); });
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('main img'))
+    .filter(function (img) { return !img.closest('a, button, [aria-hidden="true"], [data-visor="no"]'); });
   if (!imgs.length || typeof HTMLDialogElement !== 'function') return;
 
   // La version mas grande del srcset: la miniatura se ve al instante y se cambia al cargar.
@@ -18,7 +19,7 @@
     return mejor;
   }
   function pie(img) {
-    var fc = img.closest('figure').querySelector('figcaption');
+    var fig = img.closest('figure'), fc = fig && fig.querySelector('figcaption');
     return fc ? fc.textContent.trim() : '';
   }
 
@@ -36,6 +37,8 @@
     '<button type="button" class="visor-btn visor-ant" aria-label="Foto anterior">' + flecha('m15 18-6-6 6-6') + '</button>' +
     '<button type="button" class="visor-btn visor-sig" aria-label="Foto siguiente">' + flecha('m9 18 6-6-6-6') + '</button>' +
     '<div class="visor-pie"><p class="visor-texto"></p><p class="visor-cuenta" aria-live="polite"></p></div>';
+  // Con una sola foto no hay nada que pasar.
+  if (imgs.length === 1) dlg.classList.add('visor-una');
   document.body.appendChild(dlg);
 
   var foto = dlg.querySelector('.visor-img'),
@@ -65,7 +68,7 @@
     var t = pie(img);
     texto.textContent = t;
     texto.hidden = !t;
-    cuenta.textContent = (actual + 1) + ' / ' + imgs.length;
+    cuenta.textContent = imgs.length > 1 ? (actual + 1) + ' / ' + imgs.length : '';
     precargar(actual + 1);
     precargar(actual - 1);
   }
@@ -75,7 +78,7 @@
     mostrar(i);
     document.documentElement.classList.add('visor-abierto');
     dlg.showModal();
-    dlg.querySelector('.visor-sig').focus({ preventScroll: true });
+    dlg.querySelector(imgs.length > 1 ? '.visor-sig' : '.visor-cerrar').focus({ preventScroll: true });
   }
 
   dlg.addEventListener('close', function () {
@@ -107,7 +110,7 @@
     if (x0 === null) return;
     var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
     x0 = null;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) mostrar(actual + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { if (imgs.length > 1) mostrar(actual + (dx < 0 ? 1 : -1)); }
     else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) dlg.close();
   }, { passive: true });
 
