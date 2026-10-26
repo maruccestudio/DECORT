@@ -209,13 +209,13 @@
         .dm-hero { display: flex; flex-direction: column; }
         .dm-hero-txt { order: 1; }
         .dm-hero-img { order: 2; }
-        .dm-hero-img img { max-height: 45vh; }
+        .dm-hero-img img { max-height: 45vh; width: min(100%, calc(45vh * 0.75)); }
     }
     </style>
     <section class="relative py-20 md:py-32 px-6 md:px-12">
         <div class="dm-hero max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
             <div class="dm-hero-img w-full flex justify-center">
-                <img src="public/images/showroom-medicion.webp" alt="Laser measuring on a real DECORT MARUCC project in Mallorca" class="w-auto h-auto max-w-full max-h-[65vh] md:max-h-[70vh] object-contain rounded-tl-[80px] md:rounded-tl-[120px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[80px] md:rounded-br-[120px]" loading="eager" fetchpriority="high" width="1024" height="1365">
+                <img src="public/images/showroom-medicion.webp" alt="Laser measuring on a real DECORT MARUCC project in Mallorca" class="w-[min(100%,calc(65vh*0.75))] md:w-[min(100%,calc(70vh*0.75))] h-auto aspect-[1024/1365] object-contain rounded-tl-[80px] md:rounded-tl-[120px] rounded-tr-[10px] rounded-bl-[10px] rounded-br-[80px] md:rounded-br-[120px]" loading="eager" fetchpriority="high" width="1024" height="1365">
             </div>
             <div class="dm-hero-txt">
                 <span class="text-[10px] font-medium tracking-widest uppercase text-terracotta-500 mb-4 block font-body">Made to measure
